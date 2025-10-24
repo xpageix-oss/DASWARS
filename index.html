@@ -106,14 +106,14 @@
 </head>
 <body>
 
-  <!-- 🎵 Musik (Star Wars-inspiriert) -->
+  <!-- 🎵 Musik -->
   <audio id="music" preload="auto">
     <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_32a5dc0b42.mp3" type="audio/mpeg">
     Dein Browser unterstützt kein Audio.
   </audio>
 
-  <!-- 👉 Start-Button -->
-  <button id="startBtn" class="start-button">Bereit?</button>
+  <!-- 🟡 Start-Knopf -->
+  <button id="startBtn" class="start-button">🎵 Bereit? Starte das Abenteuer</button>
 
   <div class="intro-container">
     <div class="blue-line" id="blueLine">
@@ -176,10 +176,14 @@
       startBtn.style.display = 'none';
       blueLine.style.animationPlayState = 'running';
 
-      // Start Crawl + Musik nach 4.5s
+      // Musik direkt starten, um Autoplay-Block zu vermeiden
+      music.play().catch(() => {
+        alert("Bitte Interaktion erlauben, um Musik abzuspielen.");
+      });
+
+      // Crawl etwas später starten
       setTimeout(() => {
         crawl.style.opacity = 1;
-        music.play().catch(() => {});
         requestAnimationFrame(step);
       }, 4500);
     });
