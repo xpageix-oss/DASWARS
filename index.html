@@ -92,7 +92,7 @@
 </head>
 <body>
   <div class="intro-container">
-    <div class="blue-line">
+    <div class="blue-line" id="blueLine">
       Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
     </div>
 
@@ -124,10 +124,11 @@
   <script>
     const crawl = document.getElementById('crawl');
     const target = document.getElementById('target');
+    const blueLine = document.getElementById('blueLine');
 
     let start = null;
     let stop = false;
-    const speed = 0.3; // leicht beschleunigt
+    const speed = 0.3;
 
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -145,10 +146,10 @@
       requestAnimationFrame(step);
     }
 
-    setTimeout(() => {
+    blueLine.addEventListener('animationend', () => {
       crawl.style.opacity = 1;
       requestAnimationFrame(step);
-    }, 5000); // startet etwas früher
+    });
   </script>
 </body>
 </html>
