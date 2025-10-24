@@ -106,13 +106,11 @@
 </head>
 <body>
 
-  <!-- 🎵 Musik -->
   <audio id="music" preload="auto">
     <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_32a5dc0b42.mp3" type="audio/mpeg">
     Dein Browser unterstützt kein Audio.
   </audio>
 
-  <!-- 🟡 Start-Knopf -->
   <button id="startBtn" class="start-button">🎵 Bereit? Starte das Abenteuer</button>
 
   <div class="intro-container">
@@ -172,21 +170,24 @@
       requestAnimationFrame(step);
     }
 
-    startBtn.addEventListener('click', () => {
+    function playMusicAndStart() {
       startBtn.style.display = 'none';
       blueLine.style.animationPlayState = 'running';
 
-      // Musik direkt starten, um Autoplay-Block zu vermeiden
-      music.play().catch(() => {
-        alert("Bitte Interaktion erlauben, um Musik abzuspielen.");
+      music.play().then(() => {
+        // Musikstart erfolgreich
+      }).catch((err) => {
+        console.error("Audio konnte nicht abgespielt werden:", err);
+        alert("Musik konnte nicht gestartet werden. Bitte tippen Sie erneut.");
       });
 
-      // Crawl etwas später starten
       setTimeout(() => {
         crawl.style.opacity = 1;
         requestAnimationFrame(step);
       }, 4500);
-    });
+    }
+
+    startBtn.addEventListener('click', playMusicAndStart);
   </script>
 </body>
 </html>
