@@ -6,6 +6,11 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
+    @font-face {
+      font-family: 'StarJedi';
+      src: url('https://fonts.cdnfonts.com/s/12908/Starjedi.ttf') format('truetype');
+    }
+
     body {
       margin: 0;
       height: 100vh;
@@ -59,11 +64,12 @@
     }
 
     .headline {
-      font-size: 3em;
+      font-family: 'StarJedi', 'Orbitron', sans-serif;
+      font-size: 4em;
       text-align: center;
       color: #ffe81f;
       text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
-      margin-bottom: 0.3em;
+      margin-bottom: 1em;
     }
 
     .subheadline {
@@ -92,7 +98,8 @@
 
     <div class="crawl" id="crawl">
       <div class="headline">DAS WARS</div>
-      <div class="subheadline">EPISODE XXX: Das Ende der Zwanziger</div>
+      <div class="subheadline">EPISODE XXX</div>
+      <div class="subheadline">Das Ende der Zwanziger</div>
 
       <p class="paragraph">
         Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
@@ -120,7 +127,7 @@
 
     let start = null;
     let stop = false;
-    const speed = 0.2; // langsamer Scroll
+    const speed = 0.3; // leicht beschleunigt
 
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -141,7 +148,7 @@
     setTimeout(() => {
       crawl.style.opacity = 1;
       requestAnimationFrame(step);
-    }, 9000);
+    }, 5000); // startet etwas früher
   </script>
 </body>
 </html>
