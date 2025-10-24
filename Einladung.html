@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>DAS WARS Episode XXX</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: black;
+      color: #ffe81f;
+      font-family: 'Orbitron', sans-serif;
+      perspective: 500px;
+    }
+
+    .intro-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .blue-line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #00bfff;
+      font-size: 2em;
+      opacity: 0;
+      text-align: center;
+      animation: appear 7s ease-in-out forwards;
+      animation-delay: 1s;
+      z-index: 5;
+    }
+
+    @keyframes appear {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .crawl {
+      position: absolute;
+      top: 100%;
+      width: 60%;
+      max-width: 600px;
+      left: 50%;
+      transform: translateX(-50%) rotateX(25deg);
+      transform-origin: bottom center;
+      font-size: 1.4em;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    .headline {
+      font-size: 3em;
+      text-align: center;
+      color: #ffe81f;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+      margin-bottom: 0.3em;
+    }
+
+    .subheadline {
+      font-size: 1.5em;
+      text-align: center;
+      color: #ffe81f;
+      text-shadow: 1px 1px 2px #000;
+      margin-bottom: 2em;
+    }
+
+    .paragraph {
+      text-align: justify;
+    }
+
+    .target-marker {
+      display: inline;
+      background-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-container">
+    <div class="blue-line">
+      Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
+    </div>
+
+    <div class="crawl" id="crawl">
+      <div class="headline">DAS WARS</div>
+      <div class="subheadline">EPISODE XXX: Das Ende der Zwanziger</div>
+
+      <p class="paragraph">
+        Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
+      </p>
+
+      <p class="paragraph">
+        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
+      </p>
+
+      <p class="paragraph">
+        Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
+      </p>
+
+      <p class="paragraph">
+        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte in Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
+      </p>
+
+      <p class="paragraph">&nbsp;</p>
+    </div>
+  </div>
+
+  <script>
+    const crawl = document.getElementById('crawl');
+    const target = document.getElementById('target');
+
+    let start = null;
+    let stop = false;
+    const speed = 0.2; // langsamer Scroll
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      if (stop) return;
+
+      const currentTop = parseFloat(getComputedStyle(crawl).top);
+      crawl.style.top = (currentTop - speed) + 'px';
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
+        stop = true;
+        return;
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    setTimeout(() => {
+      crawl.style.opacity = 1;
+      requestAnimationFrame(step);
+    }, 9000);
+  </script>
+</body>
+</html>
