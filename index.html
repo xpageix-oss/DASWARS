@@ -6,11 +6,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-    @font-face {
-      font-family: 'StarJedi';
-      src: url('https://fonts.cdnfonts.com/s/12908/Starjedi.ttf') format('truetype');
-    }
-
     body {
       margin: 0;
       height: 100vh;
@@ -26,7 +21,11 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      display: none;
+    }
+
+    .blue-line, .crawl {
+      opacity: 0;
+      transition: opacity 1s ease-in;
     }
 
     .blue-line {
@@ -36,18 +35,8 @@
       transform: translate(-50%, -50%);
       color: #00bfff;
       font-size: 2em;
-      opacity: 0;
       text-align: center;
-      animation: appear 7s ease-in-out forwards;
-      animation-delay: 1s;
       z-index: 5;
-    }
-
-    @keyframes appear {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
     }
 
     .crawl {
@@ -60,17 +49,15 @@
       transform-origin: bottom center;
       font-size: 1.4em;
       line-height: 1.6;
-      opacity: 0;
-      transition: opacity 1s ease-in;
     }
 
     .headline {
       font-family: 'StarJedi', 'Orbitron', sans-serif;
       font-size: 4em;
       text-align: center;
+      margin-bottom: 1.5em;
       color: #ffe81f;
       text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
-      margin-bottom: 2em;
     }
 
     .subheadline {
@@ -86,35 +73,47 @@
     }
 
     .target-marker {
-      display: inline;
       background-color: transparent;
     }
 
-    #startBtn {
+    .start-btn, .retry-btn {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 1em 2em;
-      font-size: 1.5em;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #111;
+      font-size: 1.2em;
+      background: #222;
       color: #ffe81f;
       border: 2px solid #ffe81f;
       cursor: pointer;
       z-index: 10;
     }
+
+    .retry-btn {
+      top: 80%;
+      font-size: 1em;
+      padding: 0.8em 1.5em;
+      display: none;
+    }
+
+    @font-face {
+      font-family: 'StarJedi';
+      src: url('https://fonts.cdnfonts.com/s/12908/Starjedi.ttf') format('truetype');
+    }
   </style>
 </head>
 <body>
-  <button id="startBtn">Bereit?</button>
 
-  <div class="intro-container" id="intro">
-    <audio id="themeAudio" preload="auto">
-      <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_f291ce5f3d.mp3" type="audio/mpeg">
-    </audio>
+  <audio id="theme" preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/03/04/audio_ef79e82b82.mp3" type="audio/mpeg">
+  </audio>
 
-    <div class="blue-line" id="blueText">
+  <div class="intro-container">
+    <button class="start-btn" id="startBtn">Bereit?</button>
+    <button class="retry-btn" id="retryBtn">🔊 Kein Ton? Hier klicken</button>
+
+    <div class="blue-line" id="blueLine">
       Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
     </div>
 
@@ -126,33 +125,35 @@
       <p class="paragraph">
         Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
       </p>
-
       <p class="paragraph">
         Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
       </p>
-
       <p class="paragraph">
         Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
       </p>
-
       <p class="paragraph">
         Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte in Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
-
       <p class="paragraph">&nbsp;</p>
     </div>
   </div>
 
   <script>
-    const startBtn = document.getElementById('startBtn');
-    const intro = document.getElementById('intro');
     const crawl = document.getElementById('crawl');
+    const blueLine = document.getElementById('blueLine');
+    const startBtn = document.getElementById('startBtn');
+    const retryBtn = document.getElementById('retryBtn');
+    const audio = document.getElementById('theme');
     const target = document.getElementById('target');
-    const audio = document.getElementById('themeAudio');
 
+    let speed = 0.35;
     let start = null;
     let stop = false;
-    const speed = 0.35;
+
+    function startCrawl() {
+      crawl.style.opacity = 1;
+      requestAnimationFrame(step);
+    }
 
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -170,26 +171,26 @@
       requestAnimationFrame(step);
     }
 
+    function tryPlayAudio() {
+      audio.play().catch(() => {
+        retryBtn.style.display = 'block';
+      });
+    }
+
     startBtn.addEventListener('click', () => {
       startBtn.style.display = 'none';
-      intro.style.display = 'block';
+      tryPlayAudio();
 
-      // Musik laden und vorbereiten
-      audio.load();
-
-      // Blaue Schrift einblenden
-      const blueText = document.getElementById('blueText');
-
-      // Musik startet mit dem Beginn der Crawl-Animation
+      blueLine.style.opacity = 1;
       setTimeout(() => {
-        crawl.style.opacity = 1;
-        try {
-          audio.play();
-        } catch (err) {
-          alert("Musik konnte nicht gestartet werden. Bitte tippen Sie erneut.");
-        }
-        requestAnimationFrame(step);
-      }, 5000); // 5s nach Start, gleichzeitig mit Ende der blauen Zeile
+        blueLine.style.opacity = 0;
+        startCrawl();
+      }, 4000);
+    });
+
+    retryBtn.addEventListener('click', () => {
+      tryPlayAudio();
+      retryBtn.style.display = 'none';
     });
   </script>
 </body>
