@@ -124,11 +124,10 @@
   <script>
     const crawl = document.getElementById('crawl');
     const target = document.getElementById('target');
-    const blueLine = document.getElementById('blueLine');
 
     let start = null;
     let stop = false;
-    const speed = 0.3;
+    const speed = 0.7; // Schneller durchfliegen
 
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -146,10 +145,11 @@
       requestAnimationFrame(step);
     }
 
-    blueLine.addEventListener('animationend', () => {
+    // Starte nach 3 Sekunden (früher als vorher)
+    setTimeout(() => {
       crawl.style.opacity = 1;
       requestAnimationFrame(step);
-    });
+    }, 3000);
   </script>
 </body>
 </html>
