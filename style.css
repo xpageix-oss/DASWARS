@@ -32,6 +32,10 @@ body {
   z-index: 999;
 }
 
+#selection-screen {
+  display: none;
+}
+
 #password-screen input,
 #password-screen button,
 #selection-screen button {
@@ -95,7 +99,9 @@ body {
   line-height: 0.8;
 }
 
-.headline span { display: block; }
+.headline span {
+  display: block;
+}
 
 .subheadline {
   font-size: 1.2em;
@@ -115,24 +121,19 @@ body {
   background-color: transparent;
 }
 
-.back-button,
-#infoBackBtn {
-  display: block;
-  margin-top: 1em;
-  padding: 0.4em 0.8em;
+.back-button {
+  position: absolute;
+  left: 5px;
+  top: 30%;
+  display: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  padding: 0.4em;
   font-size: 0.9em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
-}
-
-.back-button {
-  position: absolute;
-  left: 5px;
-  top: 30%;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
   z-index: 10;
 }
 
@@ -158,4 +159,16 @@ iframe {
   height: 250px;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
+}
+
+#infoBackBtn {
+  display: block;
+  margin-top: 1em;
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+  background: #111;
+  border: 2px solid #FFDE06;
+  color: #FFDE06;
+  cursor: pointer;
+  position: relative;
 }
