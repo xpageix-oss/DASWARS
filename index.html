@@ -49,13 +49,12 @@
       font-size: 1.4em;
       line-height: 1.6;
     }
-    .headline {
-      font-family: 'StarJedi', 'Orbitron', sans-serif;
-      font-size: 4em;
-      text-align: center;
-      margin-bottom: 1.5em;
-      color: #ffe81f;
-      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+    .headline-img {
+      display: block;
+      margin: 0 auto 1em auto;
+      max-width: 90%;
+      width: auto;
+      height: auto;
     }
     .subheadline {
       font-size: 1.5em;
@@ -121,7 +120,7 @@
     </div>
 
     <div class="crawl" id="crawl">
-      <div class="headline">DAS WARS</div>
+      <img src="generated_text.png" alt="DAS WARS" class="headline-img">
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
 
@@ -137,6 +136,7 @@
       <p class="paragraph">
         Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
+
       <p class="paragraph">&nbsp;</p>
     </div>
   </div>
@@ -163,6 +163,10 @@
     let start = null;
     let stop = false;
 
+    function startExtra() {
+      extraContent.style.display = 'block';
+    }
+
     function step(timestamp) {
       if (!start) start = timestamp;
       if (stop) return;
@@ -173,7 +177,7 @@
       const rect = target.getBoundingClientRect();
       if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
         stop = true;
-        extraContent.style.display = 'block';
+        startExtra();
         return;
       }
 
@@ -186,7 +190,7 @@
       crawl.style.transition = 'none';
       crawl.style.top = '20%';
       stop = true;
-      extraContent.style.display = 'block';
+      startExtra();
     });
 
     window.addEventListener('DOMContentLoaded', () => {
