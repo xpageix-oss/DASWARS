@@ -2,7 +2,8 @@
 
 body {
   margin: 0;
-  background: black;
+  background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  background-size: cover;
   color: #FFDE06;
   font-family: 'Orbitron', sans-serif;
   overflow-x: hidden;
