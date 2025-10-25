@@ -70,11 +70,15 @@ invitationButton.addEventListener('click', () => {
 
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
+
   setTimeout(() => {
     blueLine.style.opacity = 0;
+  }, 4000); // Blaue Linie ausblenden nach 4 Sekunden
+
+  setTimeout(() => {
     crawl.style.opacity = 1;
     animationFrame = requestAnimationFrame(step);
-  }, 4000);
+  }, 6000); // Crawl startet nach weiteren 2 Sekunden (insgesamt 6)
 });
 
 infoButton.addEventListener('click', () => {
