@@ -11,9 +11,10 @@
       background: black;
       color: #FFDE06;
       font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
     }
 
-    #password-screen {
+    #password‑screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -28,7 +29,7 @@
       z-index: 999;
     }
 
-    #password-screen input {
+    #password‑screen input {
       padding: 0.5em;
       font-size: 1.2em;
       background: #111;
@@ -38,7 +39,7 @@
       text-align: center;
     }
 
-    #password-screen button {
+    #password‑screen button {
       padding: 0.5em 1em;
       font-size: 1.2em;
       background: #111;
@@ -88,18 +89,15 @@
     }
 
     .headline {
-      text-align: center;
       font-family: 'Bowlby One SC', sans-serif;
+      text-align: center;
       font-size: 4em;
       color: black;
       -webkit-text-stroke: 2px #FFDE06;
       text-stroke: 2px #FFDE06;
       margin-bottom: 1em;
       line-height: 0.8;
-    }
-
-    .headline span {
-      display: block;
+      position: relative;
     }
 
     .subheadline {
@@ -120,17 +118,18 @@
       background-color: transparent;
     }
 
+    /* Neuer Stil für den Knopf im Scrollbereich */
     #skipBtn {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      right: 0;
+      margin-right: 5%;
       padding: 0.5em 1em;
       font-size: 1em;
       background: #222;
       color: #FFDE06;
       border: 2px solid #FFDE06;
       cursor: pointer;
-      z-index: 10;
+      top: -4em; /* Verschiebung oberhalb der Headline */
     }
 
     #extraContent {
@@ -168,12 +167,10 @@
   </style>
 </head>
 <body>
-  <div id="password-screen">
+  <div id="password‑screen">
     <input type="password" id="pwInput" placeholder="Passwort eingeben" />
     <button onclick="checkPassword()">Weiter</button>
   </div>
-
-  <button id="skipBtn" class="hidden">Überspringen</button>
 
   <div class="intro-container hidden" id="mainContent">
     <div class="blue-line" id="blueLine">
@@ -181,6 +178,7 @@
     </div>
 
     <div class="crawl" id="crawl">
+      <button id="skipBtn">Überspringen</button>
       <div class="headline"><span>DAS</span><span>WARS</span></div>
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
@@ -195,30 +193,33 @@
         Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
       </p>
       <p class="paragraph">
-        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
+        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
       <p class="paragraph">&nbsp;</p>
     </div>
   </div>
 
   <div id="extraContent">
-    <h2>📍 Fußballhütte Frammersbach</h2>
-    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
-    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
+    <h2>📍 Fußballhütte Frammersbach</h2>
+    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
+    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer‑when-downgrade"></iframe>
+    <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
   </div>
 
   <script>
-    const crawl = document.getElementById('crawl');
-    const blueLine = document.getElementById('blueLine');
-    const target = document.getElementById('target');
-    const extraContent = document.getElementById('extraContent');
-    const skipBtn = document.getElementById('skipBtn');
+    const passwordInput = document.getElementById("pwInput");
+    const passwordScreen = document.getElementById("password‑screen");
+    const mainContent = document.getElementById("mainContent");
+    const blueLine = document.getElementById("blueLine");
+    const crawl = document.getElementById("crawl");
+    const target = document.getElementById("target");
+    const extraContent = document.getElementById("extraContent");
+    const skipBtn = document.getElementById("skipBtn");
 
-    let speed = 0.35;
     let start = null;
     let stop = false;
+    const speed = 0.35;
 
     function startExtra() {
       extraContent.style.display = 'block';
@@ -237,28 +238,17 @@
         startExtra();
         return;
       }
-
       requestAnimationFrame(step);
     }
 
-    skipBtn.addEventListener('click', () => {
-      blueLine.style.opacity = 0;
-      crawl.style.opacity = 1;
-      crawl.style.transition = 'none';
-      crawl.style.top = '20%';
-      stop = true;
-      startExtra();
-    });
-
     function checkPassword() {
-      const input = document.getElementById('pwInput').value;
-      if (input === "2512!") {
-        document.getElementById('password-screen').style.display = 'none';
-        document.getElementById('mainContent').classList.remove('hidden');
-        document.getElementById('skipBtn').classList.remove('hidden');
-        blueLine.style.opacity = 1;
+      if (passwordInput.value === "2512!") {
+        passwordScreen.style.display = 'none';
+        mainContent.classList.remove('hidden');
+        blueLine.style.display = 'block';
         setTimeout(() => {
           blueLine.style.opacity = 0;
+          crawl.style.display = 'block';
           crawl.style.opacity = 1;
           requestAnimationFrame(step);
         }, 4000);
@@ -266,6 +256,13 @@
         alert("Falsches Passwort!");
       }
     }
+
+    skipBtn.addEventListener("click", () => {
+      stop = true;
+      crawl.style.top = '20%';
+      crawl.style.opacity = 0;
+      startExtra();
+    });
   </script>
 </body>
 </html>
