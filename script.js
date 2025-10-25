@@ -46,17 +46,17 @@ function step(timestamp) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  selectScreen.classList.add("hidden");
+  pwScreen.style.display = 'flex';
+  selectScreen.style.display = 'none';
   mainContent.classList.add("hidden");
   extraContent.classList.add("hidden");
-  pwScreen.style.display = "flex";
 });
 
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
   if (inputVal === "2512!") {
     pwScreen.style.display = 'none';
-    selectScreen.classList.remove("hidden");
+    selectScreen.style.display = 'flex';
   } else {
     alert("Falsches Passwort!");
   }
@@ -64,9 +64,9 @@ pwButton.addEventListener('click', () => {
 
 invitationButton.addEventListener('click', () => {
   resetCrawl();
-  selectScreen.classList.add("hidden");
-  extraContent.classList.add("hidden");
-  mainContent.classList.remove("hidden");
+  selectScreen.style.display = 'none';
+  extraContent.style.display = 'none';
+  mainContent.classList.remove('hidden');
 
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
@@ -78,19 +78,20 @@ invitationButton.addEventListener('click', () => {
 });
 
 infoButton.addEventListener('click', () => {
-  selectScreen.classList.add("hidden");
-  mainContent.classList.add("hidden");
-  extraContent.classList.remove("hidden");
+  selectScreen.style.display = 'none';
+  mainContent.classList.add('hidden');
+  extraContent.style.display = 'block';
+  infoBackBtn.style.display = 'block';
   window.scrollTo(0, 0);
 });
 
 infoBackBtn.addEventListener('click', () => {
-  extraContent.classList.add("hidden");
-  selectScreen.classList.remove("hidden");
+  extraContent.style.display = 'none';
+  selectScreen.style.display = 'flex';
 });
 
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
-  mainContent.classList.add("hidden");
-  selectScreen.classList.remove("hidden");
+  mainContent.classList.add('hidden');
+  selectScreen.style.display = 'flex';
 });
