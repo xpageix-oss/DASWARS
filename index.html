@@ -96,7 +96,6 @@
       text-stroke: 2px #FFDE06;
       margin-bottom: 1em;
       line-height: 0.8;
-      position: relative;
     }
 
     .headline span {
@@ -119,19 +118,6 @@
 
     .target-marker {
       background-color: transparent;
-    }
-
-    #skipBtn {
-      position: absolute;
-      top: -1.8em;
-      right: 0;
-      font-size: 0.4em;
-      padding: 0.2em 0.6em;
-      background: transparent;
-      color: #FFDE06;
-      border: 1px solid #FFDE06;
-      cursor: pointer;
-      z-index: 10;
     }
 
     #extraContent {
@@ -181,7 +167,6 @@
 
     <div class="crawl" id="crawl">
       <div class="headline">
-        <button id="skipBtn">Überspringen</button>
         <span>DAS</span>
         <span>WARS</span>
       </div>
@@ -219,7 +204,6 @@
     const blueLine = document.getElementById('blueLine');
     const target = document.getElementById('target');
     const extraContent = document.getElementById('extraContent');
-    const skipBtn = document.getElementById('skipBtn');
 
     let speed = 0.35;
     let start = null;
@@ -245,15 +229,6 @@
 
       requestAnimationFrame(step);
     }
-
-    skipBtn.addEventListener('click', () => {
-      blueLine.style.opacity = 0;
-      crawl.style.opacity = 1;
-      crawl.style.transition = 'none';
-      crawl.style.top = '20%';
-      stop = true;
-      startExtra();
-    });
 
     function checkPassword() {
       const input = document.getElementById('pwInput').value;
