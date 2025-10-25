@@ -13,6 +13,8 @@
       color: #FFDE06;
       font-family: 'Orbitron', sans-serif;
       overflow-x: hidden;
+      display: flex;
+      justify-content: center;
     }
 
     #password-screen, #selection-screen {
@@ -45,7 +47,9 @@
 
     #selection-screen {
       display: none;
-      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      align-items: center;
     }
 
     .hidden { display: none; }
@@ -53,7 +57,8 @@
     .intro-container {
       position: relative;
       width: 100%;
-      height: 100vh;
+      max-width: 400px;
+      height: 80vh;
       overflow: hidden;
       perspective: 500px;
     }
@@ -65,45 +70,45 @@
 
     .blue-line {
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #00bfff;
-      font-size: 1.8em;
+      font-size: 1.6em;
       text-align: center;
+      max-width: 90%;
+      margin: 0 auto;
       z-index: 5;
-      width: 90%;
     }
 
     .crawl {
       position: absolute;
       top: 90%;
-      width: 90%;
-      max-width: 500px;
+      width: 85%;
+      max-width: 350px;
       left: 50%;
       transform: translateX(-50%) rotateX(25deg);
       transform-origin: bottom center;
-      font-size: 1.2em;
-      line-height: 1.6;
+      font-size: 1.1em;
+      line-height: 1.4;
     }
 
     .headline {
       text-align: center;
       font-family: 'Bowlby One SC', sans-serif;
-      font-size: 3em;
+      font-size: 2.5em;
       color: black;
       -webkit-text-stroke: 2px #FFDE06;
-      margin-bottom: 1em;
+      margin-bottom: 0.8em;
       line-height: 0.8;
     }
-
     .headline span { display: block; }
 
     .subheadline {
-      font-size: 1.3em;
+      font-size: 1.2em;
       text-align: center;
       color: #FFDE06;
-      margin-bottom: 1.5em;
+      margin-bottom: 1.2em;
     }
 
     .paragraph {
@@ -113,36 +118,38 @@
 
     .target-marker { background-color: transparent; }
 
-    .back-button {
-      margin: 2em auto 1em;
-      display: block;
-      padding: 0.5em 1em;
-      font-size: 1em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
-    }
-
     #extraContent {
       display: none;
-      padding: 20px;
+      padding: 20px 15px;
       text-align: center;
+      width: 100%;
+      max-width: 400px;
     }
 
     #extraContent img {
       width: 100%;
-      max-width: 500px;
+      max-width: 350px;
       border: 4px solid #FFDE06;
       margin-bottom: 1em;
     }
 
     iframe {
-      width: 90%;
-      max-width: 600px;
-      height: 350px;
+      width: 100%;
+      max-width: 350px;
+      height: 250px;
       border: 4px solid #FFDE06;
       margin-bottom: 1em;
+    }
+
+    .back-button {
+      margin: 1.5em auto 0;
+      display: block;
+      padding: 0.4em 0.8em;
+      font-size: 0.9em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -154,12 +161,14 @@
   </div>
 
   <div id="selection-screen">
-    <button onclick="startInvitation()">🎬 Einladung</button>
-    <button onclick="startInfo()">ℹ Infos</button>
+    <button onclick="startInvitation()">🎬 Einladung</button>
+    <button onclick="startInfo()">ℹ Infos</button>
   </div>
 
   <div class="intro-container hidden" id="mainContent">
-    <div class="blue-line" id="blueLine">Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...</div>
+    <div class="blue-line" id="blueLine">
+      Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
+    </div>
 
     <div class="crawl" id="crawl">
       <div class="headline"><span>DAS</span><span>WARS</span></div>
@@ -167,98 +176,100 @@
       <div class="subheadline">Das Ende der Zwanziger</div>
       <p class="paragraph">Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.</p>
       <p class="paragraph">Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen und unzählige Erinnerungen, die einen prägen.</p>
-      <p class="paragraph">Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.</p>
-      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
+      <p class="paragraph">Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.</p>
+      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
       <p class="paragraph">&nbsp;</p>
     </div>
 
-    <button class="back-button" onclick="goBack()">⬅️ Zurück</button>
+    <button class="back-button" onclick="goBack()">⬅️ Zurück</button>
   </div>
 
   <div id="extraContent">
-    <h2>📍 Fußballhütte Frammersbach</h2>
-    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
-    <p><strong>Fußballhütte Frammersbach</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-%20und%20Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
-    <p><a href="https://www.google.com/maps/search/?api=1&query=Fu%C3%9Fballh%C3%BCtte+Frammersbach+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
-    <button class="back-button" onclick="goBack()">⬅️ Zurück</button>
+    <h2>📍 Fußballhütte Frammersbach</h2>
+    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
+    <p><strong>Fußballhütte Frammersbach</strong></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn‑+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=Fu%C3%9Fballh%C3%BCtte+Frammersbach+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
+    <button class="back-button" onclick="goBack()">⬅️ Zurück</button>
   </div>
 
-<script>
-  const pwScreen = document.getElementById('password-screen');
-  const selectScreen = document.getElementById('selection-screen');
-  const mainContent = document.getElementById('mainContent');
-  const extraContent = document.getElementById('extraContent');
-  const blueLine = document.getElementById('blueLine');
-  const crawl = document.getElementById('crawl');
-  const target = document.getElementById('target');
+  <script>
+    const pwScreen = document.getElementById('password-screen');
+    const selectScreen = document.getElementById('selection-screen');
+    const mainContent = document.getElementById('mainContent');
+    const extraContent = document.getElementById('extraContent');
+    const blueLine = document.getElementById('blueLine');
+    const crawl = document.getElementById('crawl');
+    const target = document.getElementById('target');
 
-  let start = null;
-  let stop = false;
-  const speed = 0.35;
-  let animationFrame;
+    let start = null;
+    let stop = false;
+    const speed = 0.35;
+    let animationFrame;
 
-  function resetCrawl() {
-    cancelAnimationFrame(animationFrame);
-    start = null;
-    stop = false;
-    crawl.style.top = '90%';
-    crawl.style.opacity = 0;
-    blueLine.style.opacity = 0;
-  }
-
-  function step(timestamp) {
-    if (!start) start = timestamp;
-    if (stop) return;
-
-    crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
-
-    const rect = target.getBoundingClientRect();
-    if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
-      stop = true;
-      return;
-    }
-
-    animationFrame = requestAnimationFrame(step);
-  }
-
-  function checkPassword() {
-    const inputVal = document.getElementById('pwInput').value;
-    if (inputVal === "2512!") {
-      pwScreen.style.display = 'none';
-      selectScreen.style.display = 'flex';
-    } else {
-      alert("Falsches Passwort!");
-    }
-  }
-
-  function startInvitation() {
-    resetCrawl();
-    selectScreen.style.display = 'none';
-    extraContent.style.display = 'none';
-    mainContent.classList.remove('hidden');
-
-    blueLine.style.opacity = 1;
-    setTimeout(() => {
+    function resetCrawl() {
+      cancelAnimationFrame(animationFrame);
+      start = null;
+      stop = false;
+      crawl.style.top = '90%';
+      crawl.style.opacity = 0;
       blueLine.style.opacity = 0;
-      crawl.style.opacity = 1;
+    }
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      if (stop) return;
+
+      crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
+        stop = true;
+        return;
+      }
+
       animationFrame = requestAnimationFrame(step);
-    }, 4000);
-  }
+    }
 
-  function startInfo() {
-    selectScreen.style.display = 'none';
-    mainContent.classList.add('hidden');
-    extraContent.style.display = 'block';
-  }
+    function checkPassword() {
+      const inputVal = document.getElementById('pwInput').value;
+      if (inputVal === "2512!") {
+        pwScreen.style.display = 'none';
+        selectScreen.style.display = 'flex';
+      } else {
+        alert("Falsches Passwort!");
+      }
+    }
 
-  function goBack() {
-    resetCrawl();
-    mainContent.classList.add('hidden');
-    extraContent.style.display = 'none';
-    selectScreen.style.display = 'flex';
-  }
-</script>
+    function startInvitation() {
+      resetCrawl();
+      selectScreen.style.display = 'none';
+      extraContent.style.display = 'none';
+      mainContent.classList.remove('hidden');
+
+      window.scrollTo(0,0);
+      blueLine.style.opacity = 1;
+      setTimeout(() => {
+        blueLine.style.opacity = 0;
+        crawl.style.opacity = 1;
+        animationFrame = requestAnimationFrame(step);
+      }, 4000);
+    }
+
+    function startInfo() {
+      selectScreen.style.display = 'none';
+      mainContent.classList.add('hidden');
+      extraContent.style.display = 'block';
+      window.scrollTo(0,0);
+    }
+
+    function goBack() {
+      resetCrawl();
+      mainContent.classList.add('hidden');
+      extraContent.style.display = 'none';
+      selectScreen.style.display = 'flex';
+    }
+  </script>
 
 </body>
 </html>
