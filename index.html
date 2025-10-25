@@ -14,7 +14,7 @@
       overflow-x: hidden;
     }
 
-    #password-screen, #selection-screen {
+    #password-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -29,24 +29,14 @@
       z-index: 999;
     }
 
-    #password-screen input {
-      padding: 0.5em 1em;
+    #password-screen input, #password-screen button {
+      padding: 0.5em;
       font-size: 1.2em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
       margin-bottom: 1em;
       text-align: center;
-      cursor: pointer;
-    }
-
-    #password-screen button {
-      padding: 0.5em 1em;
-      font-size: 1.2em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
     }
 
     #selection-screen {
@@ -79,28 +69,25 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      perspective: 500px;
-    }
-
-    .blue-line, .crawl {
-      opacity: 0;
-      transition: opacity 1s ease-in;
+      perspective: 400px;
     }
 
     .blue-line {
       position: absolute;
-      top: 45%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #00bfff;
       font-size: 2em;
       text-align: center;
       z-index: 5;
+      opacity: 0;
+      transition: opacity 1s ease-in;
     }
 
     .crawl {
       position: absolute;
-      top: 85%;
+      top: 100%;
       width: 60%;
       max-width: 600px;
       left: 50%;
@@ -108,6 +95,8 @@
       transform-origin: bottom center;
       font-size: 1.4em;
       line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease-in;
     }
 
     .headline {
@@ -129,6 +118,7 @@
       font-size: 1.5em;
       text-align: center;
       color: #FFDE06;
+      -webkit-text-stroke: 0.6px #FFDE06;
       margin-bottom: 2em;
     }
 
@@ -214,23 +204,22 @@
         Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
       </p>
       <p class="paragraph">
-        Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
+        Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
       </p>
       <p class="paragraph">
-        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
+        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
       <p class="paragraph">&nbsp;</p>
     </div>
-
     <button class="back-button" onclick="goBack()">Zurück</button>
   </div>
 
   <div id="extraContent">
     <h2>📍 Fußballhütte Frammersbach</h2>
-    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
-    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn‑+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
-    <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fußballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
+    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
+    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
     <button class="back-button" onclick="goBack()">Zurück</button>
   </div>
 
@@ -238,40 +227,38 @@
     const crawl = document.getElementById('crawl');
     const blueLine = document.getElementById('blueLine');
     const target = document.getElementById('target');
+    const extraContent = document.getElementById('extraContent');
     const mainContent = document.getElementById('mainContent');
     const selectionScreen = document.getElementById('selection-screen');
-    const extraContent = document.getElementById('extraContent');
 
+    let speed = 0.35;
     let start = null;
     let stop = false;
-    const speed = 0.35;
-    let animationFrame;
 
-    function resetCrawl() {
-      cancelAnimationFrame(animationFrame);
-      start = null;
-      stop = false;
-      crawl.style.top = '85%';
-      crawl.style.opacity = 0;
-      blueLine.style.opacity = 1;
+    function startExtra() {
+      extraContent.style.display = 'block';
     }
 
     function step(timestamp) {
       if (!start) start = timestamp;
       if (stop) return;
 
-      crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
+      const currentTop = parseFloat(getComputedStyle(crawl).top);
+      crawl.style.top = (currentTop - speed) + 'px';
 
-      if (parseFloat(getComputedStyle(crawl).top) < -100) {
+      const rect = target.getBoundingClientRect();
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
         stop = true;
+        startExtra();
         return;
       }
 
-      animationFrame = requestAnimationFrame(step);
+      requestAnimationFrame(step);
     }
 
     function checkPassword() {
-      if (document.getElementById('pwInput').value === "2512!") {
+      const input = document.getElementById('pwInput').value;
+      if (input === "2512!") {
         document.getElementById('password-screen').style.display = 'none';
         selectionScreen.style.display = 'flex';
       } else {
@@ -280,29 +267,32 @@
     }
 
     function showInvitation() {
-      window.scrollTo({ top: 0, behavior: 'auto' });
       selectionScreen.style.display = 'none';
-      extraContent.style.display = 'none';
-      resetCrawl();
       mainContent.classList.remove('hidden');
+      crawl.style.top = '100%';
+      crawl.style.opacity = 0;
+      blueLine.style.opacity = 1;
+      start = null;
+      stop = false;
       setTimeout(() => {
         blueLine.style.opacity = 0;
         crawl.style.opacity = 1;
-        animationFrame = requestAnimationFrame(step);
+        requestAnimationFrame(step);
       }, 4000);
     }
 
     function showInfo() {
       selectionScreen.style.display = 'none';
-      mainContent.classList.add('hidden');
       extraContent.style.display = 'block';
     }
 
     function goBack() {
       mainContent.classList.add('hidden');
       extraContent.style.display = 'none';
+      crawl.style.top = '100%';
+      stop = false;
+      start = null;
       selectionScreen.style.display = 'flex';
-      resetCrawl();
     }
   </script>
 </body>
