@@ -194,13 +194,6 @@
 
     crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
-    const rect = target.getBoundingClientRect();
-    if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
-      stop = true;
-      extraContent.style.display = 'block';
-      return;
-    }
-
     animationFrame = requestAnimationFrame(step);
   }
 
