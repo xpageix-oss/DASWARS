@@ -11,10 +11,9 @@
       background: black;
       color: #FFDE06;
       font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
     }
 
-    #password-screen, #selection-screen {
+    #password-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -29,29 +28,36 @@
       z-index: 999;
     }
 
-    #password-screen input {
-      padding: 0.5em;
-      font-size: 1.2em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      margin-bottom: 1em;
-      text-align: center;
-    }
-
-    #password-screen button, #selection-screen button, .back-button {
+    #password-screen input, #password-screen button {
       padding: 0.5em 1em;
       font-size: 1.2em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
+      margin: 0.5em;
+      text-align: center;
       cursor: pointer;
-      margin: 1em;
+    }
+
+    #selection-screen {
+      display: none;
+      height: 100vh;
+      background: black;
+      color: #FFDE06;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     #selection-screen button {
-      font-size: 1.4em;
+      margin: 1em;
       padding: 1em 2em;
+      font-size: 1.4em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
     }
 
     .hidden {
@@ -73,7 +79,7 @@
 
     .blue-line {
       position: absolute;
-      top: 40%;
+      top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #00bfff;
@@ -159,6 +165,17 @@
       font-size: 1.2em;
       text-decoration: none;
     }
+
+    .back-button {
+      margin: 2em auto 0;
+      display: block;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -167,7 +184,7 @@
     <button onclick="checkPassword()">Weiter</button>
   </div>
 
-  <div id="selection-screen" class="hidden">
+  <div id="selection-screen">
     <button onclick="showInvitation()">🎬 Einladung</button>
     <button onclick="showInfo()">ℹ️ Infos</button>
   </div>
@@ -203,7 +220,7 @@
     <h2>📍 Fußballhütte Frammersbach</h2>
     <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
     <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
     <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
     <button class="back-button" onclick="goBack()">Zurück</button>
   </div>
@@ -245,15 +262,14 @@
       const input = document.getElementById('pwInput').value;
       if (input === "2512!") {
         document.getElementById('password-screen').style.display = 'none';
-        selectionScreen.classList.remove('hidden');
+        selectionScreen.style.display = 'flex';
       } else {
         alert("Falsches Passwort!");
       }
     }
 
     function showInvitation() {
-      selectionScreen.classList.add('hidden');
-      extraContent.style.display = 'none';
+      selectionScreen.style.display = 'none';
       mainContent.classList.remove('hidden');
       blueLine.style.opacity = 1;
       crawl.style.top = '85%';
@@ -268,8 +284,7 @@
     }
 
     function showInfo() {
-      selectionScreen.classList.add('hidden');
-      mainContent.classList.add('hidden');
+      selectionScreen.style.display = 'none';
       extraContent.style.display = 'block';
     }
 
@@ -279,7 +294,7 @@
       crawl.style.top = '85%';
       stop = false;
       start = null;
-      selectionScreen.classList.remove('hidden');
+      selectionScreen.style.display = 'flex';
     }
   </script>
 </body>
