@@ -28,7 +28,8 @@
       z-index: 999;
     }
 
-    #password-screen input {
+    #password-screen input,
+    #password-screen button {
       padding: 0.5em;
       font-size: 1.2em;
       background: #111;
@@ -36,15 +37,6 @@
       color: #FFDE06;
       margin-bottom: 1em;
       text-align: center;
-    }
-
-    #password-screen button {
-      padding: 0.5em 1em;
-      font-size: 1.2em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
     }
 
     .hidden {
@@ -152,6 +144,23 @@
       font-size: 1.2em;
       text-decoration: none;
     }
+
+    #inlineSkipBtn {
+      position: absolute;
+      right: -120px;
+      top: 0;
+      font-size: 0.8em;
+      background: #222;
+      color: #FFDE06;
+      border: 1px solid #FFDE06;
+      padding: 0.3em 0.6em;
+      cursor: pointer;
+    }
+
+    .headline-wrapper {
+      position: relative;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -166,10 +175,11 @@
     </div>
 
     <div class="crawl" id="crawl">
-      <div class="headline">
-        <span>DAS</span>
-        <span>WARS</span>
+      <div class="headline-wrapper">
+        <div class="headline"><span>DAS</span><span>WARS</span></div>
+        <button id="inlineSkipBtn">Überspringen</button>
       </div>
+
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
 
@@ -177,7 +187,7 @@
         Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
       </p>
       <p class="paragraph">
-        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
+        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist.
       </p>
       <p class="paragraph">
         Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
@@ -185,7 +195,6 @@
       <p class="paragraph">
         Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
-      <p class="paragraph">&nbsp;</p>
     </div>
   </div>
 
@@ -193,9 +202,7 @@
     <h2>📍 Fußballhütte Frammersbach</h2>
     <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
     <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000"
-      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
   </div>
 
@@ -204,6 +211,7 @@
     const blueLine = document.getElementById('blueLine');
     const target = document.getElementById('target');
     const extraContent = document.getElementById('extraContent');
+    const skipBtn = document.getElementById('inlineSkipBtn');
 
     let speed = 0.35;
     let start = null;
@@ -229,6 +237,15 @@
 
       requestAnimationFrame(step);
     }
+
+    skipBtn.addEventListener('click', () => {
+      blueLine.style.opacity = 0;
+      crawl.style.opacity = 1;
+      crawl.style.transition = 'none';
+      crawl.style.top = '20%';
+      stop = true;
+      startExtra();
+    });
 
     function checkPassword() {
       const input = document.getElementById('pwInput').value;
