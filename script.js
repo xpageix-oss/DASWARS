@@ -6,10 +6,6 @@ const blueLine = document.getElementById('blueLine');
 const crawl = document.getElementById('crawl');
 const target = document.getElementById('target');
 const invBackBtn = document.getElementById('invBackBtn');
-const infoBackBtn = document.getElementById('infoBackBtn');
-const invitationButton = document.getElementById('invitationButton');
-const infoButton = document.getElementById('infoButton');
-const pwButton = document.getElementById('pwButton');
 
 let start = null;
 let stop = false;
@@ -45,54 +41,41 @@ function step(timestamp) {
   animationFrame = requestAnimationFrame(step);
 }
 
-// Passwort prüfen
-pwButton.addEventListener('click', () => {
+function checkPassword() {
   const inputVal = document.getElementById('pwInput').value;
   if (inputVal === "2512!") {
     pwScreen.style.display = 'none';
-    selectScreen.classList.remove('hidden');
     selectScreen.style.display = 'flex';
   } else {
     alert("Falsches Passwort!");
   }
-});
+}
 
-// Einladung starten
-invitationButton.addEventListener('click', () => {
+function startInvitation() {
   resetCrawl();
   selectScreen.style.display = 'none';
-  extraContent.classList.add('hidden');
   extraContent.style.display = 'none';
   mainContent.classList.remove('hidden');
-  window.scrollTo(0,0);
 
+  window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
   setTimeout(() => {
     blueLine.style.opacity = 0;
     crawl.style.opacity = 1;
     animationFrame = requestAnimationFrame(step);
   }, 4000);
-});
+}
 
-// Infos starten
-infoButton.addEventListener('click', () => {
+function startInfo() {
   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
-  extraContent.classList.remove('hidden');
   extraContent.style.display = 'block';
-  window.scrollTo(0,0);
-});
+  window.scrollTo(0, 0);
+}
 
-// Zurück‑Knopf bei Info
-infoBackBtn.addEventListener('click', () => {
-  extraContent.classList.add('hidden');
-  extraContent.style.display = 'none';
-  selectScreen.style.display = 'flex';
-});
-
-// Zurück‑Knopf bei Einladung
-invBackBtn.addEventListener('click', () => {
+function goBack() {
   resetCrawl();
   mainContent.classList.add('hidden');
+  extraContent.style.display = 'none';
   selectScreen.style.display = 'flex';
-});
+}
