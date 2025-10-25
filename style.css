@@ -58,6 +58,9 @@ body {
   height: 80vh;
   overflow: hidden;
   perspective: 500px;
+  background-image: url('assets/Star Wars Background.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .blue-line, .crawl {
