@@ -13,7 +13,12 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    #password-screen, #mode-selection {
+    .hidden {
+      display: none;
+    }
+
+    #password-screen,
+    #mode-selection {
       position: fixed;
       top: 0;
       left: 0;
@@ -28,18 +33,17 @@
       z-index: 999;
     }
 
-    #password-screen input, #password-screen button, #mode-selection button, .back-btn {
+    #password-screen input,
+    #password-screen button,
+    #mode-selection button,
+    .backBtn {
       padding: 0.5em 1em;
       font-size: 1.2em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
       cursor: pointer;
-      margin: 10px;
-    }
-
-    .hidden {
-      display: none;
+      margin: 0.5em;
     }
 
     .intro-container {
@@ -98,7 +102,6 @@
       text-align: center;
       color: #FFDE06;
       -webkit-text-stroke: 0.6px #FFDE06;
-      text-shadow: none;
       margin-bottom: 2em;
     }
 
@@ -109,6 +112,11 @@
 
     .target-marker {
       background-color: transparent;
+    }
+
+    .backBtn {
+      display: block;
+      margin: 2em auto 1em;
     }
 
     #extraContent {
@@ -143,11 +151,6 @@
       font-size: 1.2em;
       text-decoration: none;
     }
-
-    .back-btn {
-      display: block;
-      margin: 2em auto;
-    }
   </style>
 </head>
 <body>
@@ -157,36 +160,23 @@
   </div>
 
   <div id="mode-selection" class="hidden">
-    <button onclick="startEinladung()">Einladung</button>
-    <button onclick="showInfos()">Infos</button>
+    <button onclick="startEinladung()">🎬 Einladung</button>
+    <button onclick="startInfos()">ℹ️ Infos</button>
   </div>
 
   <div class="intro-container hidden" id="mainContent">
-    <div class="blue-line" id="blueLine">
-      Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
-    </div>
-
+    <div class="blue-line" id="blueLine">Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...</div>
     <div class="crawl" id="crawl">
       <div class="headline"><span>DAS</span><span>WARS</span></div>
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
-
-      <p class="paragraph">
-        Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
-      </p>
-      <p class="paragraph">
-        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
-      </p>
-      <p class="paragraph">
-        Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
-      </p>
-      <p class="paragraph">
-        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
-      </p>
+      <p class="paragraph">Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.</p>
+      <p class="paragraph">Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.</p>
+      <p class="paragraph">Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.</p>
+      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
       <p class="paragraph">&nbsp;</p>
     </div>
-
-    <button class="back-btn" onclick="goBack()">Zurück</button>
+    <button class="backBtn" onclick="backToSelection()">⬅️ Zurück</button>
   </div>
 
   <div id="extraContent">
@@ -195,78 +185,85 @@
     <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
-    <button class="back-btn" onclick="goBack()">Zurück</button>
+    <button class="backBtn" onclick="backToSelection()">⬅️ Zurück</button>
   </div>
 
   <script>
-    const crawl = document.getElementById('crawl');
-    const blueLine = document.getElementById('blueLine');
-    const target = document.getElementById('target');
-    const extraContent = document.getElementById('extraContent');
-    const passwordScreen = document.getElementById('password-screen');
+    const pwScreen = document.getElementById('password-screen');
     const modeSelection = document.getElementById('mode-selection');
     const mainContent = document.getElementById('mainContent');
+    const blueLine = document.getElementById('blueLine');
+    const crawl = document.getElementById('crawl');
+    const extraContent = document.getElementById('extraContent');
+    const target = document.getElementById('target');
 
+    let animationFrame;
     let speed = 0.35;
-    let start = null;
     let stop = false;
-
-    function resetCrawl() {
-      stop = false;
-      start = null;
-      crawl.style.top = '100%';
-      crawl.style.opacity = 0;
-      blueLine.style.opacity = 0;
-    }
+    let start = null;
 
     function checkPassword() {
       const input = document.getElementById('pwInput').value;
       if (input === "2512!") {
-        passwordScreen.style.display = 'none';
+        pwScreen.classList.add('hidden');
         modeSelection.classList.remove('hidden');
       } else {
         alert("Falsches Passwort!");
       }
     }
 
-    function startEinladung() {
-      modeSelection.classList.add('hidden');
-      resetCrawl();
-      mainContent.classList.remove('hidden');
-      extraContent.style.display = 'none';
-      blueLine.style.opacity = 1;
-      setTimeout(() => {
-        blueLine.style.opacity = 0;
-        crawl.style.opacity = 1;
-        requestAnimationFrame(step);
-      }, 4000);
-    }
-
-    function showInfos() {
-      modeSelection.classList.add('hidden');
-      mainContent.classList.add('hidden');
-      extraContent.style.display = 'block';
-    }
-
-    function goBack() {
-      extraContent.style.display = 'none';
-      mainContent.classList.add('hidden');
-      resetCrawl();
-      modeSelection.classList.remove('hidden');
+    function resetCrawl() {
+      cancelAnimationFrame(animationFrame);
+      start = null;
+      stop = false;
+      crawl.style.top = '100%';
+      crawl.style.opacity = 0;
+      blueLine.style.opacity = 0;
     }
 
     function step(timestamp) {
       if (!start) start = timestamp;
       if (stop) return;
+
       const currentTop = parseFloat(getComputedStyle(crawl).top);
       crawl.style.top = (currentTop - speed) + 'px';
+
       const rect = target.getBoundingClientRect();
       if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
         stop = true;
-        extraContent.style.display = 'block';
+        showExtraContent();
         return;
       }
-      requestAnimationFrame(step);
+
+      animationFrame = requestAnimationFrame(step);
+    }
+
+    function startEinladung() {
+      resetCrawl();
+      modeSelection.classList.add('hidden');
+      mainContent.classList.remove('hidden');
+      blueLine.style.opacity = 1;
+      setTimeout(() => {
+        blueLine.style.opacity = 0;
+        crawl.style.opacity = 1;
+        animationFrame = requestAnimationFrame(step);
+      }, 4000);
+    }
+
+    function startInfos() {
+      modeSelection.classList.add('hidden');
+      extraContent.style.display = 'block';
+    }
+
+    function showExtraContent() {
+      extraContent.style.display = 'block';
+    }
+
+    function backToSelection() {
+      mainContent.classList.add('hidden');
+      extraContent.style.display = 'none';
+      modeSelection.classList.remove('hidden');
+      resetCrawl();
     }
   </script>
 </body>
