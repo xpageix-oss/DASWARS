@@ -28,14 +28,22 @@
       z-index: 999;
     }
 
-    #password-screen input, #password-screen button {
+    #password-screen input {
+      padding: 0.5em;
+      font-size: 1.2em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    #password-screen button {
       padding: 0.5em 1em;
       font-size: 1.2em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
-      text-align: center;
-      margin-bottom: 1em;
       cursor: pointer;
     }
 
@@ -67,9 +75,9 @@
     .intro-container {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 80vh;
       overflow: hidden;
-      perspective: 800px;
+      perspective: 500px;
     }
 
     .blue-line, .crawl {
@@ -90,7 +98,7 @@
 
     .crawl {
       position: absolute;
-      bottom: -100%;
+      top: 100%;
       width: 60%;
       max-width: 600px;
       left: 50%;
@@ -106,6 +114,7 @@
       font-size: 4em;
       color: black;
       -webkit-text-stroke: 2px #FFDE06;
+      text-stroke: 2px #FFDE06;
       margin-bottom: 1em;
       line-height: 0.8;
     }
@@ -118,6 +127,8 @@
       font-size: 1.5em;
       text-align: center;
       color: #FFDE06;
+      -webkit-text-stroke: 0.6px #FFDE06;
+      text-shadow: none;
       margin-bottom: 2em;
     }
 
@@ -126,15 +137,8 @@
       color: #FFDE06;
     }
 
-    .back-button {
-      margin: 2em auto 0;
-      display: block;
-      padding: 0.5em 1em;
-      font-size: 1em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
+    .target-marker {
+      background-color: transparent;
     }
 
     #extraContent {
@@ -169,6 +173,17 @@
       font-size: 1.2em;
       text-decoration: none;
     }
+
+    .back-button {
+      margin: 2em auto 0;
+      display: block;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -186,6 +201,7 @@
     <div class="blue-line" id="blueLine">
       Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
     </div>
+
     <div class="crawl" id="crawl">
       <div class="headline"><span>DAS</span><span>WARS</span></div>
       <div class="subheadline">EPISODE XXX</div>
@@ -201,7 +217,7 @@
         Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
       </p>
       <p class="paragraph">
-        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong>Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
+        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
       <p class="paragraph">&nbsp;</p>
     </div>
@@ -220,6 +236,7 @@
   <script>
     const crawl = document.getElementById('crawl');
     const blueLine = document.getElementById('blueLine');
+    const target = document.getElementById('target');
     const extraContent = document.getElementById('extraContent');
     const mainContent = document.getElementById('mainContent');
     const selectionScreen = document.getElementById('selection-screen');
@@ -228,20 +245,25 @@
     let start = null;
     let stop = false;
 
+    function startExtra() {
+      extraContent.style.display = 'block';
+    }
+
     function step(timestamp) {
       if (!start) start = timestamp;
       if (stop) return;
-      const currentBottom = parseFloat(getComputedStyle(crawl).bottom);
-      crawl.style.bottom = (currentBottom + speed) + 'px';
-      requestAnimationFrame(step);
-    }
 
-    function resetCrawl() {
-      crawl.style.bottom = '-100%';
-      crawl.style.opacity = 0;
-      blueLine.style.opacity = 1;
-      stop = false;
-      start = null;
+      const currentTop = parseFloat(getComputedStyle(crawl).top);
+      crawl.style.top = (currentTop - speed) + 'px';
+
+      const rect = target.getBoundingClientRect();
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
+        stop = true;
+        startExtra();
+        return;
+      }
+
+      requestAnimationFrame(step);
     }
 
     function checkPassword() {
@@ -257,7 +279,10 @@
     function showInvitation() {
       selectionScreen.style.display = 'none';
       mainContent.classList.remove('hidden');
-      resetCrawl();
+      blueLine.style.opacity = 1;
+      crawl.style.top = '100%';
+      start = null;
+      stop = false;
       setTimeout(() => {
         blueLine.style.opacity = 0;
         crawl.style.opacity = 1;
@@ -273,8 +298,10 @@
     function goBack() {
       mainContent.classList.add('hidden');
       extraContent.style.display = 'none';
+      crawl.style.top = '100%';
+      stop = false;
+      start = null;
       selectionScreen.style.display = 'flex';
-      resetCrawl();
     }
   </script>
 </body>
