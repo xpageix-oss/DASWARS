@@ -175,7 +175,7 @@
 
     let start = null;
     let stop = false;
-    const speed = 0.35;
+    const speed = 0.3;
 
     function step(timestamp) {
       if (!start) start = timestamp;
@@ -199,7 +199,8 @@
     setTimeout(() => {
       crawl.style.opacity = 1;
       requestAnimationFrame(step);
-    }, 2000);
+    }, 8000); // <- NUR HIER wurde wieder auf ca. 8 Sekunden gesetzt
+              // Also: Crawl startet, wenn die blaue Linie wieder weg ist
 
     skipButton.addEventListener('click', () => {
       stop = true;
