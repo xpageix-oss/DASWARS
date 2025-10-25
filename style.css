@@ -24,16 +24,16 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black;
+  background-image: url('assets/Star Wars Background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #FFDE06;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 999;
-  background-image: url('assets/Star Wars Background.jpg');
-  background-size: cover;
-  background-position: center;
 }
 
 #selection-screen {
@@ -52,12 +52,6 @@ body {
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
-  transition: transform 0.15s ease, background 0.3s ease;
-}
-
-#selection-screen button:active {
-  transform: scale(0.97);
-  background: #222;
 }
 
 .intro-container {
@@ -189,16 +183,22 @@ iframe {
   position: relative;
 }
 
-@media (max-width: 500px) {
-  .blue-line {
-    font-size: 1.4em;
-    max-width: 95vw;
-    padding: 0 1em;
-  }
+.info-summary {
+  background: rgba(255, 222, 6, 0.1);
+  border: 2px solid #FFDE06;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  color: #FFDE06;
+  border-radius: 6px;
+}
 
-  .crawl {
-    max-width: 95vw;
-    font-size: 1em;
-    padding: 0 1em;
-  }
+.info-summary h3 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.5em;
+}
+
+.info-summary p {
+  margin: 0.3em 0;
+  font-size: 1em;
 }
