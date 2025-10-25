@@ -13,12 +13,7 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    .hidden {
-      display: none;
-    }
-
-    #password-screen,
-    #mode-selection {
+    #password-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -43,16 +38,38 @@
       text-align: center;
     }
 
-    #password-screen button,
-    .mode-btn,
-    .back-btn {
-      padding: 0.6em 1.2em;
+    #password-screen button {
+      padding: 0.5em 1em;
+      font-size: 1.2em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
+    }
+
+    #selection-screen {
+      display: none;
+      height: 100vh;
+      background: black;
+      color: #FFDE06;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #selection-screen button {
+      margin: 1em;
+      padding: 1em 2em;
       font-size: 1.4em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
       cursor: pointer;
-      margin: 0.5em;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .intro-container {
@@ -157,21 +174,27 @@
       text-decoration: none;
     }
 
-    .back-btn {
-      margin-top: 2em;
+    .back-button {
+      margin: 2em auto 0;
+      display: block;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
   <div id="password-screen">
     <input type="password" id="pwInput" placeholder="Passwort eingeben" />
     <button onclick="checkPassword()">Weiter</button>
   </div>
 
-  <div id="mode-selection" class="hidden">
-    <button class="mode-btn" onclick="startEinladung()">🎬 Einladung</button>
-    <button class="mode-btn" onclick="startInfos()">ℹ️ Infos</button>
+  <div id="selection-screen">
+    <button onclick="showInvitation()">🎬 Einladung</button>
+    <button onclick="showInfo()">ℹ️ Infos</button>
   </div>
 
   <div class="intro-container hidden" id="mainContent">
@@ -197,8 +220,8 @@
         Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
       <p class="paragraph">&nbsp;</p>
-      <button class="back-btn" onclick="returnToMode()">Zurück zur Auswahl</button>
     </div>
+    <button class="back-button" onclick="goBack()">Zurück</button>
   </div>
 
   <div id="extraContent">
@@ -207,7 +230,7 @@
     <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
-    <button class="back-btn" onclick="returnToMode()">Zurück zur Auswahl</button>
+    <button class="back-button" onclick="goBack()">Zurück</button>
   </div>
 
   <script>
@@ -215,9 +238,8 @@
     const blueLine = document.getElementById('blueLine');
     const target = document.getElementById('target');
     const extraContent = document.getElementById('extraContent');
-    const modeSelection = document.getElementById('mode-selection');
-    const skipBtn = document.getElementById('inlineSkipBtn');
     const mainContent = document.getElementById('mainContent');
+    const selectionScreen = document.getElementById('selection-screen');
 
     let speed = 0.35;
     let start = null;
@@ -248,14 +270,14 @@
       const input = document.getElementById('pwInput').value;
       if (input === "2512!") {
         document.getElementById('password-screen').style.display = 'none';
-        modeSelection.classList.remove('hidden');
+        selectionScreen.style.display = 'flex';
       } else {
         alert("Falsches Passwort!");
       }
     }
 
-    function startEinladung() {
-      modeSelection.classList.add('hidden');
+    function showInvitation() {
+      selectionScreen.style.display = 'none';
       mainContent.classList.remove('hidden');
       blueLine.style.opacity = 1;
       setTimeout(() => {
@@ -265,22 +287,18 @@
       }, 4000);
     }
 
-    function startInfos() {
-      modeSelection.classList.add('hidden');
+    function showInfo() {
+      selectionScreen.style.display = 'none';
       extraContent.style.display = 'block';
     }
 
-    function returnToMode() {
-      // reset views
+    function goBack() {
       mainContent.classList.add('hidden');
       extraContent.style.display = 'none';
-      modeSelection.classList.remove('hidden');
-
-      // reset scroll position and state
       crawl.style.top = '100%';
-      crawl.style.opacity = 0;
-      start = null;
       stop = false;
+      start = null;
+      selectionScreen.style.display = 'flex';
     }
   </script>
 </body>
