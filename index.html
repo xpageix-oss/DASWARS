@@ -69,7 +69,7 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      perspective: 500px;
+      perspective: 800px;
     }
 
     .blue-line, .crawl {
@@ -90,7 +90,7 @@
 
     .crawl {
       position: absolute;
-      top: 100%;
+      bottom: -100%;
       width: 60%;
       max-width: 600px;
       left: 50%;
@@ -126,8 +126,15 @@
       color: #FFDE06;
     }
 
-    .target-marker {
-      background-color: transparent;
+    .back-button {
+      margin: 2em auto 0;
+      display: block;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
     }
 
     #extraContent {
@@ -162,17 +169,6 @@
       font-size: 1.2em;
       text-decoration: none;
     }
-
-    .back-button {
-      margin: 2em auto 0;
-      display: block;
-      padding: 0.5em 1em;
-      font-size: 1em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -205,7 +201,7 @@
         Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
       </p>
       <p class="paragraph">
-        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
+        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong>Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
       <p class="paragraph">&nbsp;</p>
     </div>
@@ -235,13 +231,13 @@
     function step(timestamp) {
       if (!start) start = timestamp;
       if (stop) return;
-      const currentTop = parseFloat(getComputedStyle(crawl).top);
-      crawl.style.top = (currentTop - speed) + 'px';
+      const currentBottom = parseFloat(getComputedStyle(crawl).bottom);
+      crawl.style.bottom = (currentBottom + speed) + 'px';
       requestAnimationFrame(step);
     }
 
     function resetCrawl() {
-      crawl.style.top = '100%';
+      crawl.style.bottom = '-100%';
       crawl.style.opacity = 0;
       blueLine.style.opacity = 1;
       stop = false;
