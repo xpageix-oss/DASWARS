@@ -11,7 +11,6 @@
       background: black;
       color: #FFDE06;
       font-family: 'Orbitron', sans-serif;
-      overflow-x: hidden;
     }
 
     #password-screen {
@@ -104,18 +103,17 @@
       display: block;
     }
 
-    /* Einzige Änderung: Button-Styling neben Headline */
     #skipBtn {
       position: absolute;
-      right: -20%;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 0.3em 0.8em;
-      font-size: 0.5em;
-      background: #222;
+      right: -80px;
+      top: 10px;
+      font-size: 0.7em;
+      padding: 0.2em 0.6em;
+      background: #111;
       color: #FFDE06;
-      border: 2px solid #FFDE06;
+      border: 1px solid #FFDE06;
       cursor: pointer;
+      z-index: 5;
     }
 
     .subheadline {
@@ -170,7 +168,6 @@
     }
   </style>
 </head>
-
 <body>
   <div id="password-screen">
     <input type="password" id="pwInput" placeholder="Passwort eingeben" />
@@ -186,10 +183,8 @@
       <div class="headline">
         <span>DAS</span>
         <span>WARS</span>
-        <!-- Button ist nun hier & scrollt mit -->
-        <button id="skipBtn" class="hidden">Überspringen</button>
+        <button id="skipBtn">Überspringen</button>
       </div>
-
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
 
@@ -205,75 +200,73 @@
       <p class="paragraph">
         Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
-
     </div>
   </div>
 
   <div id="extraContent">
     <h2>📍 Fußballhütte Frammersbach</h2>
-    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg">
-    <p>Adresse: Fußballhütte Frammersbach</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!..."></iframe>
+    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
+    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12970.194009066526!2d9.492032!3d50.0547319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte%20Frammersbach%20-%20Turn-%20und%20Sportvereinigung%201890%20e.V.!5e0!3m2!1sde!2sde!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p><a href="https://www.google.com/maps/dir/?api=1&destination=Fussballh%C3%BCtte+Frammersbach,+Frammersbach,+Germany" target="_blank">Karte in Google Maps öffnen</a></p>
   </div>
 
-<script>
-  const crawl = document.getElementById('crawl');
-  const blueLine = document.getElementById('blueLine');
-  const target = document.getElementById('target');
-  const extraContent = document.getElementById('extraContent');
-  const skipBtn = document.getElementById('skipBtn');
+  <script>
+    const crawl = document.getElementById('crawl');
+    const blueLine = document.getElementById('blueLine');
+    const target = document.getElementById('target');
+    const extraContent = document.getElementById('extraContent');
+    const skipBtn = document.getElementById('skipBtn');
 
-  let speed = 0.35;
-  let start = null;
-  let stop = false;
+    let speed = 0.35;
+    let start = null;
+    let stop = false;
 
-  function startExtra() {
-    extraContent.style.display = 'block';
-  }
+    function startExtra() {
+      extraContent.style.display = 'block';
+    }
 
-  function step(timestamp) {
-    if (!start) start = timestamp;
-    if (stop) return;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      if (stop) return;
 
-    const currentTop = parseFloat(getComputedStyle(crawl).top);
-    crawl.style.top = (currentTop - speed) + 'px';
+      const currentTop = parseFloat(getComputedStyle(crawl).top);
+      crawl.style.top = (currentTop - speed) + 'px';
 
-    const rect = target.getBoundingClientRect();
-    if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
+      const rect = target.getBoundingClientRect();
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
+        stop = true;
+        startExtra();
+        return;
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    skipBtn.addEventListener('click', () => {
+      blueLine.style.opacity = 0;
+      crawl.style.opacity = 1;
+      crawl.style.transition = 'none';
+      crawl.style.top = '20%';
       stop = true;
       startExtra();
-      return;
+    });
+
+    function checkPassword() {
+      const input = document.getElementById('pwInput').value;
+      if (input === "2512!") {
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('mainContent').classList.remove('hidden');
+        blueLine.style.opacity = 1;
+        setTimeout(() => {
+          blueLine.style.opacity = 0;
+          crawl.style.opacity = 1;
+          requestAnimationFrame(step);
+        }, 4000);
+      } else {
+        alert("Falsches Passwort!");
+      }
     }
-
-    requestAnimationFrame(step);
-  }
-
-  skipBtn.addEventListener('click', () => {
-    blueLine.style.opacity = 0;
-    crawl.style.opacity = 1;
-    crawl.style.transition = 'none';
-    crawl.style.top = '20%';
-    stop = true;
-    startExtra();
-  });
-
-  function checkPassword() {
-    const input = document.getElementById('pwInput').value;
-    if (input === "2512!") {
-      document.getElementById('password-screen').style.display = 'none';
-      document.getElementById('mainContent').classList.remove('hidden');
-      skipBtn.classList.remove('hidden');
-      blueLine.style.opacity = 1;
-      setTimeout(() => {
-        blueLine.style.opacity = 0;
-        crawl.style.opacity = 1;
-        requestAnimationFrame(step);
-      }, 4000);
-    } else {
-      alert("Falsches Passwort!");
-    }
-  }
-</script>
-
+  </script>
 </body>
 </html>
