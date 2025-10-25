@@ -74,13 +74,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #00bfff;
-  font-size: 1.8em;
+  font-size: 1.7em; /* kleiner als 2.0em */
   text-align: center;
-  max-width: 90%;
+  width: 90vw;  /* feste Breite, nicht max-width */
+  line-height: 1.3;
   padding: 0 1em;
-  margin: 0 auto;
   z-index: 5;
-}
 
 .crawl {
   position: absolute;
