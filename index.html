@@ -28,8 +28,7 @@
       z-index: 999;
     }
 
-    #password-screen input,
-    #password-screen button {
+    #password-screen input {
       padding: 0.5em;
       font-size: 1.2em;
       background: #111;
@@ -37,6 +36,15 @@
       color: #FFDE06;
       margin-bottom: 1em;
       text-align: center;
+    }
+
+    #password-screen button {
+      padding: 0.5em 1em;
+      font-size: 1.2em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      cursor: pointer;
     }
 
     .hidden {
@@ -112,6 +120,19 @@
       background-color: transparent;
     }
 
+    #inlineSkipBtn {
+      position: absolute;
+      top: 35%;
+      right: 4%;
+      font-size: 0.6em;
+      padding: 0.2em 0.5em;
+      background: #111;
+      color: #FFDE06;
+      border: 1px solid #FFDE06;
+      cursor: pointer;
+      z-index: 10;
+    }
+
     #extraContent {
       display: none;
       text-align: center;
@@ -144,23 +165,6 @@
       font-size: 1.2em;
       text-decoration: none;
     }
-
-    #inlineSkipBtn {
-      position: absolute;
-      right: -120px;
-      top: 0;
-      font-size: 0.8em;
-      background: #222;
-      color: #FFDE06;
-      border: 1px solid #FFDE06;
-      padding: 0.3em 0.6em;
-      cursor: pointer;
-    }
-
-    .headline-wrapper {
-      position: relative;
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
@@ -169,17 +173,15 @@
     <button onclick="checkPassword()">Weiter</button>
   </div>
 
+  <button id="inlineSkipBtn" class="hidden">Überspringen</button>
+
   <div class="intro-container hidden" id="mainContent">
     <div class="blue-line" id="blueLine">
       Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
     </div>
 
     <div class="crawl" id="crawl">
-      <div class="headline-wrapper">
-        <div class="headline"><span>DAS</span><span>WARS</span></div>
-        <button id="inlineSkipBtn">Überspringen</button>
-      </div>
-
+      <div class="headline"><span>DAS</span><span>WARS</span></div>
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
 
@@ -187,7 +189,7 @@
         Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
       </p>
       <p class="paragraph">
-        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist.
+        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
       </p>
       <p class="paragraph">
         Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
@@ -195,6 +197,7 @@
       <p class="paragraph">
         Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
+      <p class="paragraph">&nbsp;</p>
     </div>
   </div>
 
@@ -252,6 +255,7 @@
       if (input === "2512!") {
         document.getElementById('password-screen').style.display = 'none';
         document.getElementById('mainContent').classList.remove('hidden');
+        document.getElementById('inlineSkipBtn').classList.remove('hidden');
         blueLine.style.opacity = 1;
         setTimeout(() => {
           blueLine.style.opacity = 0;
