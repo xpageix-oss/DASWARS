@@ -1,16 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bowlby+One+SC&display=swap');
 
-:root {
-  /* Mobile workaround für Viewport Höhe */
-  --vh: 100vh;
-}
-
-html, body {
-  height: var(--vh);
-  margin: 0;
-}
-
 body {
+  margin: 0;
   background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
   background-size: cover;
   color: #FFDE06;
@@ -19,6 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .hidden {
@@ -31,10 +23,8 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: var(--vh);
-  background-image: url('assets/Star Wars Background.jpg');
-  background-size: cover;
-  background-position: center;
+  height: 100vh;
+  background: black url('assets/Star Wars Background.jpg') center/cover no-repeat;
   color: #FFDE06;
   display: flex;
   flex-direction: column;
@@ -141,7 +131,7 @@ body {
   position: absolute;
   left: 5px;
   top: 30%;
-  display: block;
+  display: none;
   writing-mode: vertical-rl;
   text-orientation: upright;
   padding: 0.4em;
@@ -166,18 +156,14 @@ body {
 #extraContent img {
   width: 100%;
   max-width: 350px;
-  height: auto;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 iframe {
   width: 100%;
-  max-width: 350px;
-  height: 250px;
+  max-width: 320px;
+  height: 200px;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
 }
@@ -194,26 +180,6 @@ iframe {
   position: relative;
 }
 
-.info-summary {
-  background: rgba(255, 222, 6, 0.1);
-  border: 2px solid #FFDE06;
-  padding: 1em;
-  margin-bottom: 1em;
-  text-align: center;
-  color: #FFDE06;
-  border-radius: 6px;
-}
-
-.info-summary h3 {
-  margin: 0 0 0.5em 0;
-  font-size: 1.5em;
-}
-
-.info-summary p {
-  margin: 0.3em 0;
-  font-size: 1em;
-}
-
 @media (max-width: 500px) {
   .blue-line {
     font-size: 1.4em;
@@ -225,10 +191,5 @@ iframe {
     max-width: 95vw;
     font-size: 1em;
     padding: 0 1em;
-  }
-
-  #password-screen,
-  #selection-screen {
-    height: calc(100svh); /* sicherer für mobile */
   }
 }
