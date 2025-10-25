@@ -4,47 +4,59 @@
   <meta charset="UTF-8">
   <title>DAS WARS Episode XXX</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bowlby+One+SC&display=swap');
+
     body {
       margin: 0;
-      height: 100vh;
-      overflow: hidden;
       background: black;
       color: #FFDE06;
       font-family: 'Orbitron', sans-serif;
-      perspective: 500px;
     }
 
-    .intro-container, .blue-line, .crawl, #extraContent {
-      display: none;
-    }
-
-    #passwordScreen {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+    #password-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       background: black;
-      color: #ffe81f;
+      color: #FFDE06;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 100;
+      z-index: 999;
     }
 
-    #passwordInput {
-      font-size: 1.2em;
+    #password-screen input {
       padding: 0.5em;
-      margin-top: 1em;
+      font-size: 1.2em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
+      margin-bottom: 1em;
+      text-align: center;
     }
 
-    #submitPassword {
-      margin-top: 1em;
+    #password-screen button {
       padding: 0.5em 1em;
-      font-size: 1em;
+      font-size: 1.2em;
+      background: #111;
+      border: 2px solid #FFDE06;
+      color: #FFDE06;
       cursor: pointer;
-      background-color: #222;
-      color: #ffe81f;
-      border: 2px solid #ffe81f;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .intro-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 500px;
     }
 
     .blue-line, .crawl {
@@ -76,25 +88,26 @@
     }
 
     .headline {
-      color: black;
       text-align: center;
+      font-family: 'Bowlby One SC', sans-serif;
       font-size: 4em;
-      margin-bottom: 0.2em;
-      -webkit-text-stroke: 4px #FFDE06;
-      text-stroke: 4px #FFDE06;
-      text-shadow:
-        -4px -4px 0 #FFDE06,
-         4px -4px 0 #FFDE06,
-        -4px  4px 0 #FFDE06,
-         4px  4px 0 #FFDE06;
-      line-height: 0.9;
+      color: black;
+      -webkit-text-stroke: 2px #FFDE06;
+      text-stroke: 2px #FFDE06;
+      margin-bottom: 1em;
+      line-height: 0.8;
+    }
+
+    .headline span {
+      display: block;
     }
 
     .subheadline {
       font-size: 1.5em;
       text-align: center;
       color: #FFDE06;
-      text-shadow: 1px 1px 2px #000;
+      -webkit-text-stroke: 0.6px #FFDE06;
+      text-shadow: none;
       margin-bottom: 2em;
     }
 
@@ -107,6 +120,19 @@
       background-color: transparent;
     }
 
+    #skipBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background: #222;
+      color: #FFDE06;
+      border: 2px solid #FFDE06;
+      cursor: pointer;
+      z-index: 10;
+    }
+
     #extraContent {
       display: none;
       text-align: center;
@@ -115,14 +141,14 @@
     }
 
     #extraContent h2 {
-      color: #ffe81f;
+      color: #FFDE06;
       margin-bottom: 1em;
     }
 
     #extraContent img {
       width: 100%;
       max-width: 500px;
-      border: 4px solid #ffe81f;
+      border: 4px solid #FFDE06;
       margin-bottom: 1em;
     }
 
@@ -130,7 +156,7 @@
       width: 90%;
       max-width: 600px;
       height: 350px;
-      border: 4px solid #ffe81f;
+      border: 4px solid #FFDE06;
       margin-bottom: 1em;
     }
 
@@ -142,22 +168,20 @@
   </style>
 </head>
 <body>
-  <div id="passwordScreen">
-    <h2>🔒 Zugangscode erforderlich</h2>
-    <input type="password" id="passwordInput" placeholder="Passwort eingeben">
-    <button id="submitPassword">Weiter</button>
+  <div id="password-screen">
+    <input type="password" id="pwInput" placeholder="Passwort eingeben" />
+    <button onclick="checkPassword()">Weiter</button>
   </div>
 
-  <div class="intro-container">
+  <button id="skipBtn" class="hidden">Überspringen</button>
+
+  <div class="intro-container hidden" id="mainContent">
     <div class="blue-line" id="blueLine">
       Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
     </div>
 
     <div class="crawl" id="crawl">
-      <div class="headline">
-        <div>DAS</div>
-        <div>WARS</div>
-      </div>
+      <div class="headline"><span>DAS</span><span>WARS</span></div>
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
 
@@ -186,18 +210,15 @@
   </div>
 
   <script>
-    const passwordInput = document.getElementById("passwordInput");
-    const submitPassword = document.getElementById("submitPassword");
-    const passwordScreen = document.getElementById("passwordScreen");
-    const blueLine = document.getElementById("blueLine");
-    const crawl = document.getElementById("crawl");
-    const target = document.getElementById("target");
-    const introContainer = document.querySelector(".intro-container");
-    const extraContent = document.getElementById("extraContent");
+    const crawl = document.getElementById('crawl');
+    const blueLine = document.getElementById('blueLine');
+    const target = document.getElementById('target');
+    const extraContent = document.getElementById('extraContent');
+    const skipBtn = document.getElementById('skipBtn');
 
+    let speed = 0.35;
     let start = null;
     let stop = false;
-    const speed = 0.35;
 
     function startExtra() {
       extraContent.style.display = 'block';
@@ -211,7 +232,7 @@
       crawl.style.top = (currentTop - speed) + 'px';
 
       const rect = target.getBoundingClientRect();
-      if (rect.top > 0 && rect.bottom < window.innerHeight) {
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
         stop = true;
         startExtra();
         return;
@@ -220,22 +241,31 @@
       requestAnimationFrame(step);
     }
 
-    submitPassword.addEventListener("click", () => {
-      const input = passwordInput.value;
+    skipBtn.addEventListener('click', () => {
+      blueLine.style.opacity = 0;
+      crawl.style.opacity = 1;
+      crawl.style.transition = 'none';
+      crawl.style.top = '20%';
+      stop = true;
+      startExtra();
+    });
+
+    function checkPassword() {
+      const input = document.getElementById('pwInput').value;
       if (input === "2512!") {
-        passwordScreen.style.display = "none";
-        introContainer.style.display = "block";
-        blueLine.style.display = "block";
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('mainContent').classList.remove('hidden');
+        document.getElementById('skipBtn').classList.remove('hidden');
+        blueLine.style.opacity = 1;
         setTimeout(() => {
           blueLine.style.opacity = 0;
-          crawl.style.display = "block";
           crawl.style.opacity = 1;
           requestAnimationFrame(step);
         }, 4000);
       } else {
-        alert("Falsches Passwort. Versuch’s nochmal.");
+        alert("Falsches Passwort!");
       }
-    });
+    }
   </script>
 </body>
 </html>
