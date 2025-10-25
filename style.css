@@ -74,9 +74,10 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #00bfff;
-  font-size: 2em;
+  font-size: 1.8em;
   text-align: center;
-  max-width: 100%;
+  max-width: 90%;
+  padding: 0 1em;
   margin: 0 auto;
   z-index: 5;
 }
@@ -85,12 +86,13 @@ body {
   position: absolute;
   top: 90%;
   width: 100%;
-  max-width: 500px;
+  max-width: 95vw;
   left: 50%;
   transform: translateX(-50%) rotateX(25deg);
   transform-origin: bottom center;
-  font-size: 1.1em;
+  font-size: 1.05em;
   line-height: 1.4;
+  padding: 0 1em;
 }
 
 .headline {
@@ -117,7 +119,7 @@ body {
 .paragraph {
   text-align: left;
   color: #FFDE06;
-  max-width: 90%;
+  max-width: 95%;
   margin: 0 auto 1em auto;
 }
 
@@ -175,18 +177,4 @@ iframe {
   color: #FFDE06;
   cursor: pointer;
   position: relative;
-}
-
-@media (max-width: 500px) {
-  .blue-line {
-    font-size: 1.4em; /* etwas kleiner auf kleineren Geräten */
-    max-width: 95vw; /* mehr Platz ausnutzen */
-    padding: 0 1em;
-  }
-
-  .crawl {
-    max-width: 95vw;
-    font-size: 1em;
-    padding: 0 1em;
-  }
 }
