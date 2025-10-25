@@ -17,7 +17,24 @@
       justify-content: center;
     }
 
-    #password-screen, #selection-screen {
+    /* Hintergrund Sternenhimmel für Auswahlbildschirm */
+    #selection-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('dein‑pfad/zum/sternenhimmel.jpg') no-repeat center center;
+      background-size: cover;
+      color: #FFDE06;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #password-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -44,13 +61,6 @@
       margin: 0.6em;
     }
 
-    #selection-screen {
-      display: none;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-    }
-
     .hidden { display: none; }
 
     .intro-container {
@@ -60,6 +70,7 @@
       height: 80vh;
       overflow: hidden;
       perspective: 500px;
+      background: black; /* schwarzer Hintergrund beim Crawl */
     }
 
     .blue-line, .crawl {
@@ -118,7 +129,7 @@
       margin: 0 auto 1em auto;
     }
 
-    .target-marker { background-color: transparent; }
+    .target‑marker { background-color: transparent; }
 
     .back-button {
       position: absolute;
@@ -142,6 +153,7 @@
       text-align: center;
       width: 100%;
       max-width: 400px;
+      background: black;
     }
 
     #extraContent img {
@@ -177,7 +189,7 @@
     <button onclick="checkPassword()">Weiter</button>
   </div>
 
-  <div id="selection-screen">
+  <div id="selection-screen" class="hidden">
     <button onclick="startInvitation()">🎬 Einladung</button>
     <button onclick="startInfo()">ℹ Infos</button>
   </div>
@@ -192,13 +204,13 @@
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
       <p class="paragraph">Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.</p>
-      <p class="paragraph">Was für eine Reise: vom Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Kindergarten- und Schulzeit, Berufsausbildung und Weiterbildungen. Aber vor allem Freundschaften, Feiern, Reisen und die eigene Familie.</p>
+      <p class="paragraph">Was für eine Reise: vom Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Kindergarten‑ und Schulzeit, Berufsausbildung und Weiterbildungen. Aber vor allem Freundschaften, Feiern, Reisen und die eigene Familie.</p>
       <p class="paragraph">Jetzt ist’s soweit: die 3 steht bald an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.</p>
-      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 20:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
+      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 20:00 Uhr</strong> zur <strong class="target‑marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
       <p class="paragraph">&nbsp;</p>
     </div>
 
-    <button class="back-button" id="invBackBtn" onclick="goBack()">⬅️ Zurück</button>
+    <button class="back-button" id="invBackBtn" onclick="goBack()">⬅️ Zurück</button>
   </div>
 
   <div id="extraContent">
