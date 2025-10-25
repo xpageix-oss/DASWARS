@@ -33,10 +33,6 @@ function step(timestamp) {
   crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
-  if (rect.top > 0 && rect.bottom < window.innerHeight - 300) {
-    invBackBtn.style.display = 'block';
-  }
-
   if (rect.top < -200) {
     stop = true;
     return;
@@ -70,15 +66,12 @@ invitationButton.addEventListener('click', () => {
 
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
-
   setTimeout(() => {
     blueLine.style.opacity = 0;
-  }, 4000); // Blaue Linie ausblenden nach 4 Sekunden
-
-  setTimeout(() => {
     crawl.style.opacity = 1;
+    invBackBtn.style.display = 'block'; // <<< ab sofort direkt sichtbar
     animationFrame = requestAnimationFrame(step);
-  }, 6000); // Crawl startet nach weiteren 2 Sekunden (insgesamt 6)
+  }, 4000);
 });
 
 infoButton.addEventListener('click', () => {
