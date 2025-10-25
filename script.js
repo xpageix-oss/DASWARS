@@ -6,6 +6,10 @@ const blueLine = document.getElementById('blueLine');
 const crawl = document.getElementById('crawl');
 const target = document.getElementById('target');
 const invBackBtn = document.getElementById('invBackBtn');
+const infoBackBtn = document.getElementById('infoBackBtn');
+const invitationButton = document.getElementById('invitationButton');
+const infoButton = document.getElementById('infoButton');
+const pwButton = document.getElementById('pwButton');
 
 let start = null;
 let stop = false;
@@ -41,7 +45,15 @@ function step(timestamp) {
   animationFrame = requestAnimationFrame(step);
 }
 
-function checkPassword() {
+// Beim Laden: sicheren Startzustand herstellen
+document.addEventListener("DOMContentLoaded", () => {
+  selectScreen.style.display = "none";
+  mainContent.classList.add("hidden");
+  extraContent.classList.add("hidden");
+  pwScreen.style.display = "flex";
+});
+
+pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
   if (inputVal === "2512!") {
     pwScreen.style.display = 'none';
@@ -49,9 +61,9 @@ function checkPassword() {
   } else {
     alert("Falsches Passwort!");
   }
-}
+});
 
-function startInvitation() {
+invitationButton.addEventListener('click', () => {
   resetCrawl();
   selectScreen.style.display = 'none';
   extraContent.style.display = 'none';
@@ -64,18 +76,22 @@ function startInvitation() {
     crawl.style.opacity = 1;
     animationFrame = requestAnimationFrame(step);
   }, 4000);
-}
+});
 
-function startInfo() {
+infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
   extraContent.style.display = 'block';
   window.scrollTo(0, 0);
-}
+});
 
-function goBack() {
-  resetCrawl();
-  mainContent.classList.add('hidden');
+infoBackBtn.addEventListener('click', () => {
   extraContent.style.display = 'none';
   selectScreen.style.display = 'flex';
-}
+});
+
+invBackBtn.addEventListener('click', () => {
+  resetCrawl();
+  mainContent.classList.add('hidden');
+  selectScreen.style.display = 'flex';
+});
