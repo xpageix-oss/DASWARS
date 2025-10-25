@@ -13,7 +13,7 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    #password-screen, #selection-screen {
+    #password-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -28,24 +28,41 @@
       z-index: 999;
     }
 
-    #password-screen input {
+    #password-screen input,
+    #password-screen button {
       padding: 0.5em;
       font-size: 1.2em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
-      margin-bottom: 1em;
       text-align: center;
+      margin-bottom: 1em;
     }
 
-    #password-screen button, #selection-screen button {
+    #mode-selection {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: #FFDE06;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 998;
+    }
+
+    #mode-selection button {
       padding: 0.5em 1em;
-      font-size: 1.2em;
-      margin: 0.5em;
+      font-size: 1.4em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
       cursor: pointer;
+      margin: 1em;
     }
 
     .hidden {
@@ -121,6 +138,19 @@
       background-color: transparent;
     }
 
+    #inlineSkipBtn {
+      position: absolute;
+      top: 35%;
+      right: 4%;
+      font-size: 0.6em;
+      padding: 0.2em 0.5em;
+      background: #111;
+      color: #FFDE06;
+      border: 1px solid #FFDE06;
+      cursor: pointer;
+      z-index: 10;
+    }
+
     #extraContent {
       display: none;
       text-align: center;
@@ -161,10 +191,12 @@
     <button onclick="checkPassword()">Weiter</button>
   </div>
 
-  <div id="selection-screen" class="hidden">
+  <div id="mode-selection" class="hidden">
     <button onclick="startInvitation()">Einladung</button>
     <button onclick="showInfo()">Infos</button>
   </div>
+
+  <button id="inlineSkipBtn" class="hidden">Überspringen</button>
 
   <div class="intro-container hidden" id="mainContent">
     <div class="blue-line" id="blueLine">
@@ -192,7 +224,7 @@
     </div>
   </div>
 
-  <div id="extraContent" class="hidden">
+  <div id="extraContent">
     <h2>📍 Fußballhütte Frammersbach</h2>
     <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
     <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
@@ -205,9 +237,7 @@
     const blueLine = document.getElementById('blueLine');
     const target = document.getElementById('target');
     const extraContent = document.getElementById('extraContent');
-    const passwordScreen = document.getElementById('password-screen');
-    const selectionScreen = document.getElementById('selection-screen');
-    const mainContent = document.getElementById('mainContent');
+    const skipBtn = document.getElementById('inlineSkipBtn');
 
     let speed = 0.35;
     let start = null;
@@ -230,19 +260,29 @@
       requestAnimationFrame(step);
     }
 
+    skipBtn.addEventListener('click', () => {
+      blueLine.style.opacity = 0;
+      crawl.style.opacity = 1;
+      crawl.style.transition = 'none';
+      crawl.style.top = '20%';
+      stop = true;
+      extraContent.style.display = 'block';
+    });
+
     function checkPassword() {
       const input = document.getElementById('pwInput').value;
       if (input === "2512!") {
-        passwordScreen.classList.add('hidden');
-        selectionScreen.classList.remove('hidden');
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('mode-selection').style.display = 'flex';
       } else {
         alert("Falsches Passwort!");
       }
     }
 
     function startInvitation() {
-      selectionScreen.classList.add('hidden');
-      mainContent.classList.remove('hidden');
+      document.getElementById('mode-selection').style.display = 'none';
+      document.getElementById('mainContent').classList.remove('hidden');
+      document.getElementById('inlineSkipBtn').classList.remove('hidden');
       blueLine.style.opacity = 1;
       setTimeout(() => {
         blueLine.style.opacity = 0;
@@ -252,8 +292,8 @@
     }
 
     function showInfo() {
-      selectionScreen.classList.add('hidden');
-      extraContent.classList.remove('hidden');
+      document.getElementById('mode-selection').style.display = 'none';
+      extraContent.style.display = 'block';
     }
   </script>
 </body>
