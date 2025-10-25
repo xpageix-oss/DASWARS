@@ -54,16 +54,17 @@ body {
 .intro-container {
   position: relative;
   width: 100%;
-  max-width: 100vw;
+  max-width: 500px;
   height: 80vh;
   overflow: hidden;
-  perspective: 500px;
+  perspective: 800px;
   background-image: url('assets/Star Wars Background.jpg');
   background-size: cover;
   background-position: center;
 }
 
-.blue-line, .crawl {
+.blue-line,
+.crawl {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
@@ -74,15 +75,36 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #00bfff;
-  font-size: clamp(1.6em, 4.5vw, 2.2em); /* mehr Flexibilität */
+  font-size: 2em;
   text-align: center;
-  max-width: 95vw;
-  width: 95vw;
-  padding: 0;
-  line-height: 1.3;
-  word-break: keep-all;
-  white-space: normal;
+  max-width: 100%;
+  margin: 0 auto;
   z-index: 5;
+}
+
+.headline {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(3);
+  transform-origin: center center;
+  text-align: center;
+  font-family: 'Bowlby One SC', sans-serif;
+  font-size: 3em;
+  color: black;
+  -webkit-text-stroke: 2px #FFDE06;
+  opacity: 0;
+  transition: transform 4s ease-out, opacity 4s ease-in;
+  z-index: 10;
+}
+
+.headline span {
+  display: block;
+}
+
+.headline.zoom-out {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 }
 
 .crawl {
@@ -91,24 +113,12 @@ body {
   width: 100%;
   max-width: 500px;
   left: 50%;
-  transform: translateX(-50%) rotateX(25deg);
+  transform: translateX(-50%) rotateX(45deg);
   transform-origin: bottom center;
   font-size: 1.1em;
   line-height: 1.4;
-}
-
-.headline {
-  text-align: center;
-  font-family: 'Bowlby One SC', sans-serif;
-  font-size: 2.5em;
-  color: black;
-  -webkit-text-stroke: 2px #FFDE06;
-  margin-bottom: 0.8em;
-  line-height: 0.8;
-}
-
-.headline span {
-  display: block;
+  opacity: 0;
+  transition: opacity 2s ease-in;
 }
 
 .subheadline {
@@ -121,7 +131,7 @@ body {
 .paragraph {
   text-align: left;
   color: #FFDE06;
-  max-width: 95%;
+  max-width: 90%;
   margin: 0 auto 1em auto;
 }
 
@@ -179,18 +189,4 @@ iframe {
   color: #FFDE06;
   cursor: pointer;
   position: relative;
-}
-
-@media (max-width: 500px) {
-  .blue-line {
-    font-size: 1.4em; /* etwas kleiner auf kleineren Geräten */
-    max-width: 95vw; /* mehr Platz ausnutzen */
-    padding: 0 1em;
-  }
-
-  .crawl {
-    max-width: 95vw;
-    font-size: 1em;
-    padding: 0 1em;
-  }
 }
