@@ -165,8 +165,8 @@ iframe {
 }
 
 #infoBackBtn {
-  display: block;
-  position: relative;
+  display: block !important;
+  position: relative !important;
   margin-top: 1em;
   padding: 0.4em 0.8em;
   font-size: 0.9em;
@@ -174,5 +174,6 @@ iframe {
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
+  z-index: 9999;
 }
 }
