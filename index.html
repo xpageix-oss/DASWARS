@@ -4,12 +4,6 @@
   <meta charset="UTF-8">
   <title>DAS WARS Episode XXX</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-    @font-face {
-      font-family: 'StarJedi';
-      src: url('StarJedi.ttf') format('truetype');
-      /* Wichtig: Stelle sicher, dass du die Datei StarJedi.ttf im selben Verzeichnis hast oder den Pfad korrekt angibst */
-    }
     body {
       margin: 0;
       height: 100vh;
@@ -19,45 +13,56 @@
       font-family: 'Orbitron', sans-serif;
       perspective: 500px;
     }
+
     .intro-container {
       position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
-    .blue‑line, .crawl {
+
+    .blue-line, .crawl {
       opacity: 0;
-      transition: opacity 1s ease‑in;
+      transition: opacity 1s ease-in;
     }
-    .blue‑line {
+
+    .blue-line {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(‑50%, ‑50%);
+      transform: translate(-50%, -50%);
       color: #00bfff;
       font-size: 2em;
       text-align: center;
-      z‑index: 5;
+      z-index: 5;
     }
+
     .crawl {
       position: absolute;
       top: 100%;
       width: 60%;
       max-width: 600px;
       left: 50%;
-      transform: translateX(‑50%) rotateX(25deg);
+      transform: translateX(-50%) rotateX(25deg);
       transform-origin: bottom center;
       font-size: 1.4em;
       line-height: 1.6;
     }
+
     .headline {
-      font‑family: 'StarJedi', 'Orbitron', sans‑serif;
-      font-size: 4em;
+      color: #FFDE06; /* dein Wunschfarbton */
       text-align: center;
+      font-size: 4em;
       margin-bottom: 1.5em;
-      color: #ffe81f;
-      text-shadow: 2px 2px 0 #000, ‑2px ‑2px 0 #000;
+      /* dünne Outline */
+      -webkit-text-stroke: 1px #000;
+      text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
     }
+
     .subheadline {
       font-size: 1.5em;
       text-align: center;
@@ -65,12 +70,15 @@
       text-shadow: 1px 1px 2px #000;
       margin-bottom: 2em;
     }
+
     .paragraph {
       text-align: justify;
     }
-    .target‑marker {
+
+    .target-marker {
       background-color: transparent;
     }
+
     #skipBtn {
       position: absolute;
       top: 20px;
@@ -81,24 +89,28 @@
       color: #ffe81f;
       border: 2px solid #ffe81f;
       cursor: pointer;
-      z‑index: 10;
+      z-index: 10;
     }
+
     #extraContent {
       display: none;
       text-align: center;
       padding: 30px 15px;
       background: black;
     }
+
     #extraContent h2 {
       color: #ffe81f;
       margin-bottom: 1em;
     }
+
     #extraContent img {
       width: 100%;
       max-width: 500px;
       border: 4px solid #ffe81f;
       margin-bottom: 1em;
     }
+
     #extraContent iframe {
       width: 90%;
       max-width: 600px;
@@ -106,6 +118,7 @@
       border: 4px solid #ffe81f;
       margin-bottom: 1em;
     }
+
     #extraContent p, #extraContent a {
       color: white;
       font-size: 1.2em;
@@ -117,39 +130,35 @@
   <button id="skipBtn">Überspringen</button>
 
   <div class="intro-container">
-    <div class="blue‑line" id="blueLine">
+    <div class="blue-line" id="blueLine">
       Es war einmal vor langer Zeit in einer weit, weit entfernten Metropole...
     </div>
 
     <div class="crawl" id="crawl">
-      <div class="headline">DAS WARS</div>
-      <div class="subheadline">EPISODE XXX</div>
-      <div class="subheadline">Das Ende der Zwanziger</div>
+      <div class="headline">DAS WARS</div>
+      <div class="subheadline">EPISODE XXX</div>
+      <div class="subheadline">Das Ende der Zwanziger</div>
 
       <p class="paragraph">
-        Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
+        Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.
       </p>
-
       <p class="paragraph">
-        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
+        Was für eine Reise: von Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Schulzeit, Feiern, Freundschaften, vielleicht ein paar Fehlentscheidungen (die besten Geschichten beginnen ja meistens so) und unzählige Erinnerungen, die einen prägen.
       </p>
-
       <p class="paragraph">
-        Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
+        Jetzt ist’s soweit: die 3 steht an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.
       </p>
-
       <p class="paragraph">
-        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target‑marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
+        Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 16:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!
       </p>
-
       <p class="paragraph">&nbsp;</p>
     </div>
   </div>
 
   <div id="extraContent">
-    <h2>📍 Fußballhütte Frammersbach</h2>
-    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45‑c6e3‑4523‑ac61‑9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
-    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
+    <h2>📍 Fußballhütte Frammersbach</h2>
+    <img src="https://xn--fussballhtte-frammersbach-nwc.de/wp-content/uploads/2022/12/5bf14f45-c6e3-4523-ac61-9bbefb4c30e1.jpg" alt="Fußballhütte Frammersbach">
+    <p>Adresse: <strong>Fußballhütte Frammersbach</strong></p>
     <iframe 
       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12970.22300655294!2d9.492032!3d50.0547319!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a2cc6e073af6c5%3A0xdd5cd6c9975a89e9!2sFussballh%C3%BCtte+Frammersbach+-+Turn-+und+Sportvereinigung+1890+e.V.!5e0!3m2!1sde!2sde!4v1700000000000" 
       allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
