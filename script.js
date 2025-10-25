@@ -45,9 +45,8 @@ function step(timestamp) {
   animationFrame = requestAnimationFrame(step);
 }
 
-// Beim Laden: sicheren Startzustand herstellen
 document.addEventListener("DOMContentLoaded", () => {
-  selectScreen.style.display = "none";
+  selectScreen.classList.add("hidden");
   mainContent.classList.add("hidden");
   extraContent.classList.add("hidden");
   pwScreen.style.display = "flex";
@@ -57,7 +56,7 @@ pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
   if (inputVal === "2512!") {
     pwScreen.style.display = 'none';
-    selectScreen.style.display = 'flex';
+    selectScreen.classList.remove("hidden");
   } else {
     alert("Falsches Passwort!");
   }
@@ -65,9 +64,9 @@ pwButton.addEventListener('click', () => {
 
 invitationButton.addEventListener('click', () => {
   resetCrawl();
-  selectScreen.style.display = 'none';
-  extraContent.style.display = 'none';
-  mainContent.classList.remove('hidden');
+  selectScreen.classList.add("hidden");
+  extraContent.classList.add("hidden");
+  mainContent.classList.remove("hidden");
 
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
@@ -79,19 +78,19 @@ invitationButton.addEventListener('click', () => {
 });
 
 infoButton.addEventListener('click', () => {
-  selectScreen.style.display = 'none';
-  mainContent.classList.add('hidden');
-  extraContent.style.display = 'block';
+  selectScreen.classList.add("hidden");
+  mainContent.classList.add("hidden");
+  extraContent.classList.remove("hidden");
   window.scrollTo(0, 0);
 });
 
 infoBackBtn.addEventListener('click', () => {
-  extraContent.style.display = 'none';
-  selectScreen.style.display = 'flex';
+  extraContent.classList.add("hidden");
+  selectScreen.classList.remove("hidden");
 });
 
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
-  mainContent.classList.add('hidden');
-  selectScreen.style.display = 'flex';
+  mainContent.classList.add("hidden");
+  selectScreen.classList.remove("hidden");
 });
