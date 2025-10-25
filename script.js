@@ -1,4 +1,3 @@
-// Fix für mobile Viewport-Höhe
 function setViewportHeight() {
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh * 100}px`);
@@ -31,7 +30,7 @@ function resetCrawl() {
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
   blueLine.style.opacity = 0;
-  invBackBtn.style.display = 'block';
+  invBackBtn.style.display = 'none';
 }
 
 function step(timestamp) {
@@ -41,6 +40,10 @@ function step(timestamp) {
   crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
+  if (rect.top > 0 && rect.bottom < window.innerHeight - 300) {
+    invBackBtn.style.display = 'block';
+  }
+
   if (rect.top < -200) {
     stop = true;
     return;
