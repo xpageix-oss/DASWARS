@@ -74,9 +74,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #00bfff;
-  font-size: 2.0em; /* vorher 1.6em */
+  font-size: clamp(1.2em, 4vw, 2em); /* Reagiert auf Bildschirmbreite */
   text-align: center;
-  max-width: 100%; /* vorher 90% */
+  max-width: 90%; /* Breite leicht reduziert für besseren Textfluss */
   margin: 0 auto;
   z-index: 5;
 }
