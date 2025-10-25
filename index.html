@@ -11,9 +11,10 @@
       background: black;
       color: #FFDE06;
       font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
     }
 
-    #password-screen {
+    #password-screen, #selection-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -38,34 +39,19 @@
       text-align: center;
     }
 
-    #password-screen button {
+    #password-screen button, #selection-screen button, .back-button {
       padding: 0.5em 1em;
       font-size: 1.2em;
       background: #111;
       border: 2px solid #FFDE06;
       color: #FFDE06;
       cursor: pointer;
-    }
-
-    #selection-screen {
-      display: none;
-      height: 100vh;
-      background: black;
-      color: #FFDE06;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      margin: 1em;
     }
 
     #selection-screen button {
-      margin: 1em;
-      padding: 1em 2em;
       font-size: 1.4em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
+      padding: 1em 2em;
     }
 
     .hidden {
@@ -87,7 +73,7 @@
 
     .blue-line {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #00bfff;
@@ -98,7 +84,7 @@
 
     .crawl {
       position: absolute;
-      top: 100%;
+      top: 85%;
       width: 60%;
       max-width: 600px;
       left: 50%;
@@ -173,17 +159,6 @@
       font-size: 1.2em;
       text-decoration: none;
     }
-
-    .back-button {
-      margin: 1em auto;
-      display: block;
-      padding: 0.5em 1em;
-      font-size: 1em;
-      background: #111;
-      border: 2px solid #FFDE06;
-      color: #FFDE06;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -192,7 +167,7 @@
     <button onclick="checkPassword()">Weiter</button>
   </div>
 
-  <div id="selection-screen">
+  <div id="selection-screen" class="hidden">
     <button onclick="showInvitation()">🎬 Einladung</button>
     <button onclick="showInfo()">ℹ️ Infos</button>
   </div>
@@ -270,17 +245,21 @@
       const input = document.getElementById('pwInput').value;
       if (input === "2512!") {
         document.getElementById('password-screen').style.display = 'none';
-        selectionScreen.style.display = 'flex';
+        selectionScreen.classList.remove('hidden');
       } else {
         alert("Falsches Passwort!");
       }
     }
 
     function showInvitation() {
-      window.scrollTo({ top: 0, behavior: 'auto' }); // NEU: sofort ganz nach oben scrollen
-      selectionScreen.style.display = 'none';
+      selectionScreen.classList.add('hidden');
+      extraContent.style.display = 'none';
       mainContent.classList.remove('hidden');
       blueLine.style.opacity = 1;
+      crawl.style.top = '85%';
+      crawl.style.opacity = 0;
+      start = null;
+      stop = false;
       setTimeout(() => {
         blueLine.style.opacity = 0;
         crawl.style.opacity = 1;
@@ -289,17 +268,18 @@
     }
 
     function showInfo() {
-      selectionScreen.style.display = 'none';
+      selectionScreen.classList.add('hidden');
+      mainContent.classList.add('hidden');
       extraContent.style.display = 'block';
     }
 
     function goBack() {
       mainContent.classList.add('hidden');
       extraContent.style.display = 'none';
-      crawl.style.top = '100%';
+      crawl.style.top = '85%';
       stop = false;
       start = null;
-      selectionScreen.style.display = 'flex';
+      selectionScreen.classList.remove('hidden');
     }
   </script>
 </body>
