@@ -45,6 +45,7 @@ function step(timestamp) {
   animationFrame = requestAnimationFrame(step);
 }
 
+// Passwort prüfen
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
   if (inputVal === "2512!") {
@@ -56,14 +57,15 @@ pwButton.addEventListener('click', () => {
   }
 });
 
+// Einladung starten
 invitationButton.addEventListener('click', () => {
   resetCrawl();
   selectScreen.style.display = 'none';
   extraContent.classList.add('hidden');
   extraContent.style.display = 'none';
   mainContent.classList.remove('hidden');
-
   window.scrollTo(0,0);
+
   blueLine.style.opacity = 1;
   setTimeout(() => {
     blueLine.style.opacity = 0;
@@ -72,6 +74,7 @@ invitationButton.addEventListener('click', () => {
   }, 4000);
 });
 
+// Infos starten
 infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
@@ -80,12 +83,14 @@ infoButton.addEventListener('click', () => {
   window.scrollTo(0,0);
 });
 
+// Zurück‑Knopf bei Info
 infoBackBtn.addEventListener('click', () => {
   extraContent.classList.add('hidden');
   extraContent.style.display = 'none';
   selectScreen.style.display = 'flex';
 });
 
+// Zurück‑Knopf bei Einladung
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
   mainContent.classList.add('hidden');
