@@ -8,9 +8,16 @@ body {
   overflow-x: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-#password-screen, #selection-screen {
+.hidden {
+  display: none;
+}
+
+#password-screen,
+#selection-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -35,6 +42,8 @@ body {
   color: #FFDE06;
   cursor: pointer;
   margin: 0.6em;
+  width: 80%;
+  max-width: 300px;
 }
 
 #selection-screen {
@@ -42,10 +51,6 @@ body {
   width: 100%;
   height: 100%;
   align-items: center;
-}
-
-.hidden {
-  display: none;
 }
 
 .intro-container {
@@ -141,6 +146,7 @@ body {
   text-align: center;
   width: 100%;
   max-width: 400px;
+  margin: 0 auto;
 }
 
 #extraContent img {
