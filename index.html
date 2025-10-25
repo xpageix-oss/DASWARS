@@ -113,7 +113,7 @@
   </style>
 </head>
 <body>
-  <button id="skipBtn">Skip Crawl</button>
+  <button id="skipBtn">Überspringen</button>
 
   <div class="intro-container">
     <div class="blue-line" id="blueLine">
@@ -163,10 +163,6 @@
     let start = null;
     let stop = false;
 
-    function startExtra() {
-      extraContent.style.display = 'block';
-    }
-
     function step(timestamp) {
       if (!start) start = timestamp;
       if (stop) return;
@@ -177,16 +173,20 @@
       const rect = target.getBoundingClientRect();
       if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
         stop = true;
-        startExtra();
+        extraContent.style.display = 'block';
         return;
       }
+
       requestAnimationFrame(step);
     }
 
     skipBtn.addEventListener('click', () => {
       blueLine.style.opacity = 0;
-      crawl.style.opacity = 0;
-      startExtra();
+      crawl.style.opacity = 1;
+      crawl.style.transition = 'none';
+      crawl.style.top = '20%';
+      stop = true;
+      extraContent.style.display = 'block';
     });
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -195,7 +195,7 @@
         blueLine.style.opacity = 0;
         crawl.style.opacity = 1;
         requestAnimationFrame(step);
-      }, 2000);
+      }, 4000);
     });
   </script>
 </body>
