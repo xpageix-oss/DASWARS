@@ -54,7 +54,7 @@ body {
 .intro-container {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 100vw;
   height: 80vh;
   overflow: hidden;
   perspective: 500px;
@@ -74,19 +74,19 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #00bfff;
-  font-size: clamp(1.2em, 4.5vw, 2em); /* Etwas größerer Spielraum */
+  font-size: clamp(1.4em, 4vw, 2em);
   text-align: center;
-  max-width: 95%; /* Breiterer Textblock */
-  padding: 0 10px; /* Optional: leichter Innenabstand statt harter Begrenzung */
-  margin: 0 auto;
+  max-width: 95vw;
+  padding: 0 5px;
+  line-height: 1.3;
   z-index: 5;
 }
 
 .crawl {
   position: absolute;
   top: 90%;
-  width: 100%; /* vorher 85% */
-  max-width: 500px; /* vorher 350px */
+  width: 100%;
+  max-width: 500px;
   left: 50%;
   transform: translateX(-50%) rotateX(25deg);
   transform-origin: bottom center;
@@ -118,7 +118,7 @@ body {
 .paragraph {
   text-align: left;
   color: #FFDE06;
-  max-width: 90%;
+  max-width: 95%;
   margin: 0 auto 1em auto;
 }
 
