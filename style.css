@@ -74,9 +74,10 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: #00bfff;
-  font-size: clamp(1.2em, 4vw, 2em); /* Reagiert auf Bildschirmbreite */
+  font-size: clamp(1.2em, 4.5vw, 2em); /* Etwas größerer Spielraum */
   text-align: center;
-  max-width: 90%; /* Breite leicht reduziert für besseren Textfluss */
+  max-width: 95%; /* Breiterer Textblock */
+  padding: 0 10px; /* Optional: leichter Innenabstand statt harter Begrenzung */
   margin: 0 auto;
   z-index: 5;
 }
