@@ -180,3 +180,17 @@ iframe {
   cursor: pointer;
   position: relative;
 }
+
+@media (max-width: 500px) {
+  .blue-line {
+    font-size: 1.4em; /* etwas kleiner auf kleineren Geräten */
+    max-width: 95vw; /* mehr Platz ausnutzen */
+    padding: 0 1em;
+  }
+
+  .crawl {
+    max-width: 95vw;
+    font-size: 1em;
+    padding: 0 1em;
+  }
+}
