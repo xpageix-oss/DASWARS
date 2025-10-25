@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bowlby+One+SC&display=swap');
+
+body {
+  margin: 0;
+  background: black;
+  color: #FFDE06;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Passwort‐Screen & Auswahl‐Screen */
+#password-screen, #selection-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  color: #FFDE06;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#password-screen input,
+#password-screen button,
+#selection-screen button {
+  padding: 0.7em 1.4em;
+  font-size: 1.3em;
+  background: #111;
+  border: 2px solid #FFDE06;
+  color: #FFDE06;
+  cursor: pointer;
+  margin: 0.6em;
+}
+
+#selection-screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.hidden { display: none; }
+
+.intro-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 80vh;
+  overflow: hidden;
+  perspective: 500px;
+  background: url('../assets/stars.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.blue-line, .crawl {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.blue-line {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00bfff;
+  font-size: 1.6em;
+  text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
+  z-index: 5;
+}
+
+.crawl {
+  position: absolute;
+  top: 90%;
+  width: 85%;
+  max-width: 350px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(25deg);
+  transform-origin: bottom center;
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
+.headline {
+  text-align: center;
+  font-family: 'Bowlby One SC', sans-serif;
+  font-size: 2.5em;
+  color: black;
+  -webkit-text-stroke: 2px #FFDE06;
+  margin-bottom: 0.8em;
+  line-height: 0.8;
+}
+
+.headline span { display: block; }
+
+.subheadline {
+  font-size: 1.2em;
+  text-align: center;
+  color: #FFDE06;
+  margin-bottom: 1.2em;
+}
+
+.paragraph {
+  text-align: left;
+  color: #FFDE06;
+  max-width: 90%;
+  margin: 0 auto 1em auto;
+}
+
+.target-marker { background-color: transparent; }
+
+.back-button {
+  position: absolute;
+  left: 5px;
+  top: 30%;
+  display: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  padding: 0.4em;
+  font-size: 0.9em;
+  background: #111;
+  border: 2px solid #FFDE06;
+  color: #FFDE06;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#extraContent {
+  display: none;
+  padding: 20px 15px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  background: black;
+}
+
+#extraContent img {
+  width: 100%;
+  max-width: 350px;
+  border: 4px solid #FFDE06;
+  margin-bottom: 1em;
+}
+
+iframe {
+  width: 100%;
+  max-width: 350px;
+  height: 250px;
+  border: 4px solid #FFDE06;
+  margin-bottom: 1em;
+}
+
+#infoBackBtn {
+  margin-top: 1em;
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+  background: #111;
+  border: 2px solid #FFDE06;
+  color: #FFDE06;
+  cursor: pointer;
+}
