@@ -83,8 +83,8 @@
     .crawl {
       position: absolute;
       top: 90%;
-      width: 85%;
-      max-width: 350px;
+      width: 95%;
+      max-width: 450px; /* angepasst */
       left: 50%;
       transform: translateX(-50%) rotateX(25deg);
       transform-origin: bottom center;
@@ -101,6 +101,7 @@
       margin-bottom: 0.8em;
       line-height: 0.8;
     }
+
     .headline span { display: block; }
 
     .subheadline {
@@ -189,13 +190,13 @@
       <div class="subheadline">EPISODE XXX</div>
       <div class="subheadline">Das Ende der Zwanziger</div>
       <p class="paragraph">Nach 29 Jahren voller Emotionen, mitreißender Abenteuer und unvergesslicher Momente ist es Zeit, sich von den Zwanzigern zu verabschieden.</p>
-      <p class="paragraph">Was für eine Reise: vom Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Kindergarten‑ und Schulzeit, Berufsausbildung und Weiterbildungen. Aber vor allem Freundschaften, Feiern, Reisen und die eigene Familie.</p>
+      <p class="paragraph">Was für eine Reise: vom Sandkasten bis ins Berufsleben, vom ersten Handy bis zur permanenten Bildschirmzeit, von grenzenloser Energie bis zur Erkenntnis, dass Schlaf doch kein überbewertetes Konzept ist. In 29 Jahren ist eine Menge passiert – Kindergarten‑ und Schulzeit, Berufsausbildung und Weiterbildungen. Aber vor allem Freundschaften, Feiern, Reisen und die eigene Familie.</p>
       <p class="paragraph">Jetzt ist’s soweit: die 3 steht bald an erster Stelle. Kein Drama, eher ein Upgrade. Neue Etappe, gleiche Neugier, etwas mehr Gelassenheit – und vermutlich bessere Getränke.</p>
-      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 20:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
+      <p class="paragraph">Darum feiern wir das alles: das Gestern, das Heute und das, was noch kommt. Komm am <strong>25.12.2025 um 20:00 Uhr</strong> zur <strong class="target-marker" id="target">Fußballhütte Frammersbach</strong> und stoß mit mir auf 30 Jahre Leben, Lachen und legendäre Geschichten an. Ciao, Twenties!</p>
       <p class="paragraph">&nbsp;</p>
     </div>
 
-    <button class="back-button" id="invBackBtn" onclick="goBack()">⬅️ Zurück</button>
+    <button class="back-button" onclick="goBack()">⬅️ Zurück</button>
   </div>
 
   <div id="extraContent">
@@ -215,7 +216,6 @@
     const blueLine = document.getElementById('blueLine');
     const crawl = document.getElementById('crawl');
     const target = document.getElementById('target');
-    const invBackBtn = document.getElementById('invBackBtn');
 
     let start = null;
     let stop = false;
@@ -229,7 +229,6 @@
       crawl.style.top = '90%';
       crawl.style.opacity = 0;
       blueLine.style.opacity = 0;
-      invBackBtn.style.display = 'none';
     }
 
     function step(timestamp) {
@@ -239,11 +238,7 @@
       crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
       const rect = target.getBoundingClientRect();
-      if (rect.top > 0 && rect.bottom < window.innerHeight - 300) {
-        invBackBtn.style.display = 'block';
-      }
-
-      if (rect.top < -200) {
+      if (rect.top > 0 && rect.bottom < window.innerHeight - 150) {
         stop = true;
         return;
       }
