@@ -8,9 +8,16 @@ body {
   overflow-x: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-#password-screen, #selection-screen {
+.hidden {
+  display: none;
+}
+
+#password-screen,
+#selection-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -37,10 +44,6 @@ body {
   margin: 0.6em;
 }
 
-.hidden {
-  display: none;
-}
-
 .intro-container {
   position: relative;
   width: 100%;
@@ -48,8 +51,10 @@ body {
   height: 80vh;
   overflow: hidden;
   perspective: 500px;
-  background: url('assets/Star Wars Background.jpg') no-repeat center center;
+  background-image: url('assets/Star%20Wars%20Background.jpg');
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .blue-line, .crawl {
@@ -115,17 +120,36 @@ body {
 }
 
 .back-button {
-  position: absolute;
-  left: 5px;
-  top: 30%;
-  display: none;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  padding: 0.4em;
+  position: relative;
+  margin-top: 2em;
+  padding: 0.4em 0.8em;
   font-size: 0.9em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
-  z-index: 10;
+}
+
+#extraContent {
+  display: none;
+  padding: 20px 15px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#extraContent img {
+  width: 100%;
+  max-width: 350px;
+  border: 4px solid #FFDE06;
+  margin-bottom: 1em;
+}
+
+iframe {
+  width: 100%;
+  max-width: 350px;
+  height: 250px;
+  border: 4px solid #FFDE06;
+  margin-bottom: 1em;
 }
