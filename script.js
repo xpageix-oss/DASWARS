@@ -1,3 +1,11 @@
+// Fix für mobile Viewport-Höhe
+function setViewportHeight() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh * 100}px`);
+}
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('load', setViewportHeight);
+
 const pwScreen = document.getElementById('password-screen');
 const selectScreen = document.getElementById('selection-screen');
 const mainContent = document.getElementById('mainContent');
@@ -23,7 +31,7 @@ function resetCrawl() {
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
   blueLine.style.opacity = 0;
-  invBackBtn.style.display = 'none';
+  invBackBtn.style.display = 'block';
 }
 
 function step(timestamp) {
@@ -69,7 +77,6 @@ invitationButton.addEventListener('click', () => {
   setTimeout(() => {
     blueLine.style.opacity = 0;
     crawl.style.opacity = 1;
-    invBackBtn.style.display = 'block'; // <<< ab sofort direkt sichtbar
     animationFrame = requestAnimationFrame(step);
   }, 4000);
 });
@@ -78,7 +85,6 @@ infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
   extraContent.style.display = 'block';
-  infoBackBtn.style.display = 'block';
   window.scrollTo(0, 0);
 });
 
