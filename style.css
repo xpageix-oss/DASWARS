@@ -69,7 +69,7 @@ body {
 
 .blue-line, .crawl {
   opacity: 0;
-  transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in, transform 1s ease-in;
 }
 
 .blue-line {
@@ -213,7 +213,7 @@ iframe#mapFrame {
 
   #password-screen,
   #selection-screen {
-    height: calc(var(--vh)); /* mobiles Höhen‑Fix */
+    height: calc(var(--vh));
   }
 
   #extraContent img#hutImage,
