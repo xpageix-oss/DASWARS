@@ -75,6 +75,14 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
+  // Audio vorbereiten, aber nicht laut spielen
+  themeAudio.currentTime = 0;
+  themeAudio.volume = 0;
+  themeAudio.play().then(() => {
+    // okay, Audio‑context geöffnet
+    themeAudio.pause();
+  }).catch(err => console.warn("Autoplay blockiert initial:", err));
+
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
@@ -83,9 +91,10 @@ invitationButton.addEventListener('click', () => {
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
-      // 🎵 Ton exakt jetzt abspielen (bei Headline-Start)
+      // Jetzt Ton starten korrekt
       themeAudio.currentTime = 0;
-      themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+      themeAudio.volume = 1;
+      themeAudio.play().catch(err => console.warn("Autoplay blockiert beim Start:", err));
 
       setTimeout(() => {
         headline.style.display = 'none';
@@ -93,9 +102,9 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-      }, 6000); // Headline-Animation
-    }, 1000); // Delay nach BlueLine-FadeOut
-  }, 5000); // BlueLine sichtbar für 5 Sekunden
+      }, 6000);
+    }, 1000);
+  }, 5000);
 });
 
 infoButton.addEventListener('click', () => {
