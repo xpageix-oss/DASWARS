@@ -13,7 +13,9 @@ body {
   height: 100vh;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 #password-screen {
   position: fixed;
@@ -46,14 +48,14 @@ body {
 #password-screen button,
 #selection-screen button {
   padding: 0.7em 1.4em;
-  font‑size: 1.3em;
+  font-size: 1.3em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
-  max‑width: 300px;
+  max-width: 300px;
 }
 
 .intro-container {
@@ -105,26 +107,26 @@ body {
   font‑family: 'Bowlby One SC', sans‑serif;
   font‑size: 2.5em;
   color: black;
-  ‑webkit‑text‑stroke: 2px #FFDE06;
+  -webkit-text‑stroke: 2px #FFDE06;
   margin‑bottom: 0.8em;
   line‑height: 0.8;
 }
 .headline span { display: block; }
 .subheadline {
-  font‑size: 1.2em;
+  font-size: 1.2em;
   text‑align: center;
   color: #FFDE06;
   margin‑bottom: 1.2em;
 }
 .paragraph {
-  text‑align: left;
+  text-align: left;
   color: #FFDE06;
-  max‑width: 95%;
+  max-width: 95%;
   margin: 0 auto 1em auto;
 }
 .target‑marker { background‑color: transparent; }
 
-.back‑button {
+.back-button {
   position: absolute;
   left: 5px;
   top: 30%;
@@ -143,7 +145,7 @@ body {
 #extraContent {
   display: none;
   padding: 20px 15px;
-  text‑align: center;
+  text-align: center;
   width: 100%;
   max‑width: 400px;
   margin: 0 auto;
@@ -154,7 +156,7 @@ body {
   width: 100%;
   max‑width: 350px;
   border: 4px solid #FFDE06;
-  margin‑bottom: 1em;
+  margin-bottom: 1em;
 }
 
 iframe {
@@ -162,14 +164,14 @@ iframe {
   max‑width: 320px;
   height: 200px;
   border: 4px solid #FFDE06;
-  margin‑bottom: 1em;
+  margin-bottom: 1em;
 }
 
 #infoBackBtn {
   display: block;
-  margin‑top: 1em;
+  margin-top: 1em;
   padding: 0.4em 0.8em;
-  font‑size: 0.9em;
+  font-size: 0.9em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
@@ -179,13 +181,13 @@ iframe {
 
 @media (max‑width: 500px) {
   .blue‑line {
-    font‑size: 1.4em;
-    max‑width: 95vw;
+    font-size: 1.4em;
+    max-width: 95vw;
     padding: 0 1em;
   }
   .crawl {
-    max‑width: 95vw;
-    font‑size: 1em;
+    max-width: 95vw;
+    font-size: 1em;
     padding: 0 1em;
   }
 }
