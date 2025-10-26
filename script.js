@@ -1,8 +1,9 @@
 const pwScreen = document.getElementById('password-screen');
 const selectScreen = document.getElementById('selection-screen');
-const mainContent16 = document.getElementById('mainContent16');
-const mainContent20 = document.getElementById('mainContent20');
+const mainContent = document.getElementById('mainContent');
 const extraContent = document.getElementById('extraContent');
+const blueLine = document.getElementById('blueLine');
+const crawl = document.getElementById('crawl');
 const target = document.getElementById('target');
 const invBackBtn = document.getElementById('invBackBtn');
 const infoBackBtn = document.getElementById('infoBackBtn');
@@ -13,37 +14,31 @@ const themeAudio = new Audio('assets/theme.mp3');
 
 let start = null;
 let stop = false;
-let animationFrame;
 const speed = 0.35;
-let activeSet = null;
+let animationFrame;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
   start = null;
   stop = false;
-  if (!activeSet) return;
-
-  const { crawl, blueLine, headline } = activeSet;
-
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
-  crawl.classList.remove('crawl-fly');
-
   blueLine.style.opacity = 0;
-  headline.classList.remove('headline-zoom');
-  headline.style.opacity = 0;
-  headline.style.display = 'block';
-
   invBackBtn.style.display = 'none';
   themeAudio.pause();
   themeAudio.currentTime = 0;
+
+  const headline = document.getElementById('headline');
+  headline.classList.remove('headline-zoom');
+  headline.style.opacity = 0;
+  headline.style.display = 'block'; // sichtbar vorbereiten
 }
 
 function step(timestamp) {
   if (!start) start = timestamp;
-  if (stop || !activeSet) return;
+  if (stop) return;
 
-  activeSet.crawl.style.top = (parseFloat(getComputedStyle(activeSet.crawl).top) - speed) + 'px';
+  crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
   if (rect.top < -200) {
@@ -57,76 +52,61 @@ function step(timestamp) {
 document.addEventListener("DOMContentLoaded", () => {
   pwScreen.style.display = 'flex';
   selectScreen.style.display = 'none';
-  mainContent16.classList.add("hidden");
-  mainContent20.classList.add("hidden");
+  mainContent.classList.add("hidden");
   extraContent.classList.add("hidden");
 });
 
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
-
-  if (inputVal === "123") {
+  if (inputVal === "2512!") {
     pwScreen.style.display = 'none';
-    mainContent16.classList.remove('hidden');
-    mainContent20.classList.add('hidden');
     selectScreen.style.display = 'flex';
-    activeSet = {
-      blueLine: document.getElementById('blueLine16'),
-      headline: document.getElementById('headline16'),
-      crawl: document.getElementById('crawl16')
-    };
-  } else if (inputVal === "8910") {
-    pwScreen.style.display = 'none';
-    mainContent20.classList.remove('hidden');
-    mainContent16.classList.add('hidden');
-    selectScreen.style.display = 'flex';
-    activeSet = {
-      blueLine: document.getElementById('blueLine20'),
-      headline: document.getElementById('headline20'),
-      crawl: document.getElementById('crawl20')
-    };
   } else {
     alert("Falsches Passwort!");
   }
 });
 
 invitationButton.addEventListener('click', () => {
-  if (!activeSet) return;
-
   resetCrawl();
   selectScreen.style.display = 'none';
+  extraContent.style.display = 'none';
+  mainContent.classList.remove('hidden');
 
-  const { blueLine, headline, crawl } = activeSet;
+  window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  themeAudio.load();
+  // Erst nur vorbereiten, aber KEIN play()!
+  themeAudio.load(); // preload erzwingen
   themeAudio.volume = 1;
+  // KEIN play() hier!
 
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
     setTimeout(() => {
+      const headline = document.getElementById('headline');
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
+      // Jetzt sauberer Start mit play()
       themeAudio.currentTime = 0;
+      themeAudio.volume = 1;
       themeAudio.play().catch(err => console.warn("Autoplay blockiert beim echten Start:", err));
 
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
-        crawl.classList.add('crawl-fly');
+
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
       }, 12000);
-    }, 3000);
-  }, 5000);
+    }, 3000); // Headline Delay nach Fade
+  }, 5000); // BlueLine sichtbar
 });
 
 infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
-  mainContent16.classList.add("hidden");
-  mainContent20.classList.add("hidden");
+  mainContent.classList.add('hidden');
   extraContent.style.display = 'block';
   infoBackBtn.style.display = 'block';
   window.scrollTo(0, 0);
@@ -139,7 +119,9 @@ infoBackBtn.addEventListener('click', () => {
 
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
-  mainContent16.classList.add("hidden");
-  mainContent20.classList.add("hidden");
+  const headline = document.getElementById('headline');
+  headline.classList.remove('headline-zoom');
+  headline.style.display = 'block';
+  mainContent.classList.add('hidden');
   selectScreen.style.display = 'flex';
 });
