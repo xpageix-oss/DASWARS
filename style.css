@@ -17,14 +17,11 @@ body {
   display: none;
 }
 
-#password-screen,
-#selection-screen {
+#password-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: black url('assets/Star Wars Background2.jpg') center/cover no-repeat;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: black;
   color: #FFDE06;
   display: flex;
   flex-direction: column;
@@ -34,7 +31,17 @@ body {
 }
 
 #selection-screen {
-  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: url('assets/501st.gif') center center no-repeat;
+  background-size: cover;
+  color: #FFDE06;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
 }
 
 #password-screen input,
@@ -58,12 +65,13 @@ body {
   height: 80vh;
   overflow: hidden;
   perspective: 800px;
-  background-image: url('assets/Star Wars Background2.jpg');
+  background-image: url('assets/Star Wars Background2.jpg');
   background-size: cover;
   background-position: center;
 }
 
-.blue-line, .crawl {
+.blue-line,
+.crawl {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
@@ -97,7 +105,7 @@ body {
 
 .headline {
   text-align: center;
-  font-family: 'Bowlby One SC', sans-serif;
+  font-family: 'Bowlby One SC', sans-serif;
   font-size: 2.5em;
   color: black;
   -webkit-text-stroke: 2px #FFDE06;
@@ -132,8 +140,8 @@ body {
   left: 5px;
   top: 30%;
   display: none;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  writing-mode: vertical‑rl;
+  text‑orientation: upright;
   padding: 0.4em;
   font-size: 0.9em;
   background: #111;
@@ -186,7 +194,6 @@ iframe {
     max-width: 95vw;
     padding: 0 1em;
   }
-
   .crawl {
     max-width: 95vw;
     font-size: 1em;
