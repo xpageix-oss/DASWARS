@@ -27,10 +27,10 @@ let animationFrame;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
-  start                 = null;
-  stop                  = false;
-  crawl.style.top       = '90%';
-  crawl.style.opacity   = '0';
+  start                = null;
+  stop                 = false;
+  crawl.style.top      = '90%';
+  crawl.style.opacity  = '0';
   blueLine.style.opacity= '0';
   invBackBtn.style.display = 'none';
   themeAudio.pause();
@@ -79,6 +79,7 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
 
   blueLine.style.opacity = '1';
+  // Zurückknopf sofort anzeigen
   invBackBtn.style.display = 'block';
 
   setTimeout(() => {
