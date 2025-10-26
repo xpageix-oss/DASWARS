@@ -27,6 +27,11 @@ function resetCrawl() {
   invBackBtn.style.display = 'none';
   themeAudio.pause();
   themeAudio.currentTime = 0;
+
+  const headline = document.getElementById('headline');
+  headline.classList.remove('headline-zoom');
+  headline.style.opacity = 0;
+  headline.style.display = 'block'; // sichtbar vorbereiten
 }
 
 function step(timestamp) {
