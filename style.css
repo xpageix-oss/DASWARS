@@ -201,26 +201,28 @@ iframe {
     font-size: 1em;
     padding: 0 1em;
   }
-  
-.info-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
 
-.hut-thumb {
-  width: 60px;
-  height: auto;
-  border: 2px solid #FFDE06;
-  border-radius: 5px;
-}
+  .info-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
 
-#extraContent h2 {
-  font-size: 1.2em;
-}
+  .hut-thumb {
+    width: 60px;
+    height: auto;
+    border: 2px solid #FFDE06;
+    border-radius: 5px;
+  }
 
+  #extraContent h2 {
+    font-size: 1.2em;
+  }
+}  /* ⬅️ Media Query endet hier! */
+
+/* Und jetzt dein Animationsteil außerhalb */
 #headline {
   position: absolute;
   top: 30%;
@@ -252,6 +254,5 @@ iframe {
     transform: translate(-50%, -300%) scale(1) rotateX(25deg);
     opacity: 0;
   }
-}
 }
 
