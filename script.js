@@ -27,14 +27,14 @@ let animationFrame;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
-  start                = null;
-  stop                 = false;
-  crawl.style.top      = '90%';
-  crawl.style.opacity  = '0';
+  start                 = null;
+  stop                  = false;
+  crawl.style.top       = '90%';
+  crawl.style.opacity   = '0';
   blueLine.style.opacity= '0';
   invBackBtn.style.display = 'none';
   themeAudio.pause();
-  themeAudio.currentTime = 0;
+  themeAudio.currentTime   = 0;
 }
 
 function step(timestamp) {
@@ -78,10 +78,9 @@ invitationButton.addEventListener('click', () => {
   mainContent.classList.remove('hidden');
   window.scrollTo(0, 0);
 
-  blueLine.style.opacity = '1';
-  // Zurückknopf sofort anzeigen
-  invBackBtn.style.display = 'block';
+  blueLine.style.opacity     = '1';
 
+  // warten bis blueLine fade out
   setTimeout(() => {
     blueLine.style.opacity = '0';
     crawl.style.opacity    = '1';
@@ -89,7 +88,9 @@ invitationButton.addEventListener('click', () => {
       console.warn("Audio‑Autoplay blockiert:", e);
     });
     animationFrame = requestAnimationFrame(step);
-  }, 3000);
+    // zeigen Zurückknopf sofort mit Beginn Crawl
+    invBackBtn.style.display = 'block';
+  }, 2000);
 });
 
 infoButton.addEventListener('click', () => {
@@ -108,5 +109,5 @@ infoBackBtn.addEventListener('click', () => {
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
   mainContent.classList.add("hidden");
-  selectScreen.style.display = 'flex';
+  selectScreen.style.display   = 'flex';
 });
