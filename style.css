@@ -270,6 +270,7 @@ iframe {
     transform: translate(-50%, -50%) scale(1) translateZ(-500px);
     opacity: 0;
   }
+  }
   /* === Info-Karte Stil === */
 .info-card {
   border: 3px solid #FFDE06;
@@ -286,4 +287,4 @@ iframe {
 .info-card p {
   margin: 0.6em 0;
 }
-}
+
