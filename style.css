@@ -242,7 +242,7 @@ iframe {
 }
 
 .headline-zoom {
-  animation: zoomCrawl 3s ease-out forwards;
+  animation: zoomCrawl 8s ease-out forwards;
 }
 
 @keyframes zoomCrawl {
