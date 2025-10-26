@@ -13,16 +13,12 @@ body {
   height: 100vh;
 }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
 
 #password-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   background: black;
   color: #FFDE06;
   display: flex;
@@ -34,10 +30,8 @@ body {
 
 #selection-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   background: black;
   color: #FFDE06;
   display: flex;
@@ -48,19 +42,15 @@ body {
 }
 
 .video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  position: absolute; top: 0; left: 0;
+  width: 100vw; height: 100vh;
   overflow: hidden;
   z-index: -1;
 }
 
-.video-bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.video-bg video,
+.video-bg img {
+  width: 100%; height: 100%; object-fit: cover;
 }
 
 #password-screen input,
@@ -76,41 +66,45 @@ body {
   max-width: 300px;
 }
 
-#invitationButton, #infoButton {
+/* KNOPFE MIT AUSGEFÜLLTER FARBE */
+#invitationButton {
   padding: 0.7em 1.4em;
   font-size: 1.3em;
-  background: black;
-  border: 2px solid;
-  cursor: pointer;
+  background-color: #0033cc;
+  border: 2px solid #000;
+  color: white;
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px black;
-}
-
-#invitationButton {
-  border-color: #0033cc;
-  background-color: #0033cc;
-  color: black;
   box-shadow: 0 0 10px #0033cc, 0 0 20px #0033cc;
+  transition: transform 0.2s ease-in-out;
 }
-
+#invitationButton:hover,
+#invitationButton:focus {
+  transform: scale(1.05);
+}
 #invitationButton:active {
-  background: black;
-  color: #0033cc;
+  background-color: #001a66;
 }
 
 #infoButton {
-  border-color: #aa0000;
+  padding: 0.7em 1.4em;
+  font-size: 1.3em;
   background-color: #aa0000;
-  color: black;
+  border: 2px solid #000;
+  color: white;
+  margin: 0.6em;
+  width: 80%;
+  max-width: 300px;
   box-shadow: 0 0 10px #aa0000, 0 0 20px #aa0000;
+  transition: transform 0.2s ease-in-out;
 }
-
+#infoButton:hover,
+#infoButton:focus {
+  transform: scale(1.05);
+}
 #infoButton:active {
-  background: black;
-  color: #aa0000;
+  background-color: #660000;
 }
 
 .intro-container {
@@ -157,37 +151,11 @@ body {
   padding: 0 1em;
 }
 
-.headline {
-  text-align: center;
-  font-family: 'Bowlby One SC', sans-serif;
-  font-size: 2.5em;
-  color: black;
-  -webkit-text-stroke: 2px #FFDE06;
-  margin-bottom: 0.8em;
-  line-height: 0.8;
-}
-
-.headline span {
-  display: block;
-}
-
-.subheadline {
-  font-size: 1.2em;
-  text-align: center;
-  color: #FFDE06;
-  margin-bottom: 1.2em;
-}
-
-.paragraph {
-  text-align: left;
-  color: #FFDE06;
-  max-width: 95%;
-  margin: 0 auto 1em auto;
-}
-
-.target-marker {
-  background-color: transparent;
-}
+.headline { text-align: center; font-family:'Bowlby One SC',sans-serif; font-size:2.5em; color:black; -webkit-text-stroke:2px #FFDE06; margin-bottom:0.8em; line-height:0.8; }
+.headline span { display:block; }
+.subheadline { font-size:1.2em; text-align:center; color:#FFDE06; margin-bottom:1.2em; }
+.paragraph { text-align:left; color:#FFDE06; max-width:95%; margin:0 auto 1em auto; }
+.target-marker { background-color:transparent; }
 
 .back-button {
   position: absolute;
@@ -226,23 +194,18 @@ body {
   flex-wrap: wrap;
 }
 
-.info-text {
-  flex: 1;
-  text-align: left;
-  font-size: 0.9em;
-}
-
+.info-text { flex:1; text-align:left; font-size:0.9em; }
 .hut-small {
-  width: 100px;
+  width: 60px;
   height: auto;
   margin-left: 10px;
   border: 2px solid #FFDE06;
 }
 
-iframe {
+iframe#mapFrame {
   width: 100%;
-  max-width: 350px;
-  height: 250px;
+  max-width: 320px;
+  height: 200px;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
 }
@@ -265,7 +228,6 @@ iframe {
     max-width: 95vw;
     padding: 0 1em;
   }
-
   .crawl {
     max-width: 95vw;
     font-size: 1em;
