@@ -157,15 +157,22 @@ body {
   color: #FFDE06;
 }
 
-#extraContent img#hutImage {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  border: 4px solid #FFDE06;
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
   margin-bottom: 1em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.hut-small {
+  width: 80px;
+  height: auto;
+  border: 2px solid #FFDE06;
+  border-radius: 4px;
+}
+
+#extraContent img#hutImage {
+  display: none; /* das große Bild wird versteckt */
 }
 
 iframe#mapFrame {
@@ -216,8 +223,7 @@ iframe#mapFrame {
     height: calc(var(--vh));
   }
 
-  #extraContent img#hutImage,
-  iframe#mapFrame {
+  #extraContent iframe#mapFrame {
     max-width: 90vw;
   }
 }
