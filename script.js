@@ -15,7 +15,7 @@ let start = null;
 let stop = false;
 let animationFrame;
 const speed = 0.35;
-let activeSet = null; // ← speichert aktives Set aus BlueLine, Headline, Crawl
+let activeSet = null;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
