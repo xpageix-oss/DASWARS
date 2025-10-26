@@ -101,7 +101,6 @@ body {
     transform: translate(-50%, -50%) scale(1) translateZ(-500px);
     opacity: 0;
   }
-}
 
 .blue-line, .crawl {
   opacity: 0;
@@ -148,7 +147,6 @@ body {
     transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
     opacity: 0;
   }
-}
 
 .subheadline {
   font-size: 1.2em;
@@ -186,7 +184,6 @@ body {
   overflow: hidden; /* 👈 wichtig */
   white-space: nowrap; /* 👈 verhindert Textumbruch in vertical mode */
   box-sizing: border-box; /* 👈 sorgt für korrekt berechnete Breite/Höhe */
-}
 }
 
 #extraContent {
