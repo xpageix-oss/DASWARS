@@ -34,8 +34,19 @@ body {
 }
 
 #selection-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: black url('assets/501st.gif') center center no-repeat;
   background-size: cover;
+  color: #FFDE06;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
 #password-screen input,
@@ -62,9 +73,11 @@ body {
   background-image: url('assets/Star Wars Background2.jpg');
   background-size: cover;
   background-position: center;
-  margin: 0 auto;
+}
+
+  margin: 0 auto;              /* damit der Container zentriert ist */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* falls er nicht schon zentriert ist */
 }
 
 #headline {
@@ -72,37 +85,9 @@ body {
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Bowlby One SC', sans-serif;
-  font-size: 4em;
-  color: black;
-  -webkit-text-stroke: 2px #FFDE06;
-  text-align: center;
-  z-index: 6;
-  opacity: 0;
-  display: block;
-}
-
-#headline span {
-  display: block;
-}
-
-.headline-zoom {
-  animation: zoomCrawl 12s ease-out forwards;
-}
-
-@keyframes zoomCrawl {
-  0% {
-    transform: translate(-50%, -50%) scale(3) translateZ(0);
-    opacity: 1;
   }
-  100% {
-    transform: translate(-50%, -50%) scale(1) translateZ(-500px);
-    opacity: 0;
-  }
-}
-
-.blue-line,
-.crawl {
+  
+.blue-line, .crawl {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
@@ -123,30 +108,15 @@ body {
 
 .crawl {
   position: absolute;
-  top: 60%;
+  top: 90%;
   width: 100%;
   max-width: 95vw;
   left: 50%;
-  transform: translateX(-50%) rotateX(35deg);
+  transform: translateX(-50%) rotateX(25deg);
   transform-origin: bottom center;
-  font-size: 2.0em;
+  font-size: 1.05em;
   line-height: 1.4;
   padding: 0 1em;
-}
-
-.crawl-fly {
-  animation: flyCrawl 45s ease-out forwards;
-}
-
-@keyframes flyCrawl {
-  0% {
-    transform: translateX(-50%) rotateX(65deg) scale(2.5) translateZ(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
-    opacity: 0;
-  }
 }
 
 .headline {
@@ -157,6 +127,10 @@ body {
   -webkit-text-stroke: 2px #FFDE06;
   margin-bottom: 0.8em;
   line-height: 0.8;
+}
+
+.headline span {
+  display: block;
 }
 
 .subheadline {
@@ -258,10 +232,10 @@ iframe {
   #extraContent h2 {
     font-size: 1.2em;
   }
-}
-/* ----- Zusatz für 16 Uhr / 20 Uhr Variationen ----- */
+}  /* ⬅️ Media Query endet hier! */
 
-#headline16, #headline20 {
+/* Und jetzt dein Animationsteil außerhalb */
+#headline {
   position: absolute;
   top: 30%;
   left: 50%;
@@ -275,38 +249,23 @@ iframe {
   opacity: 0;
   display: block;
 }
+}
 
-#headline16 span, #headline20 span {
+#headline span {
   display: block;
 }
 
-#blueLine16, #blueLine20 {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #00bfff;
-  font-size: 1.7em;
-  text-align: center;
-  width: 90vw;
-  line-height: 1.3;
-  padding: 0 1em;
-  z-index: 5;
-  opacity: 0;
-  transition: opacity 1s ease-in;
+.headline-zoom {
+  animation: zoomCrawl 12s ease-out forwards;
 }
 
-#crawl16, #crawl20 {
-  position: absolute;
-  top: 60%;
-  width: 100%;
-  max-width: 95vw;
-  left: 50%;
-  transform: translateX(-50%) rotateX(35deg);
-  transform-origin: bottom center;
-  font-size: 2em;
-  line-height: 1.4;
-  padding: 0 1em;
-  opacity: 0;
-  transition: opacity 1s ease-in;
+@keyframes zoomCrawl {
+  0% {
+    transform: translate(-50%, -50%) scale(3) translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) translateZ(-500px);
+    opacity: 0;
+  }
 }
