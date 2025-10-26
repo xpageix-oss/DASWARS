@@ -54,42 +54,52 @@ body {
   max-width: 300px;
 }
 
+/* BUTTON STYLES */
 #invitationButton {
   padding: 0.7em 1.4em;
   font-size: 1.3em;
-  background: transparent;
+  background: #0033cc;
   border: 2px solid #0033cc;
-  color: #0033cc;
+  color: white;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
   box-shadow: 0 0 10px #0033cc, 0 0 20px #0033cc;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s, transform 0.2s;
+}
+#invitationButton:hover,
+#invitationButton:focus {
+  transform: scale(1.05);
 }
 #invitationButton:active {
-  background: #0033cc;
-  color: black;
+  background: #001a66;
+  color: white;
 }
 
 #infoButton {
   padding: 0.7em 1.4em;
   font-size: 1.3em;
-  background: transparent;
+  background: #aa0000;
   border: 2px solid #aa0000;
-  color: #aa0000;
+  color: white;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
   box-shadow: 0 0 10px #aa0000, 0 0 20px #aa0000;
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s, transform 0.2s;
+}
+#infoButton:hover,
+#infoButton:focus {
+  transform: scale(1.05);
 }
 #infoButton:active {
-  background: #aa0000;
-  color: black;
+  background: #660000;
+  color: white;
 }
 
+/* INTRO & CRAWL */
 .intro-container {
   position: relative;
   width: 100%;
@@ -104,7 +114,7 @@ body {
 
 .blue-line, .crawl {
   opacity: 0;
-  transition: opacity 1s ease-in, transform 1s ease-in;
+  transition: opacity 1s ease-in;
 }
 
 .blue-line {
@@ -206,7 +216,7 @@ body {
   border-radius: 4px;
 }
 
-#extraContent iframe#mapFrame {
+iframe#mapFrame {
   width: 100%;
   max-width: 320px;
   height: 200px;
