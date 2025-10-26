@@ -75,25 +75,28 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-setTimeout(() => {
-  blueLine.style.opacity = 0;
-
-  const headline = document.getElementById('headline');
-  headline.style.opacity = 1;
-  headline.classList.add('headline-zoom');
-
-  // Ton startet gleichzeitig mit dem Sichtbarwerden der Headline
-  themeAudio.currentTime = 0;
+  // ⬇️ Autoplay-Bypass: leise starten, später aufdrehen
+  themeAudio.volume = 0;
   themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
   setTimeout(() => {
-    headline.style.display = 'none';
-    crawl.style.opacity = 1;
+    blueLine.style.opacity = 0;
 
-    invBackBtn.style.display = 'block';
-    animationFrame = requestAnimationFrame(step);
-  }, 6000); // Dauer der Headline-Animation + Puffer
-}, 6500); // BlueLine komplett weggefadet, dann Headline kommt
+    const headline = document.getElementById('headline');
+    headline.style.opacity = 1;
+    headline.classList.add('headline-zoom');
+
+    // ⬇️ Jetzt sichtbar → Ton hoch
+    themeAudio.volume = 1;
+
+    setTimeout(() => {
+      headline.style.display = 'none';
+      crawl.style.opacity = 1;
+
+      invBackBtn.style.display = 'block';
+      animationFrame = requestAnimationFrame(step);
+    }, 6000); // Dauer der Headline-Animation + Puffer
+  }, 6500); // BlueLine komplett weggefadet, dann Headline kommt
 });
 
 infoButton.addEventListener('click', () => {
@@ -112,8 +115,8 @@ infoBackBtn.addEventListener('click', () => {
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
   const headline = document.getElementById('headline');
-headline.classList.remove('headline-zoom');
-headline.style.display = 'block';
+  headline.classList.remove('headline-zoom');
+  headline.style.display = 'block';
   mainContent.classList.add('hidden');
   selectScreen.style.display = 'flex';
 });
