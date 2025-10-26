@@ -75,22 +75,22 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  // ✅ Trick: Sound starten STUMM – Autoplay-Block umgehen
+  // ✅ Autoplay-Bypass: Musik anspielen ohne Lautstärke (Browser lässt es dann durchgehen)
   themeAudio.currentTime = 0;
-  themeAudio.volume = 0;
+  themeAudio.volume = 0.001; // Minimale Lautstärke reicht oft besser als 0
   themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
-  // Blaue Zeile ausblenden (1s Fading + 1s extra Delay)
+  // Blaue Zeile sichtbar, dann Fading
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
-    // Headline kommt mit kleinem Delay NACH dem Fade
+    // Headline nach BlueLine-Fade + 1s Pause
     setTimeout(() => {
       const headline = document.getElementById('headline');
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
-      // ✅ JETZT Lautstärke aufdrehen
+      // ✅ Jetzt Lautstärke hoch
       themeAudio.volume = 1;
 
       setTimeout(() => {
@@ -99,9 +99,9 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-      }, 6000); // Headline-Animation
-    }, 1000); // ⬅️ Delay nach FadeOut
-  }, 5000); // ⬅️ BlueLine sichtbar für 3 Sekunden
+      }, 6000); // Headline dauert 6s
+    }, 1000); // ⬅️ Delay NACH Fade
+  }, 5000); // ⬅️ BlueLine steht 5 Sekunden
 });
 
 infoButton.addEventListener('click', () => {
