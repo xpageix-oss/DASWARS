@@ -3,8 +3,6 @@ const selectScreen = document.getElementById('selection-screen');
 const mainContent16 = document.getElementById('mainContent16');
 const mainContent20 = document.getElementById('mainContent20');
 const extraContent = document.getElementById('extraContent');
-const blueLine = document.getElementById('blueLine');
-const crawl = document.getElementById('crawl');
 const target = document.getElementById('target');
 const invBackBtn = document.getElementById('invBackBtn');
 const infoBackBtn = document.getElementById('infoBackBtn');
@@ -15,32 +13,37 @@ const themeAudio = new Audio('assets/theme.mp3');
 
 let start = null;
 let stop = false;
-const speed = 0.35;
 let animationFrame;
+const speed = 0.35;
+let activeSet = null; // ← speichert aktives Set aus BlueLine, Headline, Crawl
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
   start = null;
   stop = false;
+  if (!activeSet) return;
+
+  const { crawl, blueLine, headline } = activeSet;
+
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
   crawl.classList.remove('crawl-fly');
-  blueLine.style.opacity = 0;
-  invBackBtn.style.display = 'none';
-  themeAudio.pause();
-  themeAudio.currentTime = 0;
 
-  const headline = document.getElementById('headline');
+  blueLine.style.opacity = 0;
   headline.classList.remove('headline-zoom');
   headline.style.opacity = 0;
   headline.style.display = 'block';
+
+  invBackBtn.style.display = 'none';
+  themeAudio.pause();
+  themeAudio.currentTime = 0;
 }
 
 function step(timestamp) {
   if (!start) start = timestamp;
-  if (stop) return;
+  if (stop || !activeSet) return;
 
-  crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
+  activeSet.crawl.style.top = (parseFloat(getComputedStyle(activeSet.crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
   if (rect.top < -200) {
@@ -65,26 +68,35 @@ pwButton.addEventListener('click', () => {
   if (inputVal === "123") {
     pwScreen.style.display = 'none';
     mainContent16.classList.remove('hidden');
-    selectScreen.style.display = 'flex'; // oder wie du’s möchtest
+    mainContent20.classList.add('hidden');
+    selectScreen.style.display = 'flex';
+    activeSet = {
+      blueLine: document.getElementById('blueLine16'),
+      headline: document.getElementById('headline16'),
+      crawl: document.getElementById('crawl16')
+    };
   } else if (inputVal === "8910") {
     pwScreen.style.display = 'none';
     mainContent20.classList.remove('hidden');
+    mainContent16.classList.add('hidden');
     selectScreen.style.display = 'flex';
+    activeSet = {
+      blueLine: document.getElementById('blueLine20'),
+      headline: document.getElementById('headline20'),
+      crawl: document.getElementById('crawl20')
+    };
   } else {
     alert("Falsches Passwort!");
   }
 });
 
-// Du kannst invitationButton handler jeweils für beide Views anpassen
 invitationButton.addEventListener('click', () => {
+  if (!activeSet) return;
+
   resetCrawl();
   selectScreen.style.display = 'none';
-  
-  // Welcher Content gerade aktiv ist?
-  let activeMain = mainContent16.classList.contains('hidden') ? mainContent20 : mainContent16;
-  activeMain.classList.remove('hidden');
 
-  window.scrollTo(0, 0);
+  const { blueLine, headline, crawl } = activeSet;
   blueLine.style.opacity = 1;
 
   themeAudio.load();
@@ -94,7 +106,6 @@ invitationButton.addEventListener('click', () => {
     blueLine.style.opacity = 0;
 
     setTimeout(() => {
-      const headline = document.getElementById('headline');
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
