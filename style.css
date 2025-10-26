@@ -205,19 +205,19 @@ iframe {
     padding: 0 1em;
   }
   
-  .info-box {
+.info-box {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
   justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .hut-thumb {
   width: 80px;
   height: auto;
   border: 2px solid #FFDE06;
+  border-radius: 5px;
 }
 }
 
