@@ -75,6 +75,17 @@ body {
   background-position: center;
 }
 
+  margin: 0 auto;              /* damit der Container zentriert ist */
+  left: 50%;
+  transform: translateX(-50%); /* falls er nicht schon zentriert ist */
+}
+
+#headline {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
 .blue-line, .crawl {
   opacity: 0;
   transition: opacity 1s ease-in;
