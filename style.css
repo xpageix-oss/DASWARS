@@ -82,6 +82,30 @@ body {
   z-index: 5;
 }
 
+.lightsaber-flare {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100vh;
+  background: red;
+  box-shadow: 0 0 20px red, 0 0 40px red;
+  animation: flare 2s infinite alternate;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+@keyframes flare {
+  from {
+    opacity: 0.3;
+    box-shadow: 0 0 10px red, 0 0 20px red;
+  }
+  to {
+    opacity: 0.8;
+    box-shadow: 0 0 30px red, 0 0 60px red;
+  }
+}
+
 .crawl {
   position: absolute;
   top: 90%;
@@ -156,6 +180,7 @@ body {
 #extraContent img {
   width: 100%;
   max-width: 350px;
+  height: auto;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
 }
@@ -178,6 +203,26 @@ iframe {
   color: #FFDE06;
   cursor: pointer;
   position: relative;
+}
+
+.info-summary {
+  background: rgba(255, 222, 6, 0.1);
+  border: 2px solid #FFDE06;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  color: #FFDE06;
+  border-radius: 6px;
+}
+
+.info-summary h3 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.5em;
+}
+
+.info-summary p {
+  margin: 0.3em 0;
+  font-size: 1em;
 }
 
 @media (max-width: 500px) {
