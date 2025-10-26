@@ -55,6 +55,80 @@ body {
   max-width: 300px;
 }
 
+/* KNOPF EFFEKTE */
+#invitationButton {
+  position: relative;
+  color: #00bfff;
+  border: 2px solid #00bfff;
+  background: transparent;
+  padding: 0.8em 1.6em;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+#invitationButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00bfff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+#invitationButton:hover,
+#invitationButton:focus {
+  color: black;
+}
+
+#invitationButton:hover::before,
+#invitationButton:focus::before {
+  transform: scaleX(1);
+}
+
+#infoButton {
+  position: relative;
+  color: #ff4d4d;
+  border: 2px solid #ff4d4d;
+  background: transparent;
+  padding: 0.8em 1.6em;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+#infoButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff4d4d;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+#infoButton:hover,
+#infoButton:focus {
+  color: black;
+}
+
+#infoButton:hover::before,
+#infoButton:focus::before {
+  transform: scaleX(1);
+}
+
+/* INTRO & CRAWL */
 .intro-container {
   position: relative;
   width: 100%;
@@ -67,7 +141,8 @@ body {
   background-position: center;
 }
 
-.blue-line, .crawl {
+.blue-line,
+.crawl {
   opacity: 0;
   transition: opacity 1s ease-in, transform 1s ease-in;
 }
@@ -212,6 +287,11 @@ iframe#mapFrame {
     max-width: 95vw;
     font-size: 1em;
     padding: 0 1em;
+  }
+
+  #password-screen,
+  #selection-screen {
+    height: calc(var(--vh));
   }
 
   #extraContent iframe#mapFrame {
