@@ -165,11 +165,8 @@ body {
   color: #FFDE06;
 }
 
-#extraContent img {
-  width: 100%;
-  max-width: 350px;
-  border: 4px solid #FFDE06;
-  margin-bottom: 1em;
+#extraContent img:not(.hut-thumb) {
+  display: none;
 }
 
 iframe {
