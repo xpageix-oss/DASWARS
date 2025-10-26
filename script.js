@@ -93,8 +93,8 @@ invitationButton.addEventListener('click', () => {
 
       invBackBtn.style.display = 'block';
       animationFrame = requestAnimationFrame(step);
-    }, 7000);
-  }, 6509); // BlueLine komplett weg, Headline taucht auf
+    }, 6000);
+  }, 6500); // BlueLine komplett weg, Headline taucht auf
 });
 
 infoButton.addEventListener('click', () => {
