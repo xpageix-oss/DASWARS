@@ -72,17 +72,24 @@ invitationButton.addEventListener('click', () => {
 document.querySelector('.headline').classList.add('headline-zoom');
 
   setTimeout(() => {
-    blueLine.style.opacity = 0;
+  blueLine.style.opacity = 0;
+
+  // Star Wars Headline animieren
+  const headline = document.getElementById('headline');
+  headline.classList.add('headline-zoom');
+
+  // Nach Headline-Animation: Crawl starten
+  setTimeout(() => {
+    headline.style.display = 'none';
     crawl.style.opacity = 1;
 
     themeAudio.currentTime = 0;
     themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
-    // Zurückknopf direkt zeigen, wenn Crawl beginnt
     invBackBtn.style.display = 'block';
-
     animationFrame = requestAnimationFrame(step);
-  }, 4000);
+  }, 3000); // nach der Animation
+}, 4000); // nach BlueLine-FadeIn
 });
 
 infoButton.addEventListener('click', () => {
