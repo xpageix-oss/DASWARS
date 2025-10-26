@@ -75,10 +75,6 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  // ⬇️ Autoplay-Bypass: leise starten, später aufdrehen
-  themeAudio.volume = 0;
-  themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
-
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
@@ -86,8 +82,10 @@ invitationButton.addEventListener('click', () => {
     headline.style.opacity = 1;
     headline.classList.add('headline-zoom');
 
-    // ⬇️ Jetzt sichtbar → Ton hoch
+    // ⬇️ EXAKT hier: Musik beginnt NACH BlueLine, MIT Headline
+    themeAudio.currentTime = 0;
     themeAudio.volume = 1;
+    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
     setTimeout(() => {
       headline.style.display = 'none';
@@ -95,8 +93,8 @@ invitationButton.addEventListener('click', () => {
 
       invBackBtn.style.display = 'block';
       animationFrame = requestAnimationFrame(step);
-    }, 6000); // Dauer der Headline-Animation + Puffer
-  }, 6500); // BlueLine komplett weggefadet, dann Headline kommt
+    }, 6000);
+  }, 6500); // BlueLine komplett weg, Headline taucht auf
 });
 
 infoButton.addEventListener('click', () => {
