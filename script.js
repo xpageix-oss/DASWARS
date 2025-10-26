@@ -18,7 +18,6 @@ const invitationButton= document.getElementById('invitationButton');
 const infoButton     = document.getElementById('infoButton');
 const pwButton       = document.getElementById('pwButton');
 
-// Audio‑Element
 const themeAudio     = new Audio('assets/theme.mp3');
 
 let start = null;
@@ -28,11 +27,11 @@ let animationFrame;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
-  start = null;
-  stop  = false;
-  crawl.style.top     = '90%';
-  crawl.style.opacity = '0';
-  blueLine.style.opacity = '0';
+  start                = null;
+  stop                 = false;
+  crawl.style.top      = '90%';
+  crawl.style.opacity  = '0';
+  blueLine.style.opacity= '0';
   invBackBtn.style.display = 'none';
   themeAudio.pause();
   themeAudio.currentTime = 0;
@@ -74,30 +73,32 @@ pwButton.addEventListener('click', () => {
 
 invitationButton.addEventListener('click', () => {
   resetCrawl();
-  selectScreen.style.display   = 'none';
-  extraContent.style.display   = 'none';
+  selectScreen.style.display = 'none';
+  extraContent.style.display = 'none';
   mainContent.classList.remove('hidden');
   window.scrollTo(0, 0);
-  blueLine.style.opacity    = '1';
-  blueLine.style.transform   = 'translate(-50%,-50%) scale(1.5)';
+
+  // Einblenden ohne Heran‑Scale
+  blueLine.style.opacity   = '1';
+
   setTimeout(() => {
-    blueLine.style.transform = 'translate(-50%,-50%) scale(1)';
-  }, 2000);
-  setTimeout(() => {
-    blueLine.style.opacity = '0';
-    crawl.style.opacity    = '1';
-    themeAudio.play().catch(e => {
-      console.warn("Audio‑Autoplay blockiert:", e);
-    });
-    animationFrame = requestAnimationFrame(step);
-  }, 4500);
+    // Blauer Text bleibt stehen, dann Faden
+    setTimeout(() => {
+      blueLine.style.opacity = '0';
+      crawl.style.opacity    = '1';
+      themeAudio.play().catch(e => {
+        console.warn("Audio‑Autoplay blockiert:", e);
+      });
+      animationFrame = requestAnimationFrame(step);
+    }, 3000);
+  }, 200);
 });
 
 infoButton.addEventListener('click', () => {
-  selectScreen.style.display   = 'none';
+  selectScreen.style.display = 'none';
   mainContent.classList.add("hidden");
-  extraContent.style.display   = 'block';
-  infoBackBtn.style.display     = 'block';
+  extraContent.style.display = 'block';
+  infoBackBtn.style.display  = 'block';
   window.scrollTo(0, 0);
 });
 
