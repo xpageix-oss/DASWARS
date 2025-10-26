@@ -62,9 +62,47 @@ body {
   background-image: url('assets/Star Wars Background2.jpg');
   background-size: cover;
   background-position: center;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.blue-line, .crawl {
+#headline {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bowlby One SC', sans-serif;
+  font-size: 4em;
+  color: black;
+  -webkit-text-stroke: 2px #FFDE06;
+  text-align: center;
+  z-index: 6;
+  opacity: 0;
+  display: block;
+}
+
+#headline span {
+  display: block;
+}
+
+.headline-zoom {
+  animation: zoomCrawl 12s ease-out forwards;
+}
+
+@keyframes zoomCrawl {
+  0% {
+    transform: translate(-50%, -50%) scale(3) translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) translateZ(-500px);
+    opacity: 0;
+  }
+}
+
+.blue-line,
+.crawl {
   opacity: 0;
   transition: opacity 1s ease-in;
 }
@@ -83,39 +121,42 @@ body {
   z-index: 5;
 }
 
-#headline {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Bowlby One SC', sans-serif;
-  font-size: 4em;
-  color: black;
-  -webkit-text-stroke: 2px #FFDE06;
-  text-align: center;
-  z-index: 6;
-  opacity: 0;
-}
-
-#headline span {
-  display: block;
-}
-
 .crawl {
   position: absolute;
-  top: 90%;
+  top: 60%;
   width: 100%;
   max-width: 95vw;
   left: 50%;
-  transform: translateX(-50%) rotateX(25deg);
+  transform: translateX(-50%) rotateX(35deg);
   transform-origin: bottom center;
-  font-size: 1.05em;
+  font-size: 2.0em;
   line-height: 1.4;
   padding: 0 1em;
 }
 
-.headline span {
-  display: block;
+.crawl-fly {
+  animation: flyCrawl 45s ease-out forwards;
+}
+
+@keyframes flyCrawl {
+  0% {
+    transform: translateX(-50%) rotateX(65deg) scale(2.5) translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
+    opacity: 0;
+  }
+}
+
+.headline {
+  text-align: center;
+  font-family: 'Bowlby One SC', sans-serif;
+  font-size: 2.5em;
+  color: black;
+  -webkit-text-stroke: 2px #FFDE06;
+  margin-bottom: 0.8em;
+  line-height: 0.8;
 }
 
 .subheadline {
@@ -130,6 +171,10 @@ body {
   color: #FFDE06;
   max-width: 95%;
   margin: 0 auto 1em auto;
+}
+
+.target-marker {
+  background-color: transparent;
 }
 
 .back-button {
@@ -201,6 +246,13 @@ iframe {
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+  }
+
+  .hut-thumb {
+    width: 60px;
+    height: auto;
+    border: 2px solid #FFDE06;
+    border-radius: 5px;
   }
 
   #extraContent h2 {
