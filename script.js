@@ -106,6 +106,9 @@ infoBackBtn.addEventListener('click', () => {
 
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
+  const headline = document.getElementById('headline');
+headline.classList.remove('headline-zoom');
+headline.style.display = 'block';
   mainContent.classList.add('hidden');
   selectScreen.style.display = 'flex';
 });
