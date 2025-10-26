@@ -31,8 +31,8 @@ function resetCrawl() {
   start = null;
   stop  = false;
   crawl.style.top     = '90%';
-  crawl.style.opacity = 0;
-  blueLine.style.opacity = 0;
+  crawl.style.opacity = '0';
+  blueLine.style.opacity = '0';
   invBackBtn.style.display = 'none';
   themeAudio.pause();
   themeAudio.currentTime = 0;
@@ -41,19 +41,15 @@ function resetCrawl() {
 function step(timestamp) {
   if (!start) start = timestamp;
   if (stop) return;
-
   crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
-
   const rect = target.getBoundingClientRect();
   if (rect.top > 0 && rect.bottom < window.innerHeight - 300) {
     invBackBtn.style.display = 'block';
   }
-
   if (rect.top < -200) {
     stop = true;
     return;
   }
-
   animationFrame = requestAnimationFrame(step);
 }
 
@@ -81,18 +77,15 @@ invitationButton.addEventListener('click', () => {
   selectScreen.style.display   = 'none';
   extraContent.style.display   = 'none';
   mainContent.classList.remove('hidden');
-
   window.scrollTo(0, 0);
-  blueLine.style.opacity = 1;
-  blueLine.style.transform = 'translate(-50%, -50%) scale(1.5)';
-
+  blueLine.style.opacity    = '1';
+  blueLine.style.transform   = 'translate(-50%,-50%) scale(1.5)';
   setTimeout(() => {
-    blueLine.style.transform = 'translate(-50%, -50%) scale(1)';
+    blueLine.style.transform = 'translate(-50%,-50%) scale(1)';
   }, 2000);
-
   setTimeout(() => {
-    blueLine.style.opacity = 0;
-    crawl.style.opacity    = 1;
+    blueLine.style.opacity = '0';
+    crawl.style.opacity    = '1';
     themeAudio.play().catch(e => {
       console.warn("Audio‑Autoplay blockiert:", e);
     });
@@ -109,12 +102,12 @@ infoButton.addEventListener('click', () => {
 });
 
 infoBackBtn.addEventListener('click', () => {
-  extraContent.style.display   = 'none';
-  selectScreen.style.display   = 'flex';
+  extraContent.style.display = 'none';
+  selectScreen.style.display = 'flex';
 });
 
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
   mainContent.classList.add("hidden");
-  selectScreen.style.display   = 'flex';
+  selectScreen.style.display = 'flex';
 });
