@@ -76,14 +76,13 @@ invitationButton.addEventListener('click', () => {
   // Star Wars Headline animieren
   const headline = document.getElementById('headline');
   headline.classList.add('headline-zoom');
-
+themeAudio.currentTime = 0;
+    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+    
   // Nach Headline-Animation: Crawl starten
   setTimeout(() => {
     headline.style.display = 'none';
     crawl.style.opacity = 1;
-
-    themeAudio.currentTime = 0;
-    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
     invBackBtn.style.display = 'block';
     animationFrame = requestAnimationFrame(step);
