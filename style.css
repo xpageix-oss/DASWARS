@@ -5,7 +5,7 @@ body {
   background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
   background-size: cover;
   color: #FFDE06;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Orbitron', sans‑serif;
   overflow-x: hidden;
   display: flex;
   justify-content: center;
@@ -13,9 +13,7 @@ body {
   height: 100vh;
 }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
 
 #password-screen {
   position: fixed;
@@ -24,163 +22,154 @@ body {
   background: black;
   color: #FFDE06;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  flex‑direction: column;
+  justify‑content: center;
+  align‑items: center;
+  z‑index: 999;
 }
 
 #selection-screen {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: url('assets/501st.gif') center center no-repeat;
-  background-size: cover;
+  background: url('assets/501st.gif') center center no‑repeat;
+  background‑size: cover;
   color: #FFDE06;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 998;
+  flex‑direction: column;
+  justify‑content: center;
+  align‑items: center;
+  z‑index: 998;
 }
 
 #password-screen input,
 #password-screen button,
 #selection-screen button {
   padding: 0.7em 1.4em;
-  font-size: 1.3em;
+  font‑size: 1.3em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
-  max-width: 300px;
+  max‑width: 300px;
 }
 
 .intro-container {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max‑width: 500px;
   height: 80vh;
   overflow: hidden;
   perspective: 800px;
-  background-image: url('assets/Star Wars Background2.jpg');
-  background-size: cover;
-  background-position: center;
+  background‑image: url('assets/Star Wars Background2.jpg');
+  background‑size: cover;
+  background‑position: center;
 }
 
-.blue-line,
-.crawl {
+.blue‑line, .crawl {
   opacity: 0;
-  transition: opacity 1s ease-in;
+  transition: opacity 1s ease‑in;
 }
 
-.blue-line {
+.blue‑line {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(‑50%, ‑50%);
   color: #00bfff;
-  font-size: 1.7em;
-  text-align: center;
+  font‑size: 1.7em;
+  text‑align: center;
   width: 90vw;
-  line-height: 1.3;
+  line‑height: 1.3;
   padding: 0 1em;
-  z-index: 5;
+  z‑index: 5;
 }
 
 .crawl {
   position: absolute;
   top: 90%;
   width: 100%;
-  max-width: 95vw;
+  max‑width: 95vw;
   left: 50%;
-  transform: translateX(-50%) rotateX(25deg);
-  transform-origin: bottom center;
-  font-size: 1.05em;
-  line-height: 1.4;
+  transform: translateX(‑50%) rotateX(25deg);
+  transform‑origin: bottom center;
+  font‑size: 1.05em;
+  line‑height: 1.4;
   padding: 0 1em;
 }
 
 .headline {
-  text-align: center;
-  font-family: 'Bowlby One SC', sans-serif;
-  font-size: 2.5em;
+  text‑align: center;
+  font‑family: 'Bowlby One SC', sans‑serif;
+  font‑size: 2.5em;
   color: black;
-  -webkit-text-stroke: 2px #FFDE06;
-  margin-bottom: 0.8em;
-  line-height: 0.8;
+  ‑webkit‑text‑stroke: 2px #FFDE06;
+  margin‑bottom: 0.8em;
+  line‑height: 0.8;
 }
-
-.headline span {
-  display: block;
-}
-
+.headline span { display: block; }
 .subheadline {
-  font-size: 1.2em;
-  text-align: center;
+  font‑size: 1.2em;
+  text‑align: center;
   color: #FFDE06;
-  margin-bottom: 1.2em;
+  margin‑bottom: 1.2em;
 }
-
 .paragraph {
-  text-align: left;
+  text‑align: left;
   color: #FFDE06;
-  max-width: 95%;
+  max‑width: 95%;
   margin: 0 auto 1em auto;
 }
+.target‑marker { background‑color: transparent; }
 
-.target-marker {
-  background-color: transparent;
-}
-
-.back-button {
+.back‑button {
   position: absolute;
   left: 5px;
   top: 30%;
   display: none;
-  writing-mode: vertical‑rl;
+  writing‑mode: vertical‑rl;
   text‑orientation: upright;
   padding: 0.4em;
-  font-size: 0.9em;
+  font‑size: 0.9em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
-  z-index: 10;
+  z‑index: 10;
 }
 
 #extraContent {
   display: none;
   padding: 20px 15px;
-  text-align: center;
+  text‑align: center;
   width: 100%;
-  max-width: 400px;
+  max‑width: 400px;
   margin: 0 auto;
   color: #FFDE06;
 }
 
 #extraContent img {
   width: 100%;
-  max-width: 350px;
+  max‑width: 350px;
   border: 4px solid #FFDE06;
-  margin-bottom: 1em;
+  margin‑bottom: 1em;
 }
 
 iframe {
   width: 100%;
-  max-width: 320px;
+  max‑width: 320px;
   height: 200px;
   border: 4px solid #FFDE06;
-  margin-bottom: 1em;
+  margin‑bottom: 1em;
 }
 
 #infoBackBtn {
   display: block;
-  margin-top: 1em;
+  margin‑top: 1em;
   padding: 0.4em 0.8em;
-  font-size: 0.9em;
+  font‑size: 0.9em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
@@ -188,15 +177,15 @@ iframe {
   position: relative;
 }
 
-@media (max-width: 500px) {
-  .blue-line {
-    font-size: 1.4em;
-    max-width: 95vw;
+@media (max‑width: 500px) {
+  .blue‑line {
+    font‑size: 1.4em;
+    max‑width: 95vw;
     padding: 0 1em;
   }
   .crawl {
-    max-width: 95vw;
-    font-size: 1em;
+    max‑width: 95vw;
+    font‑size: 1em;
     padding: 0 1em;
   }
 }
