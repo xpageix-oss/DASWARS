@@ -1,6 +1,7 @@
 const pwScreen = document.getElementById('password-screen');
 const selectScreen = document.getElementById('selection-screen');
-const mainContent = document.getElementById('mainContent');
+const mainContent16 = document.getElementById('mainContent16');
+const mainContent20 = document.getElementById('mainContent20');
 const extraContent = document.getElementById('extraContent');
 const blueLine = document.getElementById('blueLine');
 const crawl = document.getElementById('crawl');
@@ -23,6 +24,7 @@ function resetCrawl() {
   stop = false;
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
+  crawl.classList.remove('crawl-fly');
   blueLine.style.opacity = 0;
   invBackBtn.style.display = 'none';
   themeAudio.pause();
@@ -31,7 +33,7 @@ function resetCrawl() {
   const headline = document.getElementById('headline');
   headline.classList.remove('headline-zoom');
   headline.style.opacity = 0;
-  headline.style.display = 'block'; // sichtbar vorbereiten
+  headline.style.display = 'block';
 }
 
 function step(timestamp) {
@@ -52,33 +54,41 @@ function step(timestamp) {
 document.addEventListener("DOMContentLoaded", () => {
   pwScreen.style.display = 'flex';
   selectScreen.style.display = 'none';
-  mainContent.classList.add("hidden");
+  mainContent16.classList.add("hidden");
+  mainContent20.classList.add("hidden");
   extraContent.classList.add("hidden");
 });
 
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
-  if (inputVal === "2512!") {
+
+  if (inputVal === "123") {
     pwScreen.style.display = 'none';
+    mainContent16.classList.remove('hidden');
+    selectScreen.style.display = 'flex'; // oder wie du’s möchtest
+  } else if (inputVal === "8910") {
+    pwScreen.style.display = 'none';
+    mainContent20.classList.remove('hidden');
     selectScreen.style.display = 'flex';
   } else {
     alert("Falsches Passwort!");
   }
 });
 
+// Du kannst invitationButton handler jeweils für beide Views anpassen
 invitationButton.addEventListener('click', () => {
   resetCrawl();
   selectScreen.style.display = 'none';
-  extraContent.style.display = 'none';
-  mainContent.classList.remove('hidden');
+  
+  // Welcher Content gerade aktiv ist?
+  let activeMain = mainContent16.classList.contains('hidden') ? mainContent20 : mainContent16;
+  activeMain.classList.remove('hidden');
 
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  // Erst nur vorbereiten, aber KEIN play()!
-  themeAudio.load(); // preload erzwingen
+  themeAudio.load();
   themeAudio.volume = 1;
-  // KEIN play() hier!
 
   setTimeout(() => {
     blueLine.style.opacity = 0;
@@ -88,25 +98,24 @@ invitationButton.addEventListener('click', () => {
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
-      // Jetzt sauberer Start mit play()
       themeAudio.currentTime = 0;
-      themeAudio.volume = 1;
       themeAudio.play().catch(err => console.warn("Autoplay blockiert beim echten Start:", err));
 
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
-
+        crawl.classList.add('crawl-fly');
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
       }, 12000);
-    }, 3000); // Headline Delay nach Fade
-  }, 5000); // BlueLine sichtbar
+    }, 3000);
+  }, 5000);
 });
 
 infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
-  mainContent.classList.add('hidden');
+  mainContent16.classList.add("hidden");
+  mainContent20.classList.add("hidden");
   extraContent.style.display = 'block';
   infoBackBtn.style.display = 'block';
   window.scrollTo(0, 0);
@@ -119,9 +128,7 @@ infoBackBtn.addEventListener('click', () => {
 
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
-  const headline = document.getElementById('headline');
-  headline.classList.remove('headline-zoom');
-  headline.style.display = 'block';
-  mainContent.classList.add('hidden');
+  mainContent16.classList.add("hidden");
+  mainContent20.classList.add("hidden");
   selectScreen.style.display = 'flex';
 });
