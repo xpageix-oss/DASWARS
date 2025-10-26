@@ -55,17 +55,17 @@ body {
   padding: 0.7em 1.4em;
   font-size: 1.3em;
   background: transparent;
-  border: 2px solid #00f0ff;
-  color: #00f0ff;
+  border: 2px solid #0033cc;
+  color: #0033cc;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
-  box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  box-shadow: 0 0 10px #0033cc, 0 0 20px #0033cc;
   transition: all 0.3s ease-in-out;
 }
 #invitationButton:active {
-  background: #00f0ff;
+  background: #0033cc;
   color: black;
 }
 
@@ -73,17 +73,17 @@ body {
   padding: 0.7em 1.4em;
   font-size: 1.3em;
   background: transparent;
-  border: 2px solid #ff0033;
-  color: #ff0033;
+  border: 2px solid #aa0000;
+  color: #aa0000;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
-  box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033;
+  box-shadow: 0 0 10px #aa0000, 0 0 20px #aa0000;
   transition: all 0.3s ease-in-out;
 }
 #infoButton:active {
-  background: #ff0033;
+  background: #aa0000;
   color: black;
 }
 
