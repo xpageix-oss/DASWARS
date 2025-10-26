@@ -157,19 +157,33 @@ body {
   color: #FFDE06;
 }
 
-#extraContent img {
+#extraContent img#hutImage {
   width: 100%;
-  max-width: 350px;
+  max-width: 320px;
+  height: auto;
+  border: 4px solid #FFDE06;
+  margin-bottom: 1em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+iframe#mapFrame {
+  width: 100%;
+  max-width: 320px;
+  height: 200px;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
 }
 
-iframe {
-  width: 100%;
-  max-width: 350px;
-  height: 200px;
-  border: 4px solid #FFDE06;
+.info-summary {
+  background: rgba(255, 222, 6, 0.1);
+  border: 2px solid #FFDE06;
+  padding: 1em;
   margin-bottom: 1em;
+  text-align: center;
+  color: #FFDE06;
+  border-radius: 6px;
 }
 
 #infoBackBtn {
@@ -195,5 +209,15 @@ iframe {
     max-width: 95vw;
     font-size: 1em;
     padding: 0 1em;
+  }
+
+  #password-screen,
+  #selection-screen {
+    height: calc(var(--vh)); /* mobiles Höhen‑Fix */
+  }
+
+  #extraContent img#hutImage,
+  iframe#mapFrame {
+    max-width: 90vw;
   }
 }
