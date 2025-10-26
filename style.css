@@ -166,6 +166,7 @@ body {
 }
 
 #extraContent {
+#extraContent {
   display: none;
   padding: 20px 15px;
   text-align: center;
@@ -173,8 +174,7 @@ body {
   max-width: 400px;
   margin: 0 auto;
   color: #FFDE06;
-  border: 3px solid #FFDE06;
-  border-radius: 10px;
+}
   background-color: rgba(0, 0, 0, 0.6);
 }
 
