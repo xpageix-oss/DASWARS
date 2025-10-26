@@ -92,8 +92,8 @@ setTimeout(() => {
 
     invBackBtn.style.display = 'block';
     animationFrame = requestAnimationFrame(step);
-  }, 5000); // Dauer der Headline-Animation + Puffer
-}, 5000); // BlueLine komplett weggefadet, dann Headline kommt
+  }, 6000); // Dauer der Headline-Animation + Puffer
+}, 6500); // BlueLine komplett weggefadet, dann Headline kommt
 });
 
 infoButton.addEventListener('click', () => {
