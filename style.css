@@ -165,14 +165,10 @@ body {
 }
 
 .hut-small {
-  width: 80px;
+  width: 60px;
   height: auto;
   border: 2px solid #FFDE06;
   border-radius: 4px;
-}
-
-#extraContent img#hutImage {
-  display: none; /* das große Bild wird versteckt */
 }
 
 iframe#mapFrame {
@@ -216,11 +212,6 @@ iframe#mapFrame {
     max-width: 95vw;
     font-size: 1em;
     padding: 0 1em;
-  }
-
-  #password-screen,
-  #selection-screen {
-    height: calc(var(--vh));
   }
 
   #extraContent iframe#mapFrame {
