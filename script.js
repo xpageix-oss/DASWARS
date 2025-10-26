@@ -75,31 +75,27 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  // ⏳ Warten, bis BlueLine 5 Sekunden sichtbar war
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
-    // ⏳ Dann 1 Sekunde warten, Headline anzeigen + TON START
     setTimeout(() => {
       const headline = document.getElementById('headline');
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
-      // 🎵 Ton exakt beim Erscheinen der Headline
+      // 🎵 Ton exakt jetzt abspielen (bei Headline-Start)
       themeAudio.currentTime = 0;
-      themeAudio.volume = 1;
       themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
-      // ⏳ Nach Headline-Animation kommt der Crawl
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-      }, 6000); // Dauer der Headline-Animation
-    }, 1000); // 1 Sekunde nach FadeOut der BlueLine
-  }, 5000); // BlueLine für 5 Sekunden sichtbar
+      }, 6000); // Headline-Animation
+    }, 1000); // Delay nach BlueLine-FadeOut
+  }, 5000); // BlueLine sichtbar für 5 Sekunden
 });
 
 infoButton.addEventListener('click', () => {
