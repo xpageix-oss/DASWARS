@@ -23,6 +23,7 @@ function resetCrawl() {
   stop = false;
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
+  crawl.classList.remove('crawl-fly');  // ⬅️ Reset der Crawl-Animation
   blueLine.style.opacity = 0;
   invBackBtn.style.display = 'none';
   themeAudio.pause();
@@ -96,6 +97,7 @@ invitationButton.addEventListener('click', () => {
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
+        crawl.classList.add('crawl-fly'); // ⬅️ Neue Crawl-Animation starten
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
