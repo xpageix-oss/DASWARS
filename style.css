@@ -131,15 +131,15 @@ body {
   left: 5px;
   top: 30%;
   display: none;
-  writing‑mode: vertical‑rl;
-  text‑orientation: upright;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   padding: 0.4em;
-  font‑size: 0.9em;
+  font-size: 0.9em;
   background: #111;
   border: 2px solid #FFDE06;
   color: #FFDE06;
   cursor: pointer;
-  z‑index: 10;
+  z-index: 10;
 }
 
 #extraContent {
