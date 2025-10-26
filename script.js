@@ -75,33 +75,31 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  // ✅ Autoplay-Bypass: Musik anspielen ohne Lautstärke (Browser lässt es dann durchgehen)
-  themeAudio.currentTime = 0;
-  themeAudio.volume = 0.001; // Minimale Lautstärke reicht oft besser als 0
-  themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
-
-  // Blaue Zeile sichtbar, dann Fading
+  // ⏳ Warten, bis BlueLine 5 Sekunden sichtbar war
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
-    // Headline nach BlueLine-Fade + 1s Pause
+    // ⏳ Dann 1 Sekunde warten, Headline anzeigen + TON START
     setTimeout(() => {
       const headline = document.getElementById('headline');
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
-      // ✅ Jetzt Lautstärke hoch
+      // 🎵 Ton exakt beim Erscheinen der Headline
+      themeAudio.currentTime = 0;
       themeAudio.volume = 1;
+      themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
+      // ⏳ Nach Headline-Animation kommt der Crawl
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-      }, 6000); // Headline dauert 6s
-    }, 1000); // ⬅️ Delay NACH Fade
-  }, 5000); // ⬅️ BlueLine steht 5 Sekunden
+      }, 6000); // Dauer der Headline-Animation
+    }, 1000); // 1 Sekunde nach FadeOut der BlueLine
+  }, 5000); // BlueLine für 5 Sekunden sichtbar
 });
 
 infoButton.addEventListener('click', () => {
