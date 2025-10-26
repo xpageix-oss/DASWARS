@@ -25,6 +25,8 @@ function resetCrawl() {
   crawl.style.opacity = 0;
   blueLine.style.opacity = 0;
   invBackBtn.style.display = 'none';
+  themeAudio.pause();
+  themeAudio.currentTime = 0;
 }
 
 function step(timestamp) {
@@ -34,10 +36,6 @@ function step(timestamp) {
   crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
-  if (rect.top > 0 && rect.bottom < window.innerHeight - 300) {
-    invBackBtn.style.display = 'block';
-  }
-
   if (rect.top < -200) {
     stop = true;
     return;
@@ -46,7 +44,6 @@ function step(timestamp) {
   animationFrame = requestAnimationFrame(step);
 }
 
-// Startzustand beim Laden
 document.addEventListener("DOMContentLoaded", () => {
   pwScreen.style.display = 'flex';
   selectScreen.style.display = 'none';
@@ -74,19 +71,13 @@ invitationButton.addEventListener('click', () => {
   blueLine.style.opacity = 1;
 
   setTimeout(() => {
-  blueLine.style.opacity = 0;
-  crawl.style.opacity = 1;
+    blueLine.style.opacity = 0;
+    crawl.style.opacity = 1;
 
-  themeAudio.currentTime = 0;
-  themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+    themeAudio.currentTime = 0;
+    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
 
-  setTimeout(() => {
-    invBackBtn.style.display = 'block';
-  }, 2000); // oder sofort, je nachdem, wann du den Knopf willst
-
-  animationFrame = requestAnimationFrame(step);
-}, 4000);
-    // Zurückknopf genau hier anzeigen – nach BlueLine, bei Start des Crawls
+    // Zurückknopf direkt zeigen, wenn Crawl beginnt
     invBackBtn.style.display = 'block';
 
     animationFrame = requestAnimationFrame(step);
