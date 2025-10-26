@@ -10,6 +10,7 @@ const infoBackBtn = document.getElementById('infoBackBtn');
 const invitationButton = document.getElementById('invitationButton');
 const infoButton = document.getElementById('infoButton');
 const pwButton = document.getElementById('pwButton');
+const themeAudio = new Audio('assets/theme.mp3');
 
 let start = null;
 let stop = false;
@@ -73,9 +74,18 @@ invitationButton.addEventListener('click', () => {
   blueLine.style.opacity = 1;
 
   setTimeout(() => {
-    blueLine.style.opacity = 0;
-    crawl.style.opacity = 1;
+  blueLine.style.opacity = 0;
+  crawl.style.opacity = 1;
 
+  themeAudio.currentTime = 0;
+  themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+
+  setTimeout(() => {
+    invBackBtn.style.display = 'block';
+  }, 2000); // oder sofort, je nachdem, wann du den Knopf willst
+
+  animationFrame = requestAnimationFrame(step);
+}, 4000);
     // Zurückknopf genau hier anzeigen – nach BlueLine, bei Start des Crawls
     invBackBtn.style.display = 'block';
 
