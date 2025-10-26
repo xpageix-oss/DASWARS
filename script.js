@@ -1,3 +1,10 @@
+function setViewportHeight() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh * 100}px`);
+}
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('load', setViewportHeight);
+
 const pwScreen = document.getElementById('password-screen');
 const selectScreen = document.getElementById('selection-screen');
 const mainContent = document.getElementById('mainContent');
@@ -45,7 +52,6 @@ function step(timestamp) {
   animationFrame = requestAnimationFrame(step);
 }
 
-// Startzustand beim Laden
 document.addEventListener("DOMContentLoaded", () => {
   pwScreen.style.display = 'flex';
   selectScreen.style.display = 'none';
@@ -58,6 +64,7 @@ pwButton.addEventListener('click', () => {
   if (inputVal === "2512!") {
     pwScreen.style.display = 'none';
     selectScreen.style.display = 'flex';
+    document.querySelector('.lightsaber-flare').style.animationPlayState = 'running';
   } else {
     alert("Falsches Passwort!");
   }
@@ -76,10 +83,9 @@ invitationButton.addEventListener('click', () => {
     blueLine.style.opacity = 0;
     crawl.style.opacity = 1;
 
-    // Knopf etwas verzögert, aber früh sichtbar
     setTimeout(() => {
       invBackBtn.style.display = 'block';
-    }, 2000); // 2 Sekunden nach Beginn des Crawls
+    }, 2000);
 
     animationFrame = requestAnimationFrame(step);
   }, 4000);
