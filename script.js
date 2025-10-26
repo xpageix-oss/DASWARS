@@ -76,10 +76,8 @@ invitationButton.addEventListener('click', () => {
     blueLine.style.opacity = 0;
     crawl.style.opacity = 1;
 
-    // Knopf etwas verzögert, aber früh sichtbar
-    setTimeout(() => {
-      invBackBtn.style.display = 'block';
-    }, 2000); // 2 Sekunden nach Beginn des Crawls
+    // Zurückknopf genau hier anzeigen – nach BlueLine, bei Start des Crawls
+    invBackBtn.style.display = 'block';
 
     animationFrame = requestAnimationFrame(step);
   }, 4000);
