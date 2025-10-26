@@ -34,7 +34,19 @@ body {
 }
 
 #selection-screen {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black url('assets/501st.gif') center center no-repeat;
+  background-size: cover;
+  color: #FFDE06;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
 
 #password-screen input,
