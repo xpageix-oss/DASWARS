@@ -73,31 +73,31 @@ invitationButton.addEventListener('click', () => {
   mainContent.classList.remove('hidden');
 
   window.scrollTo(0, 0);
-blueLine.style.opacity = 1;
+  blueLine.style.opacity = 1;
 
-// Warte 4 Sekunden, damit der blaue Text sichtbar ist
-setTimeout(() => {
-  blueLine.style.opacity = 0;
-
-  // Dann 2 Sekunden warten, bis der WARS-Text auftaucht
+  // Schritt 1: Blaue Schrift zeigen
   setTimeout(() => {
-    const headline = document.getElementById('headline');
-    headline.style.opacity = 1;
-    headline.classList.add('headline-zoom');
+    blueLine.style.opacity = 0;
 
-    // Musik starten
-    themeAudio.currentTime = 0;
-    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
-
-    // Wenn Animation fertig: Headline ausblenden und Crawl starten
+    // Schritt 2: kleine Pause, dann Headline zeigen + Musik starten
     setTimeout(() => {
-      headline.style.display = 'none';
-      crawl.style.opacity = 1;
-      invBackBtn.style.display = 'block';
-      animationFrame = requestAnimationFrame(step);
-    }, 4000); // etwas langsamer als vorher
-  }, 2000); // Zeit nach BlueLine-FadeOut bis Headline kommt
-}, 4000); // BlueLine anzeigen für 4 Sekunden
+      const headline = document.getElementById('headline');
+      headline.style.opacity = 1;
+      headline.classList.add('headline-zoom');
+
+      // Musik startet exakt hier – mit Headline
+      themeAudio.currentTime = 0;
+      themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+
+      // Schritt 3: nach Headline-Animation → einblenden des Crawls
+      setTimeout(() => {
+        headline.style.display = 'none';
+        crawl.style.opacity = 1;
+        invBackBtn.style.display = 'block';
+        animationFrame = requestAnimationFrame(step);
+      }, 6000); // Headline-Animation dauert 6s
+    }, 2000); // kleine Verzögerung nach BlueLine-FadeOut
+  }, 4000); // BlueLine sichtbar für 4s
 });
 
 infoButton.addEventListener('click', () => {
