@@ -15,8 +15,6 @@ body {
 
 .hidden {
   display: none;
-}
-
 #password-screen,
 #selection-screen {
   position: fixed;
@@ -175,6 +173,9 @@ body {
   max-width: 400px;
   margin: 0 auto;
   color: #FFDE06;
+  border: 3px solid #FFDE06;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 #extraContent img:not(.hut-thumb) {
