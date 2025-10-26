@@ -84,6 +84,8 @@ body {
 
 .headline span {
   display: block;
+  line-height: 0.8; /* 👈 kleiner = enger */
+  margin: 0;         /* falls irgendwo Margin geerbt wurde */
 }
 
 .headline-zoom {
