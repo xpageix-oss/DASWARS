@@ -235,6 +235,8 @@ iframe {
   text-align: center;
   z-index: 6;
   opacity: 0;
+  display: block;
+}
 }
 
 #headline span {
