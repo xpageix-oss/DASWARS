@@ -244,14 +244,13 @@ iframe {
 .headline-zoom {
   animation: zoomCrawl 8s ease-out forwards;
 }
-
 @keyframes zoomCrawl {
   0% {
-    transform: translate(-50%, -50%) scale(3);
+    transform: scale(3) translateZ(0);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -300%) scale(1) rotateX(25deg);
+    transform: scale(1) translateZ(-500px);
     opacity: 0;
   }
 }
