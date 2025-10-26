@@ -99,7 +99,7 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-      }, 6000);
+      }, 12000);
     }, 3000); // Headline Delay nach Fade
   }, 5000); // BlueLine sichtbar
 });
