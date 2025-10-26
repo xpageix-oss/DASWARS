@@ -75,26 +75,33 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
+  // ✅ Trick: Sound starten STUMM – Autoplay-Block umgehen
+  themeAudio.currentTime = 0;
+  themeAudio.volume = 0;
+  themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+
+  // Blaue Zeile ausblenden (1s Fading + 1s extra Delay)
   setTimeout(() => {
     blueLine.style.opacity = 0;
 
-    const headline = document.getElementById('headline');
-    headline.style.opacity = 1;
-    headline.classList.add('headline-zoom');
-
-    // ⬇️ EXAKT hier: Musik beginnt NACH BlueLine, MIT Headline
-    themeAudio.currentTime = 0;
-    themeAudio.volume = 1;
-    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
-
+    // Headline kommt mit kleinem Delay NACH dem Fade
     setTimeout(() => {
-      headline.style.display = 'none';
-      crawl.style.opacity = 1;
+      const headline = document.getElementById('headline');
+      headline.style.opacity = 1;
+      headline.classList.add('headline-zoom');
 
-      invBackBtn.style.display = 'block';
-      animationFrame = requestAnimationFrame(step);
-    }, 6000);
-  }, 6500); // BlueLine komplett weg, Headline taucht auf
+      // ✅ JETZT Lautstärke aufdrehen
+      themeAudio.volume = 1;
+
+      setTimeout(() => {
+        headline.style.display = 'none';
+        crawl.style.opacity = 1;
+
+        invBackBtn.style.display = 'block';
+        animationFrame = requestAnimationFrame(step);
+      }, 6000); // Headline-Animation
+    }, 1000); // ⬅️ Delay nach FadeOut
+  }, 5000); // ⬅️ BlueLine sichtbar für 3 Sekunden
 });
 
 infoButton.addEventListener('click', () => {
