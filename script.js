@@ -27,10 +27,10 @@ let animationFrame;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
-  start                = null;
-  stop                 = false;
-  crawl.style.top      = '90%';
-  crawl.style.opacity  = '0';
+  start                 = null;
+  stop                  = false;
+  crawl.style.top       = '90%';
+  crawl.style.opacity   = '0';
   blueLine.style.opacity= '0';
   invBackBtn.style.display = 'none';
   themeAudio.pause();
@@ -78,20 +78,17 @@ invitationButton.addEventListener('click', () => {
   mainContent.classList.remove('hidden');
   window.scrollTo(0, 0);
 
-  // Einblenden ohne Heran‑Scale
-  blueLine.style.opacity   = '1';
+  blueLine.style.opacity = '1';
+  invBackBtn.style.display = 'block';
 
   setTimeout(() => {
-    // Blauer Text bleibt stehen, dann Faden
-    setTimeout(() => {
-      blueLine.style.opacity = '0';
-      crawl.style.opacity    = '1';
-      themeAudio.play().catch(e => {
-        console.warn("Audio‑Autoplay blockiert:", e);
-      });
-      animationFrame = requestAnimationFrame(step);
-    }, 3000);
-  }, 200);
+    blueLine.style.opacity = '0';
+    crawl.style.opacity    = '1';
+    themeAudio.play().catch(e => {
+      console.warn("Audio‑Autoplay blockiert:", e);
+    });
+    animationFrame = requestAnimationFrame(step);
+  }, 3000);
 });
 
 infoButton.addEventListener('click', () => {
