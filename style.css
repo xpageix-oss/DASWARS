@@ -216,5 +216,8 @@ iframe {
   border: 2px solid #FFDE06;
   border-radius: 5px;
 }
+#extraContent h2 {
+  font-size: 1.2em;
+}
 }
 
