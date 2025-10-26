@@ -180,6 +180,11 @@ body {
   color: #FFDE06;
   cursor: pointer;
   z-index: 10;
+  line-height: 1;
+  overflow: hidden; /* 👈 wichtig */
+  white-space: nowrap; /* 👈 verhindert Textumbruch in vertical mode */
+  box-sizing: border-box; /* 👈 sorgt für korrekt berechnete Breite/Höhe */
+}
 }
 
 #extraContent {
