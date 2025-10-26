@@ -68,26 +68,31 @@ invitationButton.addEventListener('click', () => {
   mainContent.classList.remove('hidden');
 
   window.scrollTo(0, 0);
-  blueLine.style.opacity = 1;
+blueLine.style.opacity = 1;
 
-  setTimeout(() => {
+// Warte 4 Sekunden, damit der blaue Text sichtbar ist
+setTimeout(() => {
   blueLine.style.opacity = 0;
 
-  // Star Wars Headline animieren
-  const headline = document.getElementById('headline');
-  headline.classList.add('headline-zoom');
-themeAudio.currentTime = 0;
-    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
-    
-  // Nach Headline-Animation: Crawl starten
+  // Dann 2 Sekunden warten, bis der WARS-Text auftaucht
   setTimeout(() => {
-    headline.style.display = 'none';
-    crawl.style.opacity = 1;
+    const headline = document.getElementById('headline');
+    headline.style.opacity = 1;
+    headline.classList.add('headline-zoom');
 
-    invBackBtn.style.display = 'block';
-    animationFrame = requestAnimationFrame(step);
-  }, 3000); // nach der Animation
-}, 4000); // nach BlueLine-FadeIn
+    // Musik starten
+    themeAudio.currentTime = 0;
+    themeAudio.play().catch(err => console.warn("Autoplay blockiert", err));
+
+    // Wenn Animation fertig: Headline ausblenden und Crawl starten
+    setTimeout(() => {
+      headline.style.display = 'none';
+      crawl.style.opacity = 1;
+      invBackBtn.style.display = 'block';
+      animationFrame = requestAnimationFrame(step);
+    }, 4000); // etwas langsamer als vorher
+  }, 2000); // Zeit nach BlueLine-FadeOut bis Headline kommt
+}, 4000); // BlueLine anzeigen für 4 Sekunden
 });
 
 infoButton.addEventListener('click', () => {
