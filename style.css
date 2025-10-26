@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bowlby+One+SC&display=swap');
+free @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bowlby+One+SC&display=swap');
 
 body {
   margin: 0;
@@ -204,4 +204,20 @@ iframe {
     font-size: 1em;
     padding: 0 1em;
   }
+  
+  .info-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+.hut-thumb {
+  width: 80px;
+  height: auto;
+  border: 2px solid #FFDE06;
+}
+}
+
