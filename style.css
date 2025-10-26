@@ -17,13 +17,13 @@ body {
   display: none;
 }
 
-#password-screen,
-#selection-screen {
+#password-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  background: black;
   color: #FFDE06;
   display: flex;
   flex-direction: column;
@@ -32,13 +32,35 @@ body {
   z-index: 999;
 }
 
-#password-screen {
+#selection-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: black;
+  color: #FFDE06;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 998;
 }
 
-#selection-screen {
-  background: url('assets/501st.gif') center center no-repeat;
-  background-size: cover;
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 #password-screen input,
@@ -54,52 +76,43 @@ body {
   max-width: 300px;
 }
 
-/* BUTTON STYLES */
-#invitationButton {
+#invitationButton, #infoButton {
   padding: 0.7em 1.4em;
   font-size: 1.3em;
-  background: #0033cc;
-  border: 2px solid #0033cc;
-  color: white;
+  background: black;
+  border: 2px solid;
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
   max-width: 300px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px black;
+}
+
+#invitationButton {
+  border-color: #0033cc;
+  background-color: #0033cc;
+  color: black;
   box-shadow: 0 0 10px #0033cc, 0 0 20px #0033cc;
-  transition: background 0.3s, transform 0.2s;
 }
-#invitationButton:hover,
-#invitationButton:focus {
-  transform: scale(1.05);
-}
+
 #invitationButton:active {
-  background: #001a66;
-  color: white;
+  background: black;
+  color: #0033cc;
 }
 
 #infoButton {
-  padding: 0.7em 1.4em;
-  font-size: 1.3em;
-  background: #aa0000;
-  border: 2px solid #aa0000;
-  color: white;
-  cursor: pointer;
-  margin: 0.6em;
-  width: 80%;
-  max-width: 300px;
+  border-color: #aa0000;
+  background-color: #aa0000;
+  color: black;
   box-shadow: 0 0 10px #aa0000, 0 0 20px #aa0000;
-  transition: background 0.3s, transform 0.2s;
-}
-#infoButton:hover,
-#infoButton:focus {
-  transform: scale(1.05);
-}
-#infoButton:active {
-  background: #660000;
-  color: white;
 }
 
-/* INTRO & CRAWL */
+#infoButton:active {
+  background: black;
+  color: #aa0000;
+}
+
 .intro-container {
   position: relative;
   width: 100%;
@@ -181,8 +194,8 @@ body {
   left: 5px;
   top: 30%;
   display: none;
-  writing-mode: vertical‑rl;
-  text‑orientation: upright;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   padding: 0.4em;
   font-size: 0.9em;
   background: #111;
@@ -204,34 +217,34 @@ body {
 
 .info-box {
   display: flex;
-  align-items: flex-start;
-  gap: 1em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #FFDE06;
+  padding: 10px;
   margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+.info-text {
+  flex: 1;
+  text-align: left;
+  font-size: 0.9em;
 }
 
 .hut-small {
-  width: 60px;
+  width: 100px;
   height: auto;
+  margin-left: 10px;
   border: 2px solid #FFDE06;
-  border-radius: 4px;
 }
 
-iframe#mapFrame {
+iframe {
   width: 100%;
-  max-width: 320px;
-  height: 200px;
+  max-width: 350px;
+  height: 250px;
   border: 4px solid #FFDE06;
   margin-bottom: 1em;
-}
-
-.info-summary {
-  background: rgba(255, 222, 6, 0.1);
-  border: 2px solid #FFDE06;
-  padding: 1em;
-  margin-bottom: 1em;
-  text-align: center;
-  color: #FFDE06;
-  border-radius: 6px;
 }
 
 #infoBackBtn {
