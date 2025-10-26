@@ -69,6 +69,7 @@ invitationButton.addEventListener('click', () => {
 
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
+document.querySelector('.headline').classList.add('headline-zoom');
 
   setTimeout(() => {
     blueLine.style.opacity = 0;
