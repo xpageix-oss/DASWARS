@@ -59,14 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
+  const gifScreen = document.getElementById('gif-screen');
+
   if (inputVal === "tus") {
-    pwScreen.style.display = 'none';
     gifScreen.classList.remove('hidden');
+    pwScreen.style.display = 'none';
 
     setTimeout(() => {
       gifScreen.classList.add('hidden');
       selectScreen.style.display = 'flex';
-    }, 5000); // 5 Sekunden warten
+    }, 5000);
   } else {
     alert("Falsches Passwort!");
   }
