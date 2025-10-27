@@ -11,6 +11,7 @@ const invitationButton = document.getElementById('invitationButton');
 const infoButton = document.getElementById('infoButton');
 const pwButton = document.getElementById('pwButton');
 const themeAudio = new Audio('assets/theme.mp3');
+const gifScreen = document.getElementById('gif-screen');
 
 let start = null;
 let stop = false;
@@ -60,7 +61,12 @@ pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
   if (inputVal === "tus") {
     pwScreen.style.display = 'none';
-    selectScreen.style.display = 'flex';
+    gifScreen.classList.remove('hidden');
+
+    setTimeout(() => {
+      gifScreen.classList.add('hidden');
+      selectScreen.style.display = 'flex';
+    }, 5000); // 5 Sekunden warten
   } else {
     alert("Falsches Passwort!");
   }
