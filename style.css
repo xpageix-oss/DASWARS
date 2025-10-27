@@ -11,11 +11,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
 }
 
 .hidden {
@@ -193,9 +188,7 @@ iframe {
   max-width: 320px;
   height: 200px;
   border: 4px solid #FFDE06;
-  box-sizing: border-box; /* 👈 damit's nicht rausquillt */
-  margin: 1em auto;
-  display: block;
+  margin-bottom: 1em;
 }
 
 #infoBackBtn {
@@ -282,32 +275,15 @@ iframe {
 .info-card {
   border: 3px solid #FFDE06;
   padding: 1em;
-  margin: 1.5em auto; /* zentriert */
+  margin-bottom: 1.5em;
   background: rgba(0, 0, 0, 0.6);
   text-align: left;
   font-size: 1.1em;
   line-height: 1.5;
   border-radius: 6px;
   color: #FFDE06;
-  max-width: 320px;
-  box-sizing: border-box; /* 👈 WICHTIG */
 }
 
 .info-card p {
   margin: 0.6em 0;
-}
-
-.crawl-fly {
-  animation: flyCrawl 90s ease-out forwards;
-}
-
-@keyframes flyCrawl {
-  0% {
-    transform: translateX(-50%) rotateX(65deg) scale(2.5) translateZ(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
-    opacity: 0;
-  }
 }
