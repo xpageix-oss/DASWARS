@@ -280,10 +280,12 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 1000;
 }
-
+#gif-screen.hidden {
+  display: none;
+}
 #gif-screen img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 90vw;
+  max-height: 90vh;
 }
