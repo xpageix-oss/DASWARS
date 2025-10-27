@@ -15,8 +15,6 @@ body {
 
 .hidden {
   display: none;
-}
-
 #password-screen,
 #selection-screen {
   position: fixed;
@@ -168,6 +166,7 @@ body {
 }
 
 #extraContent {
+#extraContent {
   display: none;
   padding: 20px 15px;
   text-align: center;
@@ -175,6 +174,8 @@ body {
   max-width: 400px;
   margin: 0 auto;
   color: #FFDE06;
+}
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 #extraContent img:not(.hut-thumb) {
