@@ -274,7 +274,7 @@ iframe {
   margin-top: 2.5em;
 }
 
-/* Gemeinsame Basis für Subheadlines und Paragraphen */
+/* Zeilenweise einfliegender Crawl */
 .crawl .subheadline,
 .crawl .paragraph {
   opacity: 0;
@@ -283,7 +283,6 @@ iframe {
   animation: flyLine 10s ease-out forwards;
 }
 
-/* Animationsverzögerung – hart codiert nach Position im HTML */
 .crawl-fly .subheadline:nth-of-type(1) { animation-delay: 0s; }
 .crawl-fly .subheadline:nth-of-type(2) { animation-delay: 2s; }
 .crawl-fly .paragraph:nth-of-type(1) { animation-delay: 4s; }
@@ -291,8 +290,8 @@ iframe {
 .crawl-fly .paragraph:nth-of-type(3) { animation-delay: 8s; }
 .crawl-fly .paragraph:nth-of-type(4) { animation-delay: 10s; }
 .crawl-fly .paragraph:nth-of-type(5) { animation-delay: 12s; }
+.crawl-fly .paragraph.final-crawl { animation-delay: 14s; }
 
-/* Animation selbst */
 @keyframes flyLine {
   0% {
     opacity: 1;
@@ -302,4 +301,9 @@ iframe {
     opacity: 0;
     transform: translateY(-2000px) scale(0.3) rotateX(65deg);
   }
+}
+
+/* Letzter Satz mit zusätzlichem Abstand */
+.final-crawl {
+  margin-top: 2.5em;
 }
