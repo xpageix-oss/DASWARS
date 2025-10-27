@@ -263,3 +263,9 @@ iframe {
     opacity: 0;
   }
 }
+
+/* === HEADLINE-ZEILENABSTAND ANPASSEN === */
+.headline span {
+  line-height: 0.8;
+  margin: 0;
+}
