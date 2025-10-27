@@ -15,6 +15,7 @@ const themeAudio = new Audio('assets/theme.mp3');
 function resetCrawl() {
   crawl.classList.remove('crawl-fly');
   crawl.style.opacity = 0;
+  crawl.style.transform = '';  // ← zurücksetzen falls Inline‑Transform vorhanden
   blueLine.style.opacity = 0;
   invBackBtn.style.display = 'none';
   themeAudio.pause();
@@ -64,13 +65,12 @@ invitationButton.addEventListener('click', () => {
       headline.classList.add('headline-zoom');
 
       themeAudio.currentTime = 0;
-      themeAudio.volume = 1;
       themeAudio.play().catch(err => console.warn("Autoplay blockiert beim echten Start:", err));
 
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
-        crawl.classList.add('crawl-fly'); // <-- CSS-Animation startet hier
+        crawl.classList.add('crawl-fly'); // <-- Animation startet hier
         invBackBtn.style.display = 'block';
       }, 12000);
     }, 3000);
@@ -93,7 +93,6 @@ infoBackBtn.addEventListener('click', () => {
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
   const headline = document.getElementById('headline');
-  headline.classList.remove('headline-zoom');
   headline.style.display = 'block';
   mainContent.classList.add('hidden');
   selectScreen.style.display = 'flex';
