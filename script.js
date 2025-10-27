@@ -68,7 +68,7 @@ pwButton.addEventListener('click', () => {
     setTimeout(() => {
       gifScreen.classList.add('hidden');
       selectScreen.style.display = 'flex';
-    }, 5000);
+    }, 2500);
   } else {
     alert("Falsches Passwort!");
   }
