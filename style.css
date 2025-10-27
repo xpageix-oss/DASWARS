@@ -269,3 +269,8 @@ iframe {
   line-height: 0.8;
   margin: 0;
 }
+
+/* === Letzter Crawl-Satz mit Abstand === */
+.final-crawl {
+  margin-top: 2.5em;
+}
