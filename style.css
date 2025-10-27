@@ -24,8 +24,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black url('assets/Star Wars Background2.jpg') center/cover no-repeat;
-  color: #FFDE06;
+  background: black url('assets/IMG_4985.webp') center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
