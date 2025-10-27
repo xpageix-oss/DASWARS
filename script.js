@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
-  if (inputVal === "2512!") {
+  if (inputVal === "tus") {
     pwScreen.style.display = 'none';
     selectScreen.style.display = 'flex';
   } else {
