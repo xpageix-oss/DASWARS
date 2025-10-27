@@ -269,3 +269,21 @@ iframe {
   line-height: 0.8;
   margin: 0;
 }
+
+#gif-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#gif-screen img {
+  max-width: 90%;
+  max-height: 90%;
+}
