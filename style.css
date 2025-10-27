@@ -273,20 +273,30 @@ iframe {
 .final-crawl {
   margin-top: 2.5em;
 }
-.crawl p {
+
+/* Diese Animation soll für .subheadline UND p laufen */
+.crawl p,
+.crawl .subheadline {
   opacity: 0;
   transform: translateY(0) scale(1.8) rotateX(65deg);
   transform-origin: bottom center;
   animation: flyLine 10s ease-out forwards;
 }
 
-.crawl-fly p:nth-child(1) { animation-delay: 0s; }
-.crawl-fly p:nth-child(2) { animation-delay: 2s; }
-.crawl-fly p:nth-child(3) { animation-delay: 4s; }
-.crawl-fly p:nth-child(4) { animation-delay: 6s; }
-.crawl-fly p:nth-child(5) { animation-delay: 8s; }
-/* ...weiter je nach Anzahl der Absätze */
+/* Reihenfolge korrekt festlegen */
+/* Subheadlines zuerst */
+.crawl-fly .subheadline:nth-of-type(1) { animation-delay: 0s; }
+.crawl-fly .subheadline:nth-of-type(2) { animation-delay: 2s; }
 
+/* Dann kommen deine Paragraphen */
+.crawl-fly p:nth-of-type(1) { animation-delay: 4s; }
+.crawl-fly p:nth-of-type(2) { animation-delay: 6s; }
+.crawl-fly p:nth-of-type(3) { animation-delay: 8s; }
+.crawl-fly p:nth-of-type(4) { animation-delay: 10s; }
+.crawl-fly p:nth-of-type(5) { animation-delay: 12s; }
+/* wenn du mehr p‑Tags hast → weiterzählen */
+
+/* Animation */
 @keyframes flyLine {
   0% {
     opacity: 1;
