@@ -126,7 +126,7 @@ body {
   width: 100%;
   max-width: 95vw;
   left: 50%;
-  transform: translateX(-50%) rotateX(40deg);
+  transform: translateX(-50%) rotateX(25deg);
   transform-origin: bottom center;
   font-size: 1.05em;
   line-height: 1.4;
@@ -134,19 +134,20 @@ body {
 }
 
 .crawl-fly {
-  animation: crawlIntoSpace 50s ease-out forwards;
+  animation: flyCrawl 45s ease-out forwards;
 }
 
-@keyframes crawlIntoSpace {
+@keyframes flyCrawl {
   0% {
-    transform: translate(-50%, 0) rotateX(20deg) scale(2.8) translateZ(0);
+    transform: translateX(-50%) rotateX(65deg) scale(2.5) translateZ(0);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -300%) rotateX(20deg) scale(0.4) translateZ(-3000px);
+    transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
     opacity: 0;
   }
 }
+
 .subheadline {
   font-size: 1.2em;
   text-align: center;
@@ -249,16 +250,16 @@ iframe {
 }
 
 .crawl-fly {
-  animation: deepCrawl 45s ease-out forwards;
+  animation: flyCrawl 90s ease-out forwards;
 }
 
-@keyframes deepCrawl {
+@keyframes flyCrawl {
   0% {
-    transform: translateX(-50%) translateY(0%) rotateX(25deg) scale(2.8) translateZ(0);
+    transform: translateX(-50%) rotateX(65deg) scale(2.5) translateZ(0);
     opacity: 1;
   }
   100% {
-    transform: translateX(-50%) translateY(-100%) rotateX(25deg) scale(0.4) translateZ(-3000px);
+    transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
     opacity: 0;
   }
 }
@@ -267,43 +268,4 @@ iframe {
 .headline span {
   line-height: 0.8;
   margin: 0;
-}
-
-/* === Letzter Crawl-Satz mit Abstand === */
-.final-crawl {
-  margin-top: 2.5em;
-}
-
-/* Zeilenweise einfliegender Crawl */
-.crawl .subheadline,
-.crawl .paragraph {
-  opacity: 0;
-  transform: translateY(0) scale(1.8) rotateX(65deg);
-  transform-origin: bottom center;
-  animation: flyLine 10s ease-out forwards;
-}
-
-.crawl-fly .subheadline:nth-of-type(1) { animation-delay: 0s; }
-.crawl-fly .subheadline:nth-of-type(2) { animation-delay: 2s; }
-.crawl-fly .paragraph:nth-of-type(1) { animation-delay: 4s; }
-.crawl-fly .paragraph:nth-of-type(2) { animation-delay: 6s; }
-.crawl-fly .paragraph:nth-of-type(3) { animation-delay: 8s; }
-.crawl-fly .paragraph:nth-of-type(4) { animation-delay: 10s; }
-.crawl-fly .paragraph:nth-of-type(5) { animation-delay: 12s; }
-.crawl-fly .paragraph.final-crawl { animation-delay: 14s; }
-
-@keyframes flyLine {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1.8) rotateX(65deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-2000px) scale(0.3) rotateX(65deg);
-  }
-}
-
-/* Letzter Satz mit zusätzlichem Abstand */
-.final-crawl {
-  margin-top: 2.5em;
 }
