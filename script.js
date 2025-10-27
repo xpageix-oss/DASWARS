@@ -75,6 +75,7 @@ pwButton.addEventListener('click', () => {
 });
 
 invitationButton.addEventListener('click', () => {
+  gifScreen.classList.add('hidden');
   resetCrawl();
   selectScreen.style.display = 'none';
   extraContent.style.display = 'none';
@@ -113,7 +114,8 @@ invitationButton.addEventListener('click', () => {
 });
 
 infoButton.addEventListener('click', () => {
-  selectScreen.style.display = 'none';
+ gifScreen.classList.add('hidden');
+   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
   extraContent.style.display = 'block';
   infoBackBtn.style.display = 'block';
