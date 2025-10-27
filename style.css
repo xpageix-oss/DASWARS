@@ -275,20 +275,25 @@ iframe {
 }
 .crawl p {
   opacity: 0;
-  animation: fadeInLine 1s forwards;
+  transform: translateY(0) scale(1.8) rotateX(65deg);
+  transform-origin: bottom center;
+  animation: flyLine 10s ease-out forwards;
 }
 
 .crawl-fly p:nth-child(1) { animation-delay: 0s; }
-.crawl-fly p:nth-child(2) { animation-delay: 1s; }
-.crawl-fly p:nth-child(3) { animation-delay: 2s; }
-.crawl-fly p:nth-child(4) { animation-delay: 3s; }
-.crawl-fly p:nth-child(5) { animation-delay: 4s; }
-.crawl-fly p:nth-child(6) { animation-delay: 5s; }
-.crawl-fly p:nth-child(7) { animation-delay: 6s; }
-.crawl-fly p:nth-child(8) { animation-delay: 7s; }
-/* und so weiter, je nach Anzahl der <p>-Tags */
+.crawl-fly p:nth-child(2) { animation-delay: 2s; }
+.crawl-fly p:nth-child(3) { animation-delay: 4s; }
+.crawl-fly p:nth-child(4) { animation-delay: 6s; }
+.crawl-fly p:nth-child(5) { animation-delay: 8s; }
+/* ...weiter je nach Anzahl der Absätze */
 
-@keyframes fadeInLine {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+@keyframes flyLine {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1.8) rotateX(65deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2000px) scale(0.3) rotateX(65deg);
+  }
 }
