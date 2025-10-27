@@ -12,10 +12,17 @@ const infoButton = document.getElementById('infoButton');
 const pwButton = document.getElementById('pwButton');
 const themeAudio = new Audio('assets/theme.mp3');
 
+let start = null;
+let stop = false;
+const speed = 0.35;
+let animationFrame;
+
 function resetCrawl() {
-  crawl.classList.remove('crawl-fly');
+  cancelAnimationFrame(animationFrame);
+  start = null;
+  stop = false;
+  crawl.style.top = '90%';
   crawl.style.opacity = 0;
-  crawl.style.transform = '';  // ← zurücksetzen falls Inline‑Transform vorhanden
   blueLine.style.opacity = 0;
   invBackBtn.style.display = 'none';
   themeAudio.pause();
@@ -24,7 +31,22 @@ function resetCrawl() {
   const headline = document.getElementById('headline');
   headline.classList.remove('headline-zoom');
   headline.style.opacity = 0;
-  headline.style.display = 'block';
+  headline.style.display = 'block'; // sichtbar vorbereiten
+}
+
+function step(timestamp) {
+  if (!start) start = timestamp;
+  if (stop) return;
+
+  crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
+
+  const rect = target.getBoundingClientRect();
+  if (rect.top < -200) {
+    stop = true;
+    return;
+  }
+
+  animationFrame = requestAnimationFrame(step);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -53,8 +75,10 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  themeAudio.load();
+  // Erst nur vorbereiten, aber KEIN play()!
+  themeAudio.load(); // preload erzwingen
   themeAudio.volume = 1;
+  // KEIN play() hier!
 
   setTimeout(() => {
     blueLine.style.opacity = 0;
@@ -64,17 +88,20 @@ invitationButton.addEventListener('click', () => {
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
+      // Jetzt sauberer Start mit play()
       themeAudio.currentTime = 0;
+      themeAudio.volume = 1;
       themeAudio.play().catch(err => console.warn("Autoplay blockiert beim echten Start:", err));
 
       setTimeout(() => {
         headline.style.display = 'none';
         crawl.style.opacity = 1;
-        crawl.classList.add('crawl-fly'); // <-- Animation startet hier
+
         invBackBtn.style.display = 'block';
+        animationFrame = requestAnimationFrame(step);
       }, 12000);
-    }, 3000);
-  }, 5000);
+    }, 3000); // Headline Delay nach Fade
+  }, 5000); // BlueLine sichtbar
 });
 
 infoButton.addEventListener('click', () => {
@@ -93,6 +120,7 @@ infoBackBtn.addEventListener('click', () => {
 invBackBtn.addEventListener('click', () => {
   resetCrawl();
   const headline = document.getElementById('headline');
+  headline.classList.remove('headline-zoom');
   headline.style.display = 'block';
   mainContent.classList.add('hidden');
   selectScreen.style.display = 'flex';
