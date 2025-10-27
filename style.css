@@ -248,3 +248,18 @@ iframe {
     font-size: 1.2em;
   }
 }
+
+.crawl-fly {
+  animation: flyCrawl 90s ease-out forwards;
+}
+
+@keyframes flyCrawl {
+  0% {
+    transform: translateX(-50%) rotateX(65deg) scale(2.5) translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) rotateX(65deg) scale(0.5) translateZ(-3000px);
+    opacity: 0;
+  }
+}
