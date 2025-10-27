@@ -274,29 +274,25 @@ iframe {
   margin-top: 2.5em;
 }
 
-/* Diese Animation soll für .subheadline UND p laufen */
-.crawl p,
-.crawl .subheadline {
+/* Gemeinsame Basis für Subheadlines und Paragraphen */
+.crawl .subheadline,
+.crawl .paragraph {
   opacity: 0;
   transform: translateY(0) scale(1.8) rotateX(65deg);
   transform-origin: bottom center;
   animation: flyLine 10s ease-out forwards;
 }
 
-/* Reihenfolge korrekt festlegen */
-/* Subheadlines zuerst */
+/* Animationsverzögerung – hart codiert nach Position im HTML */
 .crawl-fly .subheadline:nth-of-type(1) { animation-delay: 0s; }
 .crawl-fly .subheadline:nth-of-type(2) { animation-delay: 2s; }
+.crawl-fly .paragraph:nth-of-type(1) { animation-delay: 4s; }
+.crawl-fly .paragraph:nth-of-type(2) { animation-delay: 6s; }
+.crawl-fly .paragraph:nth-of-type(3) { animation-delay: 8s; }
+.crawl-fly .paragraph:nth-of-type(4) { animation-delay: 10s; }
+.crawl-fly .paragraph:nth-of-type(5) { animation-delay: 12s; }
 
-/* Dann kommen deine Paragraphen */
-.crawl-fly p:nth-of-type(1) { animation-delay: 4s; }
-.crawl-fly p:nth-of-type(2) { animation-delay: 6s; }
-.crawl-fly p:nth-of-type(3) { animation-delay: 8s; }
-.crawl-fly p:nth-of-type(4) { animation-delay: 10s; }
-.crawl-fly p:nth-of-type(5) { animation-delay: 12s; }
-/* wenn du mehr p‑Tags hast → weiterzählen */
-
-/* Animation */
+/* Animation selbst */
 @keyframes flyLine {
   0% {
     opacity: 1;
