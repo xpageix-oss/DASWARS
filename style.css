@@ -134,7 +134,7 @@ body {
 }
 
 .crawl-fly {
-  animation: flyCrawl 45s ease-out forwards;
+  animation: flyCrawl 90s ease-out forwards;
 }
 
 @keyframes flyCrawl {
