@@ -33,8 +33,9 @@ body {
 }
 
 #selection-screen {
-  background: black url('assets/assets/grogu.1920x1080.mp4') center center no-repeat;
-  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  z-index: 999;
 }
 
 #password-screen input,
@@ -287,4 +288,13 @@ iframe {
 #gif-screen img {
   max-width: 90vw;
   max-height: 90vh;
+}
+#selection-screen video#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
