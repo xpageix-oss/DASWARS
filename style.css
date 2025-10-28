@@ -303,3 +303,10 @@ iframe {
     object-position: center center;
   }
 }
+
+.info-text {
+  border: 2px solid #FFDE06;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 8px; /* optional: abgerundete Ecken, wenn du nicht ganz aus Stein bist */
+}
