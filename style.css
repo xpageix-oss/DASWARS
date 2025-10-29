@@ -43,7 +43,7 @@ body {
 #password-screen input,
 #password-screen button,
 #selection-screen button {
-  padding: 0.7em 1.4em;
+  padding: 0.6em 1em;
   font-size: 1.3em;
   background: #111;
   border: 2px solid #FFDE06;
@@ -51,7 +51,7 @@ body {
   cursor: pointer;
   margin: 0.6em;
   width: 80%;
-  max-width: 300px;
+  max-width: 200px;
 }
 
 .intro-container {
