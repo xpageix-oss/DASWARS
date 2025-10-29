@@ -396,3 +396,30 @@ iframe {
   transform: scale(1.03);
   box-shadow: 0 0 12px #FFDE06;
 }
+
+#password-screen input,
+#password-screen button {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #FFDE06;
+  border-radius: 12px;
+  color: #FFDE06;
+  font-size: 1.1em;
+  padding: 0.6em 1em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+  width: 80vw;
+  max-width: 300px;
+  margin: 0.4em 0;
+}
+
+#password-screen button:hover {
+  background-color: #FFDE06;
+  color: black;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px #FFDE06;
+}
+
+/* Leicht nach oben rücken */
+#password-screen {
+  padding-top: 5vh;
+}
