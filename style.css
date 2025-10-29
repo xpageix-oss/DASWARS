@@ -185,7 +185,7 @@ body {
 }
 
 #extraContent {
-  display: block;
+  display: none;
   padding: 10px 15px 0;
   text-align: center;
   width: 100%;
@@ -193,7 +193,11 @@ body {
   margin: 0 auto;
   color: #FFDE06;
   position: relative;
-  top: -40px; /* GANZ WICHTIG: weiter nach oben */
+  top: 0; /* ← KEINE NEGATIVE POSITION STANDARDMÄSSIG */
+}
+
+#extraContent.show {
+  top: -40px; /* ← WENN SICHTBAR, DANN NACH OBEN SCHIEBEN */
 }
 
 #extraContent img:not(.hut-thumb) {
