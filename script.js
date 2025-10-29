@@ -61,7 +61,7 @@ pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
   const gifScreen = document.getElementById('gif-screen');
 
-  if (inputVal === "tus") {
+  if (inputVal === "pagei30") {
     gifScreen.classList.remove('hidden');
     pwScreen.style.display = 'none';
 
