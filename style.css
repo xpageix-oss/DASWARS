@@ -186,13 +186,14 @@ body {
 
 #extraContent {
   display: none;
-  padding: 20px 15px;
+  padding: 10px 15px 0; /* oben kleinerer Abstand */
   text-align: center;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 10px auto 0;  /* nach oben rücken */
   color: #FFDE06;
-  margin-top: 2vh;
+  position: relative;
+  top: -20px; /* alles leicht nach oben */
 }
 
 #extraContent img:not(.hut-thumb) {
