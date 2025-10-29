@@ -313,3 +313,8 @@ iframe {
   margin-left: auto;
   margin-right: auto;
 }
+
+#extraContent a {
+  color: #FFDE06; /* oder was Helles – Gelb passt zum Rest */
+  text-decoration: underline; /* optional, je nach Geschmack */
+}
