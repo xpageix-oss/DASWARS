@@ -333,3 +333,10 @@ iframe {
   color: #FFDE06; /* oder was Helles – Gelb passt zum Rest */
   text-decoration: underline; /* optional, je nach Geschmack */
 }
+.ciao-heading {
+  font-family: 'Bowlby One SC', sans-serif;
+  font-size: 3em;
+  color: #FFDE06;
+  text-shadow: 2px 2px 4px black;
+  margin-bottom: 1em;
+}
