@@ -340,3 +340,9 @@ iframe {
   color: #FFDE06; /* oder was Helles – Gelb passt zum Rest */
   text-decoration: underline; /* optional, je nach Geschmack */
 }
+
+#pwButton {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  max-width: 200px;
+}
