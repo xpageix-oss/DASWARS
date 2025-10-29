@@ -114,16 +114,17 @@ invitationButton.addEventListener('click', () => {
 });
 
 infoButton.addEventListener('click', () => {
- gifScreen.classList.add('hidden');
-   selectScreen.style.display = 'none';
+  selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
   extraContent.style.display = 'block';
+  extraContent.classList.add('show'); // <--- HIER ZUSÄTZLICH!
   infoBackBtn.style.display = 'block';
   window.scrollTo(0, 0);
 });
 
 infoBackBtn.addEventListener('click', () => {
   extraContent.style.display = 'none';
+  extraContent.classList.remove('show'); // <--- NICHT VERGESSEN!
   selectScreen.style.display = 'flex';
 });
 
