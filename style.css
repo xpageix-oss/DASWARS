@@ -192,6 +192,7 @@ body {
   max-width: 400px;
   margin: 0 auto;
   color: #FFDE06;
+  margin-top: 2vh;
 }
 
 #extraContent img:not(.hut-thumb) {
