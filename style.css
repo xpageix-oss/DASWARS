@@ -128,15 +128,15 @@ body {
   width: 100%;
   max-width: 95vw;
   left: 50%;
-  transform: translateX(-50%) rotateX(25deg);
+  transform: translateX(-50%) rotateX(35deg);
   transform-origin: bottom center;
-  font-size: 1.05em;
+  font-size: 1.15em;
   line-height: 1.4;
   padding: 0 1em;
 }
 
 .crawl-fly {
-  animation: flyCrawl 90s ease-out forwards;
+  animation: flyCrawl 120s ease-out forwards;
 }
 
 @keyframes flyCrawl {
