@@ -375,3 +375,24 @@ iframe {
 #selection-screen .button-container button {
   margin: 0;
 }
+
+#selection-screen .button-container button {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #FFDE06;
+  border-radius: 12px;
+  color: #FFDE06;
+  font-size: 1.1em;
+  padding: 0.8em 1.6em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+  width: 90vw;
+  max-width: 300px;
+  text-align: center;
+}
+
+#selection-screen .button-container button:hover {
+  background-color: #FFDE06;
+  color: black;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px #FFDE06;
+}
