@@ -17,6 +17,7 @@ body {
   display: none;
 }
 
+/* === Passwortscreen angepasst === */
 #password-screen,
 #selection-screen {
   position: fixed;
@@ -27,10 +28,10 @@ body {
   background: black url('assets/Startseite1.PNG') center/cover no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* obenbündig, statt center */
   align-items: center;
   z-index: 999;
-  padding-top: 8vh;
+  padding-top: 18vh; /* deutlich höher über der Sonne */
   padding-left: 4vw;
   padding-right: 4vw;
   box-sizing: border-box;
@@ -44,6 +45,7 @@ body {
   background-size: cover;
 }
 
+/* Grundlayout der Buttons */
 #password-screen input,
 #password-screen button,
 #selection-screen button {
@@ -58,6 +60,7 @@ body {
   max-width: 200px;
 }
 
+/* Intro-Container bleibt unberührt */
 .intro-container {
   position: relative;
   width: 100%;
@@ -345,61 +348,7 @@ iframe {
   text-decoration: underline;
 }
 
-#pwButton {
-  font-size: 1em;
-  padding: 0.4em 1.2em;
-  max-width: 180px;
-  margin-top: 1em;
-}
-
-#password-screen #pwButton {
-  font-size: 1em !important;
-  padding: 0.4em 1.2em !important;
-  max-width: 180px !important;
-  margin-top: 0em !important;
-  margin-bottom: 0.5em !important;
-}
-
-#password-screen input {
-  margin-bottom: 0.4em;
-}
-
-#selection-screen .button-container {
-  position: absolute;
-  bottom: 8vh;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
-}
-
-#selection-screen .button-container button {
-  margin: 0;
-}
-
-#selection-screen .button-container button {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid #FFDE06;
-  border-radius: 12px;
-  color: #FFDE06;
-  font-size: 1.1em;
-  padding: 0.8em 1.6em;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease-in-out;
-  width: 90vw;
-  max-width: 300px;
-  text-align: center;
-}
-
-#selection-screen .button-container button:hover {
-  background-color: #FFDE06;
-  color: black;
-  transform: scale(1.03);
-  box-shadow: 0 0 12px #FFDE06;
-}
-
+/* === Passwortfeld & Button angepasst === */
 #password-screen input,
 #password-screen button {
   background-color: rgba(0, 0, 0, 0.8);
@@ -410,9 +359,14 @@ iframe {
   padding: 0.6em 1em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease-in-out;
-  width: 80vw;
-  max-width: 300px;
+  width: 75vw;
+  max-width: 260px;
   margin: 0.4em 0;
+}
+
+#password-screen input::placeholder {
+  color: #aaa;
+  font-style: italic;
 }
 
 #password-screen button:hover {
