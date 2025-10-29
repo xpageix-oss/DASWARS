@@ -128,7 +128,7 @@ body {
   width: 100%;
   max-width: 95vw;
   left: 50%;
-  transform: translateX(-50%) rotateX(35deg);
+  transform: translateX(-50%) rotateX(25deg);
   transform-origin: bottom center;
   font-size: 1.15em;
   line-height: 1.4;
