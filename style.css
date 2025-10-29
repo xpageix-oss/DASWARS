@@ -36,6 +36,8 @@ body {
   position: relative;
   overflow: hidden;
   z-index: 999;
+  background: black url('assets/IMG_4987.webp') center center no-repeat;
+  background-size: cover;
 }
 
 #password-screen input,
