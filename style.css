@@ -185,15 +185,15 @@ body {
 }
 
 #extraContent {
-  display: none;
-  padding: 10px 15px 0; /* oben kleinerer Abstand */
+  display: block;
+  padding: 10px 15px 0;
   text-align: center;
   width: 100%;
   max-width: 400px;
-  margin: 10px auto 0;  /* nach oben rücken */
+  margin: 0 auto;
   color: #FFDE06;
   position: relative;
-  top: -20px; /* alles leicht nach oben */
+  top: -40px; /* GANZ WICHTIG: weiter nach oben */
 }
 
 #extraContent img:not(.hut-thumb) {
