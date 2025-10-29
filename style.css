@@ -30,6 +30,10 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 999;
+  padding-top: 8vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  box-sizing: border-box;
 }
 
 #selection-screen {
@@ -193,11 +197,11 @@ body {
   margin: 0 auto;
   color: #FFDE06;
   position: relative;
-  top: 0; /* ← KEINE NEGATIVE POSITION STANDARDMÄSSIG */
+  top: 0;
 }
 
 #extraContent.show {
-  top: -40px; /* ← WENN SICHTBAR, DANN NACH OBEN SCHIEBEN */
+  top: -40px;
 }
 
 #extraContent img:not(.hut-thumb) {
@@ -214,7 +218,7 @@ iframe {
 
 #infoBackBtn {
   display: block;
-  margin: 1em auto 0 auto; /* zentriert + Abstand nach oben */
+  margin: 1em auto 0 auto;
   padding: 0.4em 0.8em;
   font-size: 0.9em;
   background: #111;
@@ -222,7 +226,7 @@ iframe {
   color: #FFDE06;
   cursor: pointer;
   width: 100%;
-  max-width: 320px; /* gleich wie Map + Info-Text */
+  max-width: 320px;
   box-sizing: border-box;
 }
 
@@ -274,7 +278,6 @@ iframe {
   }
 }
 
-/* === HEADLINE-ZEILENABSTAND ANPASSEN === */
 .headline span {
   line-height: 0.8;
   margin: 0;
@@ -338,8 +341,8 @@ iframe {
 }
 
 #extraContent a {
-  color: #FFDE06; /* oder was Helles – Gelb passt zum Rest */
-  text-decoration: underline; /* optional, je nach Geschmack */
+  color: #FFDE06;
+  text-decoration: underline;
 }
 
 #pwButton {
@@ -417,9 +420,4 @@ iframe {
   color: black;
   transform: scale(1.03);
   box-shadow: 0 0 12px #FFDE06;
-}
-
-/* Leicht nach oben rücken */
-#password-screen {
-  padding-top: 5vh;
 }
