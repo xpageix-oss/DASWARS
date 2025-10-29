@@ -351,4 +351,6 @@ iframe {
   font-size: 1em !important;
   padding: 0.4em 1.2em !important;
   max-width: 180px !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.3em !important; /* ← HIER passiert die Magie */
 }
