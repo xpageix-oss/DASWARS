@@ -347,3 +347,8 @@ iframe {
   max-width: 180px;
   margin-top: 1em;
 }
+#password-screen #pwButton {
+  font-size: 1em !important;
+  padding: 0.4em 1.2em !important;
+  max-width: 180px !important;
+}
