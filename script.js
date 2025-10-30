@@ -115,6 +115,15 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
+
+        // Fallback: Bild nach 90 Sekunden einblenden (wenn Scrollen scheitert)
+        setTimeout(() => {
+          if (pascalImage.classList.contains("hidden")) {
+            pascalImage.classList.remove("hidden");
+            pascalImage.classList.add("visible");
+          }
+        }, 90000);
+
       }, 12000);
     }, 3000);
   }, 5000);
