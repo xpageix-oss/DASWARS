@@ -12,6 +12,7 @@ const infoButton = document.getElementById('infoButton');
 const pwButton = document.getElementById('pwButton');
 const themeAudio = new Audio('assets/theme.mp3');
 const gifScreen = document.getElementById('gif-screen');
+const pascalImage = document.getElementById('pascalImage');
 
 let start = null;
 let stop = false;
@@ -32,7 +33,11 @@ function resetCrawl() {
   const headline = document.getElementById('headline');
   headline.classList.remove('headline-zoom');
   headline.style.opacity = 0;
-  headline.style.display = 'block'; // sichtbar vorbereiten
+  headline.style.display = 'block';
+
+  // Bild verstecken
+  pascalImage.classList.remove("visible");
+  pascalImage.classList.add("hidden");
 }
 
 function step(timestamp) {
@@ -55,11 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add("hidden");
   extraContent.classList.add("hidden");
+  pascalImage.classList.add("hidden"); // Anfangszustand für das Bild
 });
 
 pwButton.addEventListener('click', () => {
   const inputVal = document.getElementById('pwInput').value;
-  const gifScreen = document.getElementById('gif-screen');
 
   if (inputVal === "pagei30") {
     gifScreen.classList.remove('hidden');
@@ -84,10 +89,8 @@ invitationButton.addEventListener('click', () => {
   window.scrollTo(0, 0);
   blueLine.style.opacity = 1;
 
-  // Erst nur vorbereiten, aber KEIN play()!
-  themeAudio.load(); // preload erzwingen
+  themeAudio.load();
   themeAudio.volume = 1;
-  // KEIN play() hier!
 
   setTimeout(() => {
     blueLine.style.opacity = 0;
@@ -97,10 +100,9 @@ invitationButton.addEventListener('click', () => {
       headline.style.opacity = 1;
       headline.classList.add('headline-zoom');
 
-      // Jetzt sauberer Start mit play()
       themeAudio.currentTime = 0;
       themeAudio.volume = 1;
-      themeAudio.play().catch(err => console.warn("Autoplay blockiert beim echten Start:", err));
+      themeAudio.play().catch(err => console.warn("Autoplay blockiert:", err));
 
       setTimeout(() => {
         headline.style.display = 'none';
@@ -108,29 +110,27 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-      }, 12000);
-    }, 3000); // Headline Delay nach Fade
-  }, 5000); // BlueLine sichtbar
-});
 
-setTimeout(() => {
-  document.getElementById("mainContent").classList.add("hidden");
-  document.getElementById("pascalImage").classList.remove("hidden");
-  document.getElementById("pascalImage").classList.add("show");
-}, 120000); // z.B. 130 Sekunden nach Start
+        // Bild nach dem Crawl einblenden
+        pascalImage.classList.remove("hidden");
+        pascalImage.classList.add("visible");
+      }, 12000);
+    }, 3000);
+  }, 5000);
+});
 
 infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
   extraContent.style.display = 'block';
-  extraContent.classList.add('show'); // <--- HIER ZUSÄTZLICH!
+  extraContent.classList.add('show');
   infoBackBtn.style.display = 'block';
   window.scrollTo(0, 0);
 });
 
 infoBackBtn.addEventListener('click', () => {
   extraContent.style.display = 'none';
-  extraContent.classList.remove('show'); // <--- NICHT VERGESSEN!
+  extraContent.classList.remove('show');
   selectScreen.style.display = 'flex';
 });
 
