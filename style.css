@@ -427,21 +427,17 @@ iframe {
   left: -100%;
   transform: translateY(-50%);
   z-index: 999;
-  transition: left 2.5s ease-in-out;
-  max-width: 60vw;
-  max-height: 40vh;
+  transition: left 3.5s ease-in-out;
+  max-width: 60vw;   /* kleiner gemacht */
+  max-height: 40vh;  /* reduziert */
+  width: auto;
+  height: auto;
   border-radius: 15px;
   object-fit: contain;
   pointer-events: none;
 }
 
-/* Eingeblendet (nach Crawl) */
 #pascalImage.visible {
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* Ausblenden beim Zurückgehen */
-#pascalImage.hidden {
-  left: -100%;
 }
