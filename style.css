@@ -421,23 +421,29 @@ iframe {
   transform: scale(1.03);
   box-shadow: 0 0 12px #FFDE06;
 }
+/* Bild komplett sichtbar machen, mobil optimiert */
 #pascalImage {
   position: fixed;
   top: 50%;
-  left: -100%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 999;
-  transition: left 3.5s ease-in-out;
-  max-width: 60vw;   /* kleiner gemacht */
-  max-height: 40vh;  /* reduziert */
-  width: auto;
-  height: auto;
-  border-radius: 15px;
+  transition: opacity 1s ease, transform 1s ease;
+  opacity: 0;
+  max-width: 90vw;
+  max-height: 70vh; /* Höher, damit Handy‑Bildschirm es vollständig zeigt */
+  border-radius: 10px;
   object-fit: contain;
-  pointer-events: none;
 }
 
 #pascalImage.visible {
-  left: 50%;
-  transform: translate(-50%, -50%);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (min-width: 600px) {
+  #pascalImage {
+    max-width: 60vw;
+    max-height: 50vh;
+  }
 }
