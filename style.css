@@ -421,3 +421,26 @@ iframe {
   transform: scale(1.03);
   box-shadow: 0 0 12px #FFDE06;
 }
+#pascalImage {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 2s ease-in-out;
+}
+
+#pascalImage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+#pascalImage.show {
+  left: 0;
+}
