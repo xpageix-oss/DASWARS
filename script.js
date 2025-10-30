@@ -18,11 +18,13 @@ let start = null;
 let stop = false;
 const speed = 0.35;
 let animationFrame;
+let imageShown = false;
 
 function resetCrawl() {
   cancelAnimationFrame(animationFrame);
   start = null;
   stop = false;
+  imageShown = false;
   crawl.style.top = '90%';
   crawl.style.opacity = 0;
   blueLine.style.opacity = 0;
@@ -35,7 +37,6 @@ function resetCrawl() {
   headline.style.opacity = 0;
   headline.style.display = 'block';
 
-  // Bild verstecken
   pascalImage.classList.remove("visible");
   pascalImage.classList.add("hidden");
 }
@@ -47,13 +48,16 @@ function step(timestamp) {
   crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
-  if (rect.top < -window.innerHeight) {
-    stop = true;
 
-    // Bild erst am Ende zeigen
+  // Bild früher zeigen, wenn target knapp vorm Bildschirmrand
+  if (!imageShown && rect.top < 100) {
     pascalImage.classList.remove("hidden");
     pascalImage.classList.add("visible");
+    imageShown = true;
+  }
 
+  if (rect.top < -window.innerHeight) {
+    stop = true;
     return;
   }
 
@@ -65,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add("hidden");
   extraContent.classList.add("hidden");
-  pascalImage.classList.add("hidden"); // Anfangszustand für das Bild
+  pascalImage.classList.add("hidden");
 });
 
 pwButton.addEventListener('click', () => {
@@ -115,15 +119,6 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-
-        // Fallback: Bild nach 90 Sekunden einblenden (wenn Scrollen scheitert)
-        setTimeout(() => {
-          if (pascalImage.classList.contains("hidden")) {
-            pascalImage.classList.remove("hidden");
-            pascalImage.classList.add("visible");
-          }
-        }, 82000);
-
       }, 12000);
     }, 3000);
   }, 5000);
