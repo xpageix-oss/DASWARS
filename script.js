@@ -54,8 +54,11 @@ function step(timestamp) {
 
   animationFrame = requestAnimationFrame(step);
 }
-
-document.addEventListener("DOMContentLoaded", () => {
+// nach animationFrame = requestAnimationFrame(step);
+setTimeout(() => {
+  pascalImage.classList.remove("hidden");
+  pascalImage.classList.add("visible");
+}, 120000); // z. B. 20 Sekunden nach Start des Crawlsdocument.addEventListener("DOMContentLoaded", () => {
   pwScreen.style.display = 'flex';
   selectScreen.style.display = 'none';
   mainContent.classList.add("hidden");
