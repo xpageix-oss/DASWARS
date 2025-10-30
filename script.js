@@ -122,7 +122,7 @@ invitationButton.addEventListener('click', () => {
             pascalImage.classList.remove("hidden");
             pascalImage.classList.add("visible");
           }
-        }, 1000);
+        }, 80000);
 
       }, 12000);
     }, 3000);
