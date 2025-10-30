@@ -30,7 +30,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 999;
-  padding-top: 2vh;
+  padding-top: 0.5vh;
   padding-left: 4vw;
   padding-right: 4vw;
   box-sizing: border-box;
