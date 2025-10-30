@@ -427,14 +427,21 @@ iframe {
   left: -100%;
   transform: translateY(-50%);
   z-index: 999;
-  transition: left 3s ease-in-out;
-  max-width: 70vw;
-  max-height: 50vh;
+  transition: left 2.5s ease-in-out;
+  max-width: 60vw;
+  max-height: 40vh;
   border-radius: 15px;
-  object-fit: contain; /* ← GANZ wichtig: zeigt das komplette Bild */
-  overflow: visible;
+  object-fit: contain;
+  pointer-events: none;
 }
 
-#pascalImage.show {
-  left: 5vw;
+/* Eingeblendet (nach Crawl) */
+#pascalImage.visible {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Ausblenden beim Zurückgehen */
+#pascalImage.hidden {
+  left: -100%;
 }
