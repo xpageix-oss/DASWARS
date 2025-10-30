@@ -47,18 +47,20 @@ function step(timestamp) {
   crawl.style.top = (parseFloat(getComputedStyle(crawl).top) - speed) + 'px';
 
   const rect = target.getBoundingClientRect();
-  if (rect.top < -200) {
+  if (rect.top < -window.innerHeight) {
     stop = true;
+
+    // Bild erst am Ende zeigen
+    pascalImage.classList.remove("hidden");
+    pascalImage.classList.add("visible");
+
     return;
   }
 
   animationFrame = requestAnimationFrame(step);
 }
-// nach animationFrame = requestAnimationFrame(step);
-setTimeout(() => {
-  pascalImage.classList.remove("hidden");
-  pascalImage.classList.add("visible");
-}, 120000); // z. B. 20 Sekunden nach Start des Crawlsdocument.addEventListener("DOMContentLoaded", () => {
+
+document.addEventListener("DOMContentLoaded", () => {
   pwScreen.style.display = 'flex';
   selectScreen.style.display = 'none';
   mainContent.classList.add("hidden");
@@ -113,10 +115,6 @@ invitationButton.addEventListener('click', () => {
 
         invBackBtn.style.display = 'block';
         animationFrame = requestAnimationFrame(step);
-
-        // Bild nach dem Crawl einblenden
-        pascalImage.classList.remove("hidden");
-        pascalImage.classList.add("visible");
       }, 12000);
     }, 3000);
   }, 5000);
