@@ -50,7 +50,7 @@ function step(timestamp) {
   const rect = target.getBoundingClientRect();
 
   // Bild früher zeigen, wenn target knapp vorm Bildschirmrand
-  if (!imageShown && rect.top < 100) {
+  if (!imageShown && rect.top < 50) {
     pascalImage.classList.remove("hidden");
     pascalImage.classList.add("visible");
     imageShown = true;
