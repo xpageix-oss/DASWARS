@@ -411,7 +411,7 @@ iframe {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease-in-out;
   width: 80vw;
-  max-width: 300px;
+  max-width: 200px;
   margin: 0.4em 0;
 }
 
