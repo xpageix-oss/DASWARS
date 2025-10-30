@@ -421,3 +421,18 @@ iframe {
   transform: scale(1.03);
   box-shadow: 0 0 12px #FFDE06;
 }
+
+/* === PASSWORD SCREEN FEINJUSTIERUNG === */
+#password-screen {
+  padding-top: 20vh; /* höher als bisher */
+}
+
+#password-screen input {
+  max-width: 240px;
+  margin-bottom: 0.5em;
+}
+#pwButton {
+  max-width: 160px !important;
+  margin-top: 0.2em !important;
+  margin-bottom: 0.5em !important;
+}
