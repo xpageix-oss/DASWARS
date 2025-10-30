@@ -113,6 +113,12 @@ invitationButton.addEventListener('click', () => {
   }, 5000); // BlueLine sichtbar
 });
 
+setTimeout(() => {
+  document.getElementById("mainContent").classList.add("hidden");
+  document.getElementById("pascalImage").classList.remove("hidden");
+  document.getElementById("pascalImage").classList.add("show");
+}, 130000); // z.B. 130 Sekunden nach Start
+
 infoButton.addEventListener('click', () => {
   selectScreen.style.display = 'none';
   mainContent.classList.add('hidden');
